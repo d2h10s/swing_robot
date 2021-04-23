@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" 
+    xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+    xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+    xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+    name="swing_robot">
+
+  <link name="base_link">
+    <visual>
+      <origin rpy="1.570796 0 0" xyz="0 0 0"/>
+      <geometry>
+         <mesh filename="package://swing_robot/meshes/frames.stl"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="1.570796 0 0" xyz="0 0 0"/>
+      <geometry>
+         <mesh filename="package://swing_robot/meshes/frames.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <mass value="3.314"/>
+        <inertia ixx="463814.860" ixy="323.087" ixz="0.0"
+                 iyy="223494.895" iyz="0.0"
+                 izz="457336.445"/>
+    </inertial>
+  </link>
+
+
+  <joint name="swing joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="swing_link"/>
+    <origin xyz="0 0 0.599704"/>
+    <axis xyz="1 0 0" />
+    <limit effort="300" velocity="0.1" lower="-3.14" upper="3.14"/>
+    <dynamics damping="50" friction="1"/>
+  </joint>
+
+
+  <link name="swing_link">
+    <visual>
+      <geometry>
+         <mesh filename="package://swing_robot/meshes/swing.stl"/>
+      </geometry>
+      <origin rpy="1.570796 0 0" xyz="0 0 0"/>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+         <mesh filename="package://swing_robot/meshes/swing.stl"/>
+      </geometry>
+      <origin rpy="1.570796 0 0" xyz="0 0 0"/>
+    </collision>
+    <inertial>
+        <origin xyz="0.0 0.0 0" rpy="1.570796 0 0"/>
+        <mass value="4.443"/>
+        <inertia ixx="22383.593" ixy="5442.330" ixz="-438.500"
+                 iyy="3976.186" iyz="764.536" 
+                 izz="26027.494"/>
+    </inertial>
+  </link>
+
+
+  <joint name="floor joint" type="fixed">
+    <parent link="swing_link"/>
+    <child link="humanoid_link"/>
+    <origin xyz="0 0 -0.415"/>
+    <axis xyz="1 0 0" />
+    <limit effort="300" velocity="0.1" lower="-3.14" upper="3.14"/>
+    <dynamics damping="50" friction="1"/>
+  </joint>
+
+
+  <link name="humanoid_link">
+    <visual>
+      <geometry>
+         <mesh filename="package://swing_robot/meshes/humanoid.stl"/>
+      </geometry>
+      <origin rpy="1.570796 0 0" xyz="0 0 0"/>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+         <mesh filename="package://swing_robot/meshes/humanoid.stl"/>
+      </geometry>
+      <origin rpy="1.570796 0 0" xyz="0 0 0"/>
+    </collision>
+    <inertial>
+        <origin xyz="0.0 0.0 0" rpy="1.570796 0 0"/>
+        <mass value="0.189259"/>
+        <inertia ixx="651601.474" ixy="389.063" ixz="606.795"
+                 iyy="309494.970" iyz="211900.268"
+                 izz="384257.569"/>
+    </inertial>
+  </link>
+
+
+  <joint name="knee1_joint" type="revolute">
+    <parent link="humanoid_link"/>
+    <child link="weight_link"/>
+    <origin xyz="0 -0.046250 0.0225"/>
+    <axis xyz="1 0 0" />
+    <limit effort="300" velocity="20" lower="-3.14" upper="3.14"/>
+    <dynamics damping="50" friction="1"/>
+  </joint>
+
+  <transmission name="knee1_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="$knee1_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="knee1_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <link name="weight_link">
+    <visual>
+      <geometry>
+         <mesh filename="package://swing_robot/meshes/weight.stl"/>
+      </geometry>
+      <origin rpy="1.570796 0 0" xyz="0 0 0"/>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+         <mesh filename="package://swing_robot/meshes/weight.stl"/>
+      </geometry>
+      <origin rpy="1.570796 0 0" xyz="0 0 0"/>
+    </collision>
+    <inertial>
+        <origin xyz="0.0 0.0 0" rpy="1.570796 0 0"/>
+        <mass value="0.758608"/>
+        <inertia ixx="6350491.799" ixy="0" ixz="0"
+                 iyy="759115.282" iyz="-1351459.2"
+                 izz="5741932.471"/>
+    </inertial>
+  </link>
+
+  <!-- Gazebo plugin for ROS Control -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/swing_robot</robotNamespace>
+    </plugin>
+  </gazebo>
+
+</robot>
