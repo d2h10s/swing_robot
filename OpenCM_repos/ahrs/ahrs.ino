@@ -55,6 +55,7 @@ void setup() {
   Serial2.begin(115200);
   ahrs_init();
   while(!Serial);
+  Serial.println("loop start");
 }
 
 void loop() {
@@ -64,78 +65,52 @@ void loop() {
   delay(1000);
 }
 void ahrs_init(){
+  Serial.println("ahrs init start");
   digitalWrite(6, 0);
   delay(500);
   digitalWrite(6, 1);
   delay(500);
-  Serial2.println("<sor0>");
-  delay(1000);
-  while (Serial2.available()) Serial2.read();
-  Serial2.println("<sof1>");
-  delay(1000);
-  while (Serial2.available()) Serial2.read();
-  Serial2.println("<sog0>");
-  delay(1000);
-  while (Serial2.available()) Serial2.read();
-  Serial2.println("<sot1>");
-  delay(1000);
-  while (Serial2.available()) Serial2.read();
-  Serial2.println("<soa4>");
-  delay(1000);
-  while (Serial2.available()) Serial2.read();
+  Serial2.flush();
+  Serial2.println("<sor0>"); // polling mode
+  while (!Serial2.available()); while(Serial2.available()) Serial.write(Serial2.read());
+  Serial2.println("<sot1>"); // print temperature
+  while (!Serial2.available()); while(Serial2.available()) Serial.write(Serial2.read());
+  Serial2.println("<soa4>"); // print acceleration
+  while (!Serial2.available()); while(Serial2.available()) Serial.write(Serial2.read());
+  Serial2.flush();
 }
 
 int getEulerAngles() {
-  digitalWrite(INNER_LED, 0);
+  Serial.println("get angle");
+  char temp = '\0';
   Serial2.write(SOL);
+  delay(10);
   while (Serial2.available()) {
-    ahrs_buf[ahrs_buf_idx++] = Serial2.read();
-    Serial.print(ahrs_buf[ahrs_buf_idx-1]);
-    if (ahrs_buf[0] == SOL && ahrs_buf[ahrs_buf_idx - 1] == EOL_LF) {
-      Serial.println(ahrs_buf);
-      ahrs_buf[ahrs_buf_idx - 1] = ',';
-      char *seg = strtok(ahrs_buf + 1, ",");
-      for (int i = 0; i < AHRS_DATA_SIZE; i++){
-        Serial.print(seg); Serial.print(':');
-        ahrs_data[i] = atof(seg);
-        seg = strtok(NULL, ",");
-        Serial.print(ahrs_data[i]); Serial.print('\t');
-      }
-      Serial.print('\n');
-      ahrs_buf_idx = 0;
-    }
-    if (ahrs_buf_idx >= AHRS_BUF_SIZE - 1) {
-      Serial.println("@Failed to read AHRS");
-      return 0;
-    }
-  }
-  digitalWrite(INNER_LED, 1);
-  return 1;
-}
-
-int getEulerAngles2() {
-  digitalWrite(INNER_LED, 0);
-  Serial2.write(SOL);
-  delay(1);
-  while (Serial2.available()) {
-    ahrs_buf[ahrs_buf_idx++] = Serial2.read();
-    Serial.print(ahrs_buf[ahrs_buf_idx++]);
-    if (ahrs_buf[ahrs_buf_idx - 1] == EOL_LF) ahrs_buf[ahrs_buf_idx - 1] = ',';
-
-    if (ahrs_buf[ahrs_buf_idx - 1] == SOL){
-      char *seg = strtok(ahrs_buf, ",");
+    temp = Serial2.read();
+    //Serial.write(temp);
+    ahrs_buf[ahrs_buf_idx++] = temp;
+    if (ahrs_buf[0] == SOL && temp == EOL_LF) {
+      Serial.print(ahrs_buf);
+      ahrs_buf[ahrs_buf_idx - 1] = '\0';
+      ahrs_buf[ahrs_buf_idx - 2] = ',';
+      char *seg = strtok(ahrs_buf+1, ",");
 
       for (int i = 0; i < AHRS_DATA_SIZE; i++){
         ahrs_data[i] = atof(seg);
         seg = strtok(NULL, ",");
       }
+      Serial.println("end!!");
       ahrs_buf_idx = 0;
     }
     if (ahrs_buf_idx >= AHRS_BUF_SIZE - 1) {
       Serial.println("@Failed to read AHRS");
+      delay(10);
+      ahrs_buf_idx = 0;
       return 0;
     }
   }
-  digitalWrite(INNER_LED, 1);
+  char buf[128];
+  //sprintf(buf, "%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f",ahrs_data[0],ahrs_data[1],ahrs_data[2],ahrs_data[3],ahrs_data[4],ahrs_data[5],ahrs_data[6]);
+  //Serial.println(buf);
   return 1;
 }
