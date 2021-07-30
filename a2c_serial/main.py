@@ -26,7 +26,7 @@ termination condition: [None]
 '''
 
 env = a2c_serial()
-while not env.serial_open(target_port='COM7'):
+while not env.serial_open(target_port='COM19'):
     sleep(0.5)
 
 if __name__ == '__main__' and env.ser.isOpen():

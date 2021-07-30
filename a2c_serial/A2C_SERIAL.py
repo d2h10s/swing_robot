@@ -146,11 +146,11 @@ class a2c_serial:
             rx_data, data_type = self.write_command(ACQ)
             if data_type == COMMAND and rx_data.startswith('STX,ACQ'):
                 try:
-                    print(rx_data)
                     # STX,ACQ,ROLL,VEL_ahrs,TEMP_ahrs,POS_mx106,VEL_mx106,TEMP_mx106
                     rx_data = rx_data.replace('STX,ACQ,', '').split(',')
                     if rx_data[0] == 0 and rx_data[1] == 0 and rx_data[2] == 0:
                         print('ahrs is not operating')
+
                     roll = np.deg2rad(float(rx_data[0]))  # rad/s
                     ahrs_vel = float(rx_data[1]) / 0.393  # v -> w
                     ahrs_temp = float(rx_data[2])

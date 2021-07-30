@@ -38,25 +38,13 @@ void loop() {
 int motor_init(){
   const char* log;
   is_MX106_on = wb.init(SERIAL_DEVICE, MOTOR_BAUDRATE, &log);
-  if (!is_MX106_on) {
-    Serial.print("@Port Open Failed!");
-    delay(100);
-    return 0;
-  }
+  if (!is_MX106_on) { Serial.print("@Port Open Failed!"); delay(100); return 0; }
   
   is_MX106_on = wb.ping(MX106_ID, &log);
-  if (!is_MX106_on) {
-    Serial.print("@Ping test Failed!");
-    delay(100);
-    return 0;
-  }
+  if (!is_MX106_on) { Serial.print("@Ping test Failed!"); delay(100); return 0; }
 
   is_MX106_on = wb.currentBasedPositionMode(MX106_ID, MX106_CURRENT, &log);
-  if (!is_MX106_on) {
-    Serial.print("@set mode Failed!");
-    delay(100);
-    return 0;
-  }
+  if (!is_MX106_on) { Serial.print("@set mode Failed!"); delay(100); return 0; }
   
   return 1;
 }

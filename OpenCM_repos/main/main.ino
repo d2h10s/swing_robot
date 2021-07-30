@@ -32,11 +32,13 @@ DynamixelWorkbench wb;
 #define SOL               0x2A
 #define EOL_CR            0x0D
 #define EOL_LF            0x0A
+#define SEP_CM            0x2C
 #define AHRS_BUF_SIZE     128
 #define AHRS_DATA_SIZE    7
+#define AHRS_TIMEOUT      1000
 
 //BUFFER VARIALBES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-char ahrs_buf[AHRS_BUF_SIZE]      = {0};
+String ahrs_buf                   = "";
 float ahrs_data[AHRS_DATA_SIZE]   = {0};
 int32_t temp_buf[3]               = {0};
 int32_t pos_buf[3]                = {0};
@@ -54,12 +56,9 @@ bool isOnline                     = false;
 //MAIN PROGRAM>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void setup() {
   Serial.begin(SERIAL_BAUDRATE);
-  Serial.setTimeout(180*1000);
-  Serial2.begin(AHRS_BAUDRATE);
-  Serial2.setTimeout(180*1000);
+  Serial.setTimeout(1000);
   pinMode(6, OUTPUT);
   pinMode(INNER_LED, OUTPUT);
-  //while(!Serial);
   ahrs_init();
   while (!motor_init());
 }
@@ -69,7 +68,6 @@ void loop() {
     command = Serial.read();
     if (command == RST){
       Serial.print("STX,ACK!");
-      motor_init();
     }
     else if (command == GO_CW) {
       wb.goalPosition(MX106_ID, MX106_CW_POS);
@@ -80,7 +78,7 @@ void loop() {
     else if (command == ACQ){
       while(!status());
       sprintf(tx_buf,"STX,ACQ,%f,%f,%f,%d,%d,%d!",
-              ahrs_data[0], ahrs_data[4], ahrs_data[6], pos_buf[MX106_ID], vel_buf[MX106_ID], 0/*temp_buf[MX106_ID]*/);
+              ahrs_data[0], ahrs_data[4], ahrs_data[6], pos_buf[MX106_ID], vel_buf[MX106_ID], temp_buf[MX106_ID]);
       Serial.print(tx_buf);
       delay(1);
     }
@@ -95,29 +93,15 @@ void loop() {
 
 int status(){
   const char* log;
-  /*
   is_MX106_on = wb.readRegister(MX106_ID, "Present_Temperature", temp_buf+MX106_ID, &log);
-  if (!is_MX106_on) {
-    sprintf(tx_buf, "@Failed to read temperature!");
-    Serial.print(tx_buf);
-    delay(100);
-    return 0;
-  }
-  */
+  if (!is_MX106_on) {sprintf(tx_buf, "@Failed to read temperature!"); Serial.print(tx_buf); delay(100); return 0; }
+  
   is_MX106_on = wb.readRegister(MX106_ID, "Present_Velocity", vel_buf+MX106_ID, &log);
-  if (!is_MX106_on) {
-    sprintf(tx_buf, "@Failed to read velocity!");
-    Serial.print(tx_buf);
-    delay(100);
-    return 0;
-  }
+  if (!is_MX106_on) { sprintf(tx_buf, "@Failed to read velocity!"); Serial.print(tx_buf); delay(100); return 0; }
+  
   is_MX106_on = wb.readRegister(MX106_ID, "Present_Position", pos_buf+MX106_ID, &log);
-  if (!is_MX106_on) {
-    sprintf(tx_buf, "@failed to read position!");
-    delay(100);
-    Serial.print(tx_buf);
-    return 0;
-  }
+  if (!is_MX106_on) { sprintf(tx_buf, "@failed to read position!"); Serial.print(tx_buf); delay(100); return 0; }
+  
   while(getEulerAngles() != 1);
   return 1;
 }
@@ -125,25 +109,13 @@ int status(){
 int motor_init(){
   const char* log;
   is_MX106_on = wb.init(SERIAL_DEVICE, MOTOR_BAUDRATE, &log);
-  if (!is_MX106_on) {
-    Serial.print("@Port Open Failed!");
-    delay(100);
-    return 0;
-  }
+  if (!is_MX106_on) { Serial.print("@Port Open Failed!"); delay(100); return 0; }
   
   is_MX106_on = wb.ping(MX106_ID, &log);
-  if (!is_MX106_on) {
-    Serial.print("@Ping test Failed!");
-    delay(100);
-    return 0;
-  }
+  if (!is_MX106_on) { Serial.print("@Ping test Failed!"); delay(100); return 0; }
 
   is_MX106_on = wb.currentBasedPositionMode(MX106_ID, MX106_CURRENT, &log);
-  if (!is_MX106_on) {
-    Serial.print("@set mode Failed!");
-    delay(100);
-    return 0;
-  }
+  if (!is_MX106_on) { Serial.print("@Set mode Failed!"); delay(100); return 0; }
   
   return 1;
 }
@@ -152,15 +124,18 @@ void ahrs_init(){
   digitalWrite(6, 0);
   delay(500);
   digitalWrite(6, 1);
-  delay(500);
+  Serial2.begin(AHRS_BAUDRATE);
+  Serial2.setTimeout(AHRS_TIMEOUT);
+  /*
   Serial2.flush();
   Serial2.println("<sor0>"); // polling mode
-  while (!Serial2.available()) while(Serial2.available()) Serial2.read();
+  while (!Serial2.available()); while(Serial2.available()) Serial.write(Serial2.read());
   Serial2.println("<sot1>"); // print temperature
-  while (!Serial2.available()) while(Serial2.available()) Serial2.read();
+  while (!Serial2.available()); while(Serial2.available()) Serial.write(Serial2.read());
   Serial2.println("<soa4>"); // print acceleration
-  while (!Serial2.available()) while(Serial2.available()) Serial2.read();
+  while (!Serial2.available()); while(Serial2.available()) Serial.write(Serial2.read());
   Serial2.flush();
+  */
 }
 
 
@@ -168,29 +143,35 @@ void ahrs_init(){
  *          roll    pitch     yaw   temperature
  */
 int getEulerAngles() {
-  char temp = '\0';
   Serial2.write(SOL);
-  delay(10);
-  while (Serial2.available()) {
-    temp = Serial2.read();
-    ahrs_buf[ahrs_buf_idx++] = temp;
-    if (ahrs_buf[0] == SOL && temp == EOL_LF) {
-      ahrs_buf[ahrs_buf_idx - 1] = '\0';
-      ahrs_buf[ahrs_buf_idx - 2] = ',';
-      char *seg = strtok(ahrs_buf+1, ",");
-
-      for (int i = 0; i < AHRS_DATA_SIZE; i++){
-        ahrs_data[i] = atof(seg);
-        seg = strtok(NULL, ",");
+  ahrs_buf = Serial2.readStringUntil(EOL_LF);
+  Serial2.flush();
+  char ahrs_data_idx = 0;
+  
+  if (ahrs_buf[0] == SOL){
+    String seg = "";
+    for(int i = 1; i < ahrs_buf.length(); i++){
+      if (ahrs_buf[i] == SEP_CM){
+        ahrs_data[ahrs_data_idx++] = seg.toFloat();
+        seg = "";
       }
-      ahrs_buf_idx = 0;
-    }
-    if (ahrs_buf_idx >= AHRS_BUF_SIZE - 1) {
-      Serial.println("@Failed to read AHRS");
-      delay(10);
-      ahrs_buf_idx = 0;
-      return 0;
+      else if (ahrs_buf[i] == EOL_CR){
+        ahrs_data[ahrs_data_idx++] = seg.toFloat();
+        break;
+      }
+      else{
+        seg += ahrs_buf[i];
+      }
     }
   }
+  else {
+    Serial.println("@Failed to read AHRS");
+    //Serial.println(ahrs_buf);
+    delay(10);
+    return 0;
+  }
+  //char buf[128];
+  //sprintf(buf, "%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f",ahrs_data[0],ahrs_data[1],ahrs_data[2],ahrs_data[3],ahrs_data[4],ahrs_data[5],ahrs_data[6]);
+  //Serial.println(buf);
   return 1;
 }
