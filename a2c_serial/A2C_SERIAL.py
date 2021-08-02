@@ -27,7 +27,7 @@ class a2c_serial:
         self.action_space_n = 2
         self.temp_mx106 = 0
         self.temp_ahrs = 0
-        self.wait_time = 140
+        self.wait_time = 190
         self.EPS = np.finfo(np.float32).eps.item()
         self.max_angle = 0
         self.th1 = 0
@@ -102,20 +102,22 @@ class a2c_serial:
     def reset(self):
         if DEBUG_ON: print('start reset')
         ret = self.ser.isOpen()
+        self.ser.write(GO_CCW)
         while ret:
             reply, data_type = self.write_command(RST)
             if reply.startswith('STX,ACK') and data_type == COMMAND:
                 print('wait for stabilization')
                 start_time = time.time()
                 elapsed_time = 0
-                time_threshold = np.max([self.wait_time*140*4/np.pi*self.th1,10])
+                time_threshold = self.wait_time/90*np.abs(np.rad2deg(self.th1))+30
                 while elapsed_time < time_threshold:
                     elapsed_time = time.time() - start_time
-                    print(f'elapsed {elapsed_time:.2f}s and completed {elapsed_time/time_threshold*100:6.2f}%\r', end='')
+                    print(f'\relapsed {elapsed_time:.2f}s of {time_threshold:.1f}s and completed {np.min([elapsed_time/time_threshold*100,100]):6.2f}%', end='')
                     sleep(1)
                 if DEBUG_ON: print('end reset')
                 self.max_angle = 0
                 obs = self.get_observation()
+                print(f'\nzero angle {self.th1}')
                 print(f'the temperature of ahrs:{self.temp_ahrs:5.1f}℃, mx106:{self.temp_mx106:5.1f}℃')
                 return obs
             else:

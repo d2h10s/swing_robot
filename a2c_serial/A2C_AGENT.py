@@ -120,7 +120,7 @@ class a2c_agent():
                         while time.time() - start_time < self.sampling_time:
                             didWait = True
                         if not didWait:
-                            print("never wait ", time.time()-start_time)
+                            print(f"never wait {int((time.time()-start_time)*1000)}ms")
 
                     action_probs_buffer = tf.math.log(action_probs_buffer)
 
