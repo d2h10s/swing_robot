@@ -68,6 +68,8 @@ void loop() {
     command = Serial.read();
     if (command == RST){
       Serial.print("STX,ACK!");
+      Serial2.println("<cmo>");
+      while(!Serial2.available()); ahrs_buf = Serial2.readStringUntil(EOL_LF);
     }
     else if (command == GO_CW) {
       wb.goalPosition(MX106_ID, MX106_CW_POS);

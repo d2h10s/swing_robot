@@ -16,7 +16,7 @@ void setup() {
 }
 
 void loop() {
-  Serial2.write(SOL);
+  //Serial2.write(SOL);
   while(Serial2.available()){
     Serial.write(Serial2.read());
   }
@@ -28,6 +28,7 @@ void ahrs_init(){
   digitalWrite(6, 1);
   delay(500);
   Serial2.begin(BAUDRATE);
+  /*
   Serial2.println("<sor0>");
   delay(1000);
   while (Serial2.available()) Serial2.read();
@@ -43,5 +44,6 @@ void ahrs_init(){
   Serial2.println("<soa4>");
   delay(1000);
   while (Serial2.available()) Serial2.read();
+  */
 
 }
