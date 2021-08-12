@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers, optimizers
+from PIL import Image
 from pytz import timezone, utc
 from datetime import datetime as dt
 
@@ -35,6 +36,7 @@ class a2c_agent():
         self.log_dir = os.path.join(os.curdir,'logs','Acrobot-v2_'+self.start_time_str+self.SUFFIX)
         self.summary_writer = tf.summary.create_file_writer(self.log_dir)
 
+        os.mkdir(os.path.join(self.log_dir, 'fft_img'))
         self.optimizer = optimizers.Adam(learning_rate=self.LEARNING_RATE, epsilon=self.EPSILON)
         self.huber_loss = keras.losses.Huber()
         
@@ -42,6 +44,8 @@ class a2c_agent():
     def init_message(self, msg):
         with open(os.path.join(self.log_dir, 'terminal_log.txt'), 'a') as f:
             f.write(msg+'\n\n')
+
+
     def fft(self, deg_list):
         Fs = 1/self.sampling_time
         n = len(deg_list)
@@ -113,7 +117,7 @@ class a2c_agent():
                             self.EMA_reward = self.episode_reward
                         else:
                             self.EMA_reward = self.ALPHA * self.episode_reward + (1 - self.ALPHA) * self.EMA_reward
-                        deg = np.rad2deg(np.arctan2(state[1], state[0]))
+                        deg = env.th1
                         deg_list.append(deg)
 
                         didWait = False
@@ -149,6 +153,8 @@ class a2c_agent():
                     self.model.save(os.path.join(self.log_dir, 'tf_model', f'learing_model{self.num_episode}'))
                     with self.summary_writer.as_default():
                         tf.summary.image(f'fft of episode{self.num_episode:05}', plot_img, step=0)
+                    Image.open(plot_img).save(os.path.join(self.log_dir, 'fft_img', f'fft{self.num_episode}.png'))
+                    #plt.savefig(os.path.join(self.log_dir, 'fft_img', f'fft{self.num_episode}.png'), 300)
 
                 del deg_list
                 del tape, grads
@@ -162,6 +168,8 @@ class a2c_agent():
                     tf.summary.scalar('reward of episodes', self.episode_reward, step=self.num_episode)
                     tf.summary.scalar('frequency of episodes', most_freq, step=self.num_episode)
                     tf.summary.scalar('sigma of episodes', sigma, step=self.num_episode)
+                with open(os.path.join(self.log_dir, 'episode-reward-loss-freq-sigma.txt'), 'a') as f:
+                    f.write(f'{self.num_episode} {self.episode_reward} {loss_value} {most_freq} {sigma}\n')
                 # <<< for monitoring
 
                 now_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
@@ -184,7 +192,7 @@ class a2c_agent():
                     break
                 self.num_episode += 1
             except Exception as e:
-                print(e, 'error occured in train loop')
+                print(e, 'error occurred in train loop')
                 time.sleep(1000)
 
 
@@ -198,10 +206,9 @@ class a2c_agent():
 
             action = np.argmax(action_probs)
             state, *_ = env.step(action)
-            radian = np.arctan2(state[1], state[0]) # angle of link1
 
             with self.summary_writer.as_default():
-                tf.summary.scalar('test angle of link1', np.rad2deg(radian), step=step)
+                tf.summary.scalar('test angle of link1', env.th1, step=step)
 
     def yaml_backup(self):
         now_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
@@ -218,5 +225,5 @@ class a2c_agent():
                         'EPSILON':          self.EPSILON,\
                         'EPISODE':          self.num_episode,\
                         'EMA_REWARD':       float(self.EMA_reward),\
-                        'self.EPISODE_REWARD':   float(self.episode_reward)}
+                        'EPISODE_REWARD':   float(self.episode_reward)}
             yaml.dump(yaml_data, f)

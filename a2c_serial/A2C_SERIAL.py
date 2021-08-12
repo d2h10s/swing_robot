@@ -102,14 +102,14 @@ class a2c_serial:
     def reset(self):
         if DEBUG_ON: print('start reset')
         ret = self.ser.isOpen()
-        self.ser.write(GO_CCW)
+        self.ser.write(GO_CW)
         while ret:
             reply, data_type = self.write_command(RST)
             if reply.startswith('STX,ACK') and data_type == COMMAND:
                 print('wait for stabilization')
                 start_time = time.time()
                 elapsed_time = 0
-                time_threshold = self.wait_time/90*np.abs(np.rad2deg(self.th1))+30
+                time_threshold = self.wait_time/90*np.abs(self.th1)+30
                 while elapsed_time < time_threshold:
                     elapsed_time = time.time() - start_time
                     print(f'\relapsed {elapsed_time:.2f}s of {time_threshold:.1f}s and completed {np.min([elapsed_time/time_threshold*100,100]):6.2f}%', end='')
@@ -117,7 +117,7 @@ class a2c_serial:
                 if DEBUG_ON: print('end reset')
                 self.max_angle = 0
                 obs = self.get_observation()
-                print(f'\nzero angle {self.th1}')
+                print(f'\nzero angle {self.th1:.3f}')
                 print(f'the temperature of ahrs:{self.temp_ahrs:5.1f}℃, mx106:{self.temp_mx106:5.1f}℃')
                 return obs
             else:
@@ -153,6 +153,7 @@ class a2c_serial:
                     if rx_data[0] == 0 and rx_data[1] == 0 and rx_data[2] == 0:
                         print('ahrs is not operating')
 
+                    self.th1 = float(rx_data[0])  # deg
                     roll = np.deg2rad(float(rx_data[0]))  # rad/s
                     ahrs_vel = float(rx_data[1]) / 0.393  # v -> w
                     ahrs_temp = float(rx_data[2])
@@ -165,11 +166,10 @@ class a2c_serial:
                     print(e, ' occurred with', rx_data, 'in obs function')
             else:
                 print('could not recognize ', rx_data)
-        self.th1 = roll
-        sin_th1 = np.sin(roll)
-        cos_th1 = np.cos(roll)
-        sin_th2 = np.sin(mx106_pos)
-        cos_th2 = np.cos(mx106_pos)
+        sin_th1 = np.cos(roll)
+        cos_th1 = np.sin(roll)
+        sin_th2 = np.cos(mx106_pos)
+        cos_th2 = np.sin(mx106_pos)
         vel_th1 = ahrs_vel
         vel_th2 = mx106_vel
         self.max_angle = np.abs(roll) if self.max_angle < np.abs(roll) else self.max_angle
