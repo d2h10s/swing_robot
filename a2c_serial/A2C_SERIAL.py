@@ -173,7 +173,7 @@ class a2c_serial:
         self.max_angle = np.abs(roll) if self.max_angle < np.abs(roll) else self.max_angle
         self.temp_ahrs = ahrs_temp
         self.temp_mx106 = mx106_temp
-        observation = np.array([th1, th2, vel_th1, vel_th2], dtype=float)
+        observation = np.array([th1, th2, vel_th1, vel_th2], dtype=np.float32)
         if DEBUG_ON: print('end obs')
         return observation
 
