@@ -110,7 +110,7 @@ class a2c_agent():
                         critic_value_buffer.append(critic_value[0, 0])
                         state = env.step(action)
                         reward = np.abs(np.sin(state[0]))
-                        #reward = 1/np.abs(np.cos(state[0])+0.1)-1/(1+0.1)
+
                         rewards_history.append(reward)
                         self.episode_reward += reward
 

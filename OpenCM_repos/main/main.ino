@@ -2,16 +2,22 @@
 DynamixelWorkbench wb;
 
 //FOR CONSTANT VARIABLES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#define SAMPLING_TIME     25     // milli second
 #define SERIAL_BAUDRATE   115200
 #define MOTOR_BAUDRATE    115200
 #define AHRS_BAUDRATE     115200
+
 #define SERIAL_DEVICE     "1"     // Serial1
 #define MX106_ID          1
-#define MX64_ID           2
-#define SAMPLING_TIME     25     // milli second
 #define MX106_CW_POS      2200
 #define MX106_CCW_POS     1024
-#define MX106_CURRENT     200
+#define MX106_CURRENT     600
+
+#define MX64_ID           2
+#define MX64_CW_POS       2972
+#define MX64_CCW_POS      2460
+#define MX64_CURRENT      200
+
 #define INNER_LED         14
 
 //FOR PC COMMUNICATION>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -50,8 +56,13 @@ char tx_buf[TX_BUF_SIZE]          = {0};
 
 uint8_t command                   = 0;
 bool is_MX106_on                  = false;
+bool is_MX64_on                   = false;
 bool isOnline                     = false;
-
+/*
+ * <sor0>
+ * <sot1>
+ * <soa4>
+ */
 
 //MAIN PROGRAM>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void setup() {
@@ -68,14 +79,14 @@ void loop() {
     command = Serial.read();
     if (command == RST){
       Serial.print("STX,ACK!");
-      Serial2.println("<cmo>");
-      while(!Serial2.available()); ahrs_buf = Serial2.readStringUntil(EOL_LF);
     }
     else if (command == GO_CW) {
       wb.goalPosition(MX106_ID, MX106_CW_POS);
+      //wb.goalPosition(MX64_ID, MX64_CCW_POS);
     }
     else if (command == GO_CCW){
       wb.goalPosition(MX106_ID, MX106_CCW_POS);
+      //wb.goalPosition(MX64_ID, MX64_CW_POS);
     }
     else if (command == ACQ){
       while(!status());
@@ -118,7 +129,13 @@ int motor_init(){
 
   is_MX106_on = wb.currentBasedPositionMode(MX106_ID, MX106_CURRENT, &log);
   if (!is_MX106_on) { Serial.print("@Set mode Failed!"); delay(100); return 0; }
-  
+/*
+  is_MX64_on = wb.ping(MX64_ID, &log);
+  if (!is_MX64_on) { Serial.print("@Ping test Failed!"); delay(100); return 0; }
+
+  is_MX64_on = wb.currentBasedPositionMode(MX64_ID, MX64_CURRENT, &log);
+  if (!is_MX64_on) { Serial.print("@Set mode Failed!"); delay(100); return 0; }
+  */
   return 1;
 }
 
