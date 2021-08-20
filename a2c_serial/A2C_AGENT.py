@@ -174,35 +174,28 @@ class a2c_agent():
 
                 most_freq, sigma, plot_img = self.fft(deg_list, save=True if self.num_episode % 100 == 0 or self.num_episode == 1 else False)
 
-                if self.num_episode % 100 == 0 or self.num_episode == 1:
-                    self.model.save(os.path.join(self.log_dir, 'tf_model', f'learning_model{self.num_episode}'))
-                    with self.summary_writer.as_default():
-                        tf.summary.image(f'fft of episode{self.num_episode:05}', plot_img, step=0)
+                now_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
+                now_time_str = dt.strftime(now_time, '%m-%d_%Hh-%Mm-%Ss')
+                log_text = "EMA reward: {:9.2f} at episode {:5} --freq:{:7.3f} --sigma:{:7.2f} --time:{} ".format(self.EMA_reward, self.num_episode, most_freq, sigma, now_time_str)
+                print(log_text)
 
-                del deg_list
-                del tape, grads
-                del actor_losses, critic_losses
-                del action_probs_buffer, critic_value_buffer
-                del rewards_history, Returns
+                with open(os.path.join(self.log_dir, 'terminal_log.txt'), 'a') as f:
+                    f.write(log_text+'\n')
 
-                # >>> for monitoring
                 with self.summary_writer.as_default():
                     tf.summary.scalar('losses', loss_value, step=self.num_episode)
                     tf.summary.scalar('reward of episodes', self.episode_reward, step=self.num_episode)
                     tf.summary.scalar('frequency of episodes', most_freq, step=self.num_episode)
                     tf.summary.scalar('sigma of episodes', sigma, step=self.num_episode)
+
                 with open(os.path.join(self.log_dir, 'episode-reward-loss-freq-sigma.txt'), 'a') as f:
                     f.write(f'{self.num_episode} {self.episode_reward} {loss_value} {most_freq} {sigma}\n')
-                # <<< for monitoring
 
-                now_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
-                now_time_str = dt.strftime(now_time, '%m-%d_%Hh-%Mm-%Ss')
-                log_text = "EMA reward: {:9.2f} at episode {:5} --freq:{:7.3f} --sigma:{:7.2f} --time:{} ".format(self.EMA_reward, self.num_episode, most_freq, sigma, now_time_str)
-                print(log_text)
-                with open(os.path.join(self.log_dir, 'terminal_log.txt'), 'a') as f:
-                    f.write(log_text+'\n')
-
-                self.yaml_backup()
+                if self.num_episode % 100 == 0 or self.num_episode == 1:
+                    self.yaml_backup()
+                    self.model.save(os.path.join(self.log_dir, 'tf_model', f'learning_model{self.num_episode}'))
+                    with self.summary_writer.as_default():
+                        tf.summary.image(f'fft of episode{self.num_episode:05}', plot_img, step=0)
 
                 if 100 < sigma < 200 and 0.3 < most_freq < 0.55:
                     done_cnt += 1
@@ -214,6 +207,12 @@ class a2c_agent():
                         tf.summary.image(f'fft of final episode{self.num_episode:05}', plot_img, step=0)
                     break
                 self.num_episode += 1
+
+                del deg_list
+                del tape, grads
+                del actor_losses, critic_losses
+                del action_probs_buffer, critic_value_buffer
+                del rewards_history, Returns
             # except Exception as e:
             #     print(e, 'error occurred in train loop')
             #     time.sleep(1000)

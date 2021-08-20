@@ -268,3 +268,9 @@ EMA reward:     38.80 at episode   261 --freq:  0.000 --sigma: 133.03 --time:08-
 EMA reward:     39.21 at episode   262 --freq:  0.000 --sigma: 144.65 --time:08-20_01h-15m-51s 
 EMA reward:     37.97 at episode   263 --freq:  0.000 --sigma: 132.78 --time:08-20_01h-18m-05s 
 EMA reward:     67.90 at episode   264 --freq:  0.000 --sigma:  75.34 --time:08-20_01h-20m-17s 
+
+using acrobot-v2 environment which is d2h10s edition v3.0
+definition of reward : [reward = abs(sin(theta_1))]
+termination condition: FFT
+
+

@@ -19,8 +19,13 @@ class a2c_model(tf.keras.Model):
             self.critic_layer = layers.Dense(1, name='Critic')(self.fc2_layer)
             self.nn = keras.Model(inputs=self.input_layer, outputs=[self.actor_layer, self.critic_layer])
         else:
-            self.model_dir = os.path.join(load_dir, 'tf_model')
-            self.model_dir = os.path.join(self.model_dir, max(glob.glob(os.path.join(self.model_dir, '**'))))
+            self.model_dir = os.path.join(self.load_dir, 'tf_model')
+            print(self.model_dir)
+            print(glob.glob(os.path.join(self.model_dir, '**')))
+            self.max_dir = max(glob.glob(os.path.join(self.model_dir, '**')))
+            print(self.max_dir)
+            self.model_dir = os.path.join(self.model_dir, self.max_dir)
+            print(self.model_dir)
             self.nn = tf.keras.models.load_model(self.model_dir)
         print(self.nn.summary())
     

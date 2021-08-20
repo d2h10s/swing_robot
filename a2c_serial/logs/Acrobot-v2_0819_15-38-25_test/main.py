@@ -1,12 +1,4 @@
-import os,shutil
-import numpy as np
-import gym
-import matplotlib.pyplot as plt
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers, optimizers
-from pytz import timezone, utc
-from datetime import datetime as dt
+import sys, os, shutil
 from time import sleep
 from A2C_AGENT import a2c_agent
 from A2C_MODEL import a2c_model
@@ -21,10 +13,12 @@ def file_backup(log_dir):
 
 INIT_MESSAGE = '''
 using acrobot-v2 environment which is d2h10s edition v3.0
-definition of reward : [reward = -abs(cos(theta_1))]
-termination condition: [None]
+definition of reward : [reward = abs(sin(theta_1))]
+termination condition: FFT
 '''
 
+_load_dir = sys.argv[1] if len(sys.argv) > 1 else ""
+_load_dir = 'Acrobot-v2_0819_15-38-25_test'
 env = a2c_serial()
 while not env.serial_open(target_port='COM4'):
     sleep(0.5)
@@ -34,7 +28,7 @@ if __name__ == '__main__' and env.ser.isOpen():
     hidden_n = 128
     action_n = env.action_space_n
 
-    model = a2c_model(observation_n, hidden_n, action_n)
+    model = a2c_model(observation_n, hidden_n, action_n, load_dir=_load_dir)
     agent = a2c_agent(model, lr=1e-3, sampling_time=0.08, suffix="_test")
     agent.init_message(INIT_MESSAGE)
     file_backup(agent.log_dir)

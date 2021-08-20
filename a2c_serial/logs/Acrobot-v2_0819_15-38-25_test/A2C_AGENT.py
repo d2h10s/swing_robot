@@ -17,26 +17,50 @@ NAK = b'\x15'
 class a2c_agent():
     def __init__(self, model, lr=1e-3, sampling_time=0.025, suffix=""):
         self.model = model
-        self.GAMMA = .99
-        self.MAX_STEP = 1000
-        self.EPS = np.finfo(np.float32).eps.item()
-        self.ALPHA = 0.01
-        self.LEARNING_RATE = lr
-        self.EPSILON = 1e-3
-        self.MAX_DONE = 20
 
-        self.num_episode = 1
-        self.episode_reward = 0
-        self.EMA_reward = 0
-        self.SUFFIX = suffix
-        self.sampling_time = sampling_time
+        if not model.load_dir:
+            self.GAMMA = .99
+            self.MAX_STEP = 1000
+            self.EPS = np.finfo(np.float32).eps.item()
+            self.ALPHA = 0.01
+            self.LEARNING_RATE = lr
+            self.EPSILON = 1e-3
+            self.MAX_DONE = 20
 
-        self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
-        self.start_time_str = dt.strftime(self.start_time, '%m%d_%H-%M-%S')
-        self.log_dir = os.path.join(os.curdir,'logs','Acrobot-v2_'+self.start_time_str+self.SUFFIX)
+            self.num_episode = 1
+            self.episode_reward = 0
+            self.EMA_reward = 0
+            self.SUFFIX = suffix
+            self.sampling_time = sampling_time
+
+            self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
+            self.start_time_str = dt.strftime(self.start_time, '%m%d_%H-%M-%S')
+            self.log_dir = os.path.join(os.curdir, 'logs', 'Acrobot-v2_' + self.start_time_str + self.SUFFIX)
+            os.mkdir(os.path.join(self.log_dir, 'fft_img'))
+
+        else:
+            self.log_dir = model.load_dir
+            with open(os.path.join(self.log_dir, 'backup.yaml')) as f:
+                yaml_data = yaml.safe_load(f)
+                self.start_time_str = yaml_data['START_TIME']
+                self.start_time = dt.strptime('2021_'+self.start_time_str, '%Y_%m%d_%H-%M-%S')
+                self.GAMMA = float(yaml_data['GAMMA'])
+                self.MAX_STEP = int(yaml_data['MAX_STEP'])
+                self.EPS = float(yaml_data['EPS'])
+                self.ALPHA = float(yaml_data['ALPHA'])
+                self.LEARNING_RATE = float(yaml_data['LEARNING_RATE'])
+                self.EPSILON = float(yaml_data['EPSILON'])
+                self.MAX_DONE = float(yaml_data['MAX_DONE'])
+
+                self.num_episode = int(yaml_data['EPISODE'])+1
+                self.episode_reward = float(yaml_data['EPISODE_REWARD'])
+                self.EMA_reward = float(yaml_data['EMA_REWARD'])
+                self.SUFFIX = yaml_data['SUFFIX']
+                self.sampling_time = yaml_data['SAMPLING_TIME']
+
         self.summary_writer = tf.summary.create_file_writer(self.log_dir)
 
-        os.mkdir(os.path.join(self.log_dir, 'fft_img'))
+
         self.optimizer = optimizers.Adam(learning_rate=self.LEARNING_RATE, epsilon=self.EPSILON)
         self.huber_loss = keras.losses.Huber()
         
@@ -224,5 +248,8 @@ class a2c_agent():
                         'EPSILON':          self.EPSILON,\
                         'EPISODE':          self.num_episode,\
                         'EMA_REWARD':       float(self.EMA_reward),\
-                        'EPISODE_REWARD':   float(self.episode_reward)}
+                        'EPISODE_REWARD':   float(self.episode_reward),\
+                        'SAMPLING_TIME':    self.sampling_time,\
+                        'MAX_DONE':         self.MAX_DONE,\
+                        'SUFFIX':           self.SUFFIX}
             yaml.dump(yaml_data, f)
