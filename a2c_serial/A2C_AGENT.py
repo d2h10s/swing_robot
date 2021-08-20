@@ -31,12 +31,21 @@ class a2c_agent():
         self.SUFFIX = suffix
         self.sampling_time = sampling_time
 
-        self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
-        self.start_time_str = dt.strftime(self.start_time, '%m%d_%H-%M-%S')
-        self.log_dir = os.path.join(os.curdir,'logs','Acrobot-v2_'+self.start_time_str+self.SUFFIX)
+        if not model.load_dir:
+            self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
+            self.start_time_str = dt.strftime(self.start_time, '%m%d_%H-%M-%S')
+            self.log_dir = os.path.join(os.curdir, 'logs', 'Acrobot-v2_' + self.start_time_str + self.SUFFIX)
+            os.mkdir(os.path.join(self.log_dir, 'fft_img'))
+        else:
+            with open(os.path.join(self.log_dir, 'backup.yaml')) as f:
+                yaml_data = yaml.safe_load(f)
+                self.start_time_str = yaml_data['START_TIME']
+                self.start_time = dt.strptime('2021_'+self.start_time_str, '%Y_%m%d_%H-%M-%S')
+            self.log_dir = model.load_dir
+
         self.summary_writer = tf.summary.create_file_writer(self.log_dir)
 
-        os.mkdir(os.path.join(self.log_dir, 'fft_img'))
+
         self.optimizer = optimizers.Adam(learning_rate=self.LEARNING_RATE, epsilon=self.EPSILON)
         self.huber_loss = keras.losses.Huber()
         
