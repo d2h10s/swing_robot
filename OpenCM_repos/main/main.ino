@@ -9,9 +9,12 @@ DynamixelWorkbench wb;
 
 #define SERIAL_DEVICE     "1"     // Serial1
 #define MX106_ID          1
-#define MX106_CW_POS      2200
+#define MX106_CW_POS      2160
 #define MX106_CCW_POS     1024
-#define MX106_CURRENT     600
+#define MX106_CURRENT     200
+// P gain                 400
+// I gain                 300
+// D gain                 4000
 
 #define MX64_ID           2
 #define MX64_CW_POS       2972
@@ -79,6 +82,7 @@ void loop() {
     command = Serial.read();
     if (command == RST){
       Serial.print("STX,ACK!");
+      ahrs_init();
     }
     else if (command == GO_CW) {
       wb.goalPosition(MX106_ID, MX106_CW_POS);
@@ -89,7 +93,7 @@ void loop() {
       //wb.goalPosition(MX64_ID, MX64_CW_POS);
     }
     else if (command == ACQ){
-      while(!status());
+      while(!status()) motor_init();
       sprintf(tx_buf,"STX,ACQ,%f,%f,%f,%d,%d,%d!",
               ahrs_data[0], ahrs_data[4], ahrs_data[6], pos_buf[MX106_ID], vel_buf[MX106_ID], temp_buf[MX106_ID]);
       Serial.print(tx_buf);
@@ -145,16 +149,6 @@ void ahrs_init(){
   digitalWrite(6, 1);
   Serial2.begin(AHRS_BAUDRATE);
   Serial2.setTimeout(AHRS_TIMEOUT);
-  /*
-  Serial2.flush();
-  Serial2.println("<sor0>"); // polling mode
-  while (!Serial2.available()); while(Serial2.available()) Serial.write(Serial2.read());
-  Serial2.println("<sot1>"); // print temperature
-  while (!Serial2.available()); while(Serial2.available()) Serial.write(Serial2.read());
-  Serial2.println("<soa4>"); // print acceleration
-  while (!Serial2.available()); while(Serial2.available()) Serial.write(Serial2.read());
-  Serial2.flush();
-  */
 }
 
 
