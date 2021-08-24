@@ -23,7 +23,8 @@ SEED = 3
 env.seed(SEED)
 env.action_space.seed(SEED)
 env.observation_space.seed(SEED)
-if __name__ == '__main__' and env.ser.isOpen():
+#if __name__ == '__main__' and env.ser.isOpen():
+if __name__ == '__main__':
     observation_n = env.observation_space.shape
     action_n = env.action_space.n
     hidden_n = 128

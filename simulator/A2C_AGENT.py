@@ -35,7 +35,7 @@ class a2c_agent():
 
             self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
             self.start_time_str = dt.strftime(self.start_time, '%m%d_%H-%M-%S')
-            self.log_dir = os.path.join(os.curdir, 'logs', 'Acrobot-v2_' + self.start_time_str + self.SUFFIX)
+            self.log_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logs', 'Acrobot-v2_' + self.start_time_str + self.SUFFIX)
             os.mkdir(self.log_dir)
             os.mkdir(os.path.join(self.log_dir, 'fft_img'))
 
@@ -112,7 +112,8 @@ class a2c_agent():
 
     def train(self, env):
         done_cnt = 0
-        while env.ser.isOpen():
+        #while env.ser.isOpen():
+        while True:
             # try:
                 state = env.reset()
                 self.episode_reward = 0
@@ -127,14 +128,13 @@ class a2c_agent():
                 with tf.GradientTape(persistent=False) as tape:
                     for step in range(1, self.MAX_STEP+1):
                         start_time = time.time()
-                        state = tf.convert_to_tensor(state)
-                        #print(state)
                         action_probs, critic_value = self.model(state)
                         action = np.random.choice(self.model.action_n, p=np.squeeze(action_probs))
                         action_probs_buffer.append(action_probs[0, action])
                         critic_value_buffer.append(critic_value[0, 0])
-                        state = env.step(action)
-                        reward = np.abs(np.sin(state[0]))
+                        state, _, done, _ = env.step(action)
+                        #reward = np.abs(np.sin(state[0]))
+                        reward = np.abs(state[1]) # sin(theta1)
                         #reward = 1/np.abs(np.cos(state[0])+0.1)-1/(1+0.1)
                         rewards_history.append(reward)
                         self.episode_reward += reward
@@ -143,7 +143,8 @@ class a2c_agent():
                             self.EMA_reward = self.episode_reward
                         else:
                             self.EMA_reward = self.ALPHA * self.episode_reward + (1 - self.ALPHA) * self.EMA_reward
-                        deg = env.th1
+                        #deg = env.th1
+                        deg = np.rad2deg(np.arctan2(state[1], state[0]))
                         deg_list.append(deg)
 
                         didWait = False
