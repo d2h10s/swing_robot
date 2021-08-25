@@ -12,7 +12,7 @@ def file_backup(log_dir):
 
 INIT_MESSAGE = '''
 using acrobot-v2 environment which is d2h10s edition v3.0
-definition of reward : [reward = 1/|np.cos(theta1)+0.1)-1/(1+0.1)]
+definition of reward : [reward = 1/|cos(theta1)+0.1|-1/(1+0.1)]
 termination condition: FFT
 '''
 
