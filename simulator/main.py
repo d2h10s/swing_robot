@@ -12,7 +12,7 @@ def file_backup(log_dir):
 
 INIT_MESSAGE = '''
 using acrobot-v2 environment which is d2h10s edition v3.0
-definition of reward : [reward = abs(sin(theta_1))]
+definition of reward : [reward = 1/|np.cos(theta1)+0.1)-1/(1+0.1)]
 termination condition: FFT
 '''
 
@@ -35,5 +35,3 @@ if __name__ == '__main__':
     file_backup(agent.log_dir)
 
     agent.train(env)
-
-    env.serial_close()

@@ -134,8 +134,8 @@ class a2c_agent():
                         critic_value_buffer.append(critic_value[0, 0])
                         state, _, done, _ = env.step(action)
                         #reward = np.abs(np.sin(state[0]))
-                        reward = np.abs(state[1]) # sin(theta1)
-                        #reward = 1/np.abs(np.cos(state[0])+0.1)-1/(1+0.1)
+                        #reward = np.abs(state[1]) # sin(theta1)
+                        reward = 1/np.abs(state[0]+0.1)-1/(1+0.1)
                         rewards_history.append(reward)
                         self.episode_reward += reward
 
@@ -146,13 +146,13 @@ class a2c_agent():
                         #deg = env.th1
                         deg = np.rad2deg(np.arctan2(state[1], state[0]))
                         deg_list.append(deg)
-
+                        '''
                         didWait = False
                         while time.time() - start_time < self.sampling_time:
                             didWait = True
                         if not didWait:
                             print(f"never wait {int((time.time()-start_time)*1000)}ms")
-
+                        '''
                     action_probs_buffer = tf.math.log(action_probs_buffer)
 
                     for r in rewards_history[::-1]:
@@ -223,8 +223,6 @@ class a2c_agent():
     def run_test(self, env):
         state = env.reset()
         for step in range(1, self.MAX_STEP):
-            state = tf.convert_to_tensor(state)
-            state = tf.expand_dims(state, 0)
 
             action_probs, _ = self.model(state)
 
