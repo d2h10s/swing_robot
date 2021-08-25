@@ -35,7 +35,7 @@ class a2c_agent():
 
             self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
             self.start_time_str = dt.strftime(self.start_time, '%m%d_%H-%M-%S')
-            self.log_dir = os.path.join(os.path.dirname(os.path.realpath(__file__))os.curdir, 'logs', 'Acrobot-v2_' + self.start_time_str + self.SUFFIX)
+            self.log_dir = os.path.join(os.curdir, 'logs', 'Acrobot-v2_' + self.start_time_str + self.SUFFIX)
             os.mkdir(self.log_dir)
             os.mkdir(os.path.join(self.log_dir, 'fft_img'))
 
@@ -222,11 +222,13 @@ class a2c_agent():
     def run_test(self, env):
         state = env.reset()
         for step in range(1, self.MAX_STEP):
+            state = tf.convert_to_tensor(state)
+            state = tf.expand_dims(state, 0)
 
             action_probs, _ = self.model(state)
 
             action = np.argmax(action_probs)
-            state = env.step(action)
+            state, *_ = env.step(action)
 
             with self.summary_writer.as_default():
                 tf.summary.scalar('test angle of link1', env.th1, step=step)
