@@ -118,7 +118,7 @@ class a2c_serial:
                 if DEBUG_ON: print('end reset')
                 obs = self.get_observation()
                 self.zero_angle = self.roll
-                print(f'\n\nzero angle ({np.rad2deg(self.roll):.3f})-({np.rad2deg(self.zero_angle):.3f})={np.rad2deg(self.roll-self.zero_angle):.3f} deg')
+                print(f'\nzero angle ({np.rad2deg(self.roll):.3f})-({np.rad2deg(self.zero_angle):.3f})={np.rad2deg(self.roll-self.zero_angle):.3f} deg')
                 print(f'the temperature of ahrs:{self.temp_ahrs:5.1f}℃, mx106:{self.temp_mx106:5.1f}℃')
                 self.max_angle = 0
                 return obs

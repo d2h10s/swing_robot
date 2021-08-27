@@ -16,10 +16,11 @@ void setup() {
 }
 
 void loop() {
-  //Serial2.write(SOL);
+  Serial2.write(SOL);
   while(Serial2.available()){
     Serial.write(Serial2.read());
   }
+  delay(10);
 }
 void ahrs_init(){
   pinMode(6, OUTPUT);

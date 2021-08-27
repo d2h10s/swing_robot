@@ -12,9 +12,9 @@ DynamixelWorkbench wb;
 #define MX106_CW_POS      2160
 #define MX106_CCW_POS     1024
 #define MX106_CURRENT     200
-// P gain                 400
-// I gain                 300
-// D gain                 4000
+#define MX106_P_gain       400
+#define MX106_I_gain       300
+#define MX106_D_gain       4000
 
 #define MX64_ID           2
 #define MX64_CW_POS       2972
@@ -118,8 +118,13 @@ int status(){
   
   is_MX106_on = wb.readRegister(MX106_ID, "Present_Position", pos_buf+MX106_ID, &log);
   if (!is_MX106_on) { sprintf(tx_buf, "@failed to read position!"); Serial.print(tx_buf); delay(100); return 0; }
-  
-  while(getEulerAngles() != 1);
+  int cnt = 0;
+  while(!getEulerAngles()){
+    if (cnt++ > 10) {
+      Serial.println("@Failed to read AHRS");
+      break;
+    }
+  }
   return 1;
 }
 
@@ -133,7 +138,16 @@ int motor_init(){
 
   is_MX106_on = wb.currentBasedPositionMode(MX106_ID, MX106_CURRENT, &log);
   if (!is_MX106_on) { Serial.print("@Set mode Failed!"); delay(100); return 0; }
-/*
+
+  is_MX106_on = wb.writeRegister(MX106_ID, "Position_P_Gain", MX106_P_gain, &log);
+  if (!is_MX106_on) { Serial.print("@Set P gain Failed!"); delay(100); return 0; }
+  
+  is_MX106_on = wb.writeRegister(MX106_ID, "Position_I_Gain", MX106_I_gain, &log);
+  if (!is_MX106_on) { Serial.print("@Set I gain Failed!"); delay(100); return 0; }
+  
+  is_MX106_on = wb.writeRegister(MX106_ID, "Position_D_Gain", MX106_D_gain, &log);
+  if (!is_MX106_on) { Serial.print("@Set D gain Failed!"); delay(100); return 0; }
+  /*
   is_MX64_on = wb.ping(MX64_ID, &log);
   if (!is_MX64_on) { Serial.print("@Ping test Failed!"); delay(100); return 0; }
 
@@ -145,10 +159,19 @@ int motor_init(){
 
 void ahrs_init(){
   digitalWrite(6, 0);
-  delay(500);
+  delay(10);
   digitalWrite(6, 1);
+  delay(10);
   Serial2.begin(AHRS_BAUDRATE);
   Serial2.setTimeout(AHRS_TIMEOUT);
+  delay(10);
+  int cnt = 0;
+  while(!getEulerAngles()){
+    if (cnt++ > 10) {
+      Serial.println("@Failed to read AHRS");
+      break;
+    }
+  }
 }
 
 
@@ -178,8 +201,6 @@ int getEulerAngles() {
     }
   }
   else {
-    Serial.println("@Failed to read AHRS");
-    //Serial.println(ahrs_buf);
     delay(10);
     return 0;
   }

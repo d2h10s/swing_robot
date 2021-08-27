@@ -124,22 +124,20 @@ class a2c_agent():
                 Returns = []
                 actor_losses = []
                 critic_losses = []
-                action_cnt = [0, 0]
                 with tf.GradientTape(persistent=False) as tape:
                     for step in range(1, self.MAX_STEP+1):
+                        print(f'\rnow is operating at step {step:5d}', end='')
                         start_time = time.time()
                         state = tf.convert_to_tensor(state)
                         #print(state)
                         action_probs, critic_value = self.model(state)
                         action = np.random.choice(self.model.action_n, p=np.squeeze(action_probs))
-                        print(f'\rnow is operating at step {step:5d} with action {action}', end='')
-                        action_cnt[action] += 1
                         action_probs_buffer.append(action_probs[0, action])
                         critic_value_buffer.append(critic_value[0, 0])
                         state = env.step(action)
                         th1, th2, vel1, vel2 = state
-                        reward = np.abs(np.sin(th1))
-                        #reward = 1/np.abs(np.cos(th1)+0.1)-1/(1+0.1)
+                        #reward = np.abs(np.sin(th1))
+                        reward = 1/np.abs(np.cos(th1)+0.1)-1/(1+0.1)
                         rewards_history.append(reward)
                         self.episode_reward += reward
 
@@ -155,8 +153,7 @@ class a2c_agent():
                             didWait = True
                         if not didWait:
                             print(f"\rnever wait {int((time.time()-start_time)*1000)}ms")
-                    
-                    print(f'\naction0: {action_cnt[0]:5d}, action1: {action_cnt[1]:5d}')
+
                     action_probs_buffer = tf.math.log(action_probs_buffer)
 
                     for r in rewards_history[::-1]:

@@ -13,9 +13,9 @@ def file_backup(log_dir):
 
 INIT_MESSAGE = '''
 using acrobot-v2 environment which is d2h10s edition v3.0
-definition of reward : [reward = abs(sin(theta_1))]
+definition of reward : [reward = 1/|cos(theta1)+0.1|-1/(1+0.1)]
 termination condition: FFT
-''' # 1/|cos(theta1)+0.1|-1/(1+0.1)
+''' # abs(sin(theta_1))
 
 _load_dir = sys.argv[1] if len(sys.argv) > 1 else ""
 #_load_dir = 'Acrobot-v2_0819_15-38-25_test'
@@ -29,7 +29,7 @@ if __name__ == '__main__' and env.ser.isOpen():
     action_n = env.action_space_n
 
     model = a2c_model(observation_n, hidden_n, action_n, load_dir=_load_dir)
-    agent = a2c_agent(model, lr=1e-3, sampling_time=0.08, suffix="_r1")
+    agent = a2c_agent(model, lr=1e-3, sampling_time=0.08, suffix="_test")
     agent.init_message(INIT_MESSAGE)
     file_backup(agent.log_dir)
 
