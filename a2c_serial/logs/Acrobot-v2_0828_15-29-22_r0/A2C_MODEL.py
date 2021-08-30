@@ -19,7 +19,6 @@ class a2c_model(tf.keras.Model):
             self.critic_layer = layers.Dense(1, name='Critic')(self.fc2_layer)
             self.nn = keras.Model(inputs=self.input_layer, outputs=[self.actor_layer, self.critic_layer])
         else:
-            print('Model is loaded from '+load_dir)
             self.load_dir = os.path.join(os.getcwd(), 'logs',load_dir)
             self.model_dir = os.path.join(self.load_dir, 'tf_model')
             print(glob.glob(os.path.join(self.model_dir, '**')))
