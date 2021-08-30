@@ -15,7 +15,7 @@ ACK = b'\x06'
 NAK = b'\x15'
 
 class a2c_agent():
-    def __init__(self, model, lr=1e-3, sampling_time=0.025, suffix=""):
+    def __init__(self, model, lr=1e-3, sampling_time=0.025, version="", suffix=""):
         self.model = model
 
         if not model.load_dir:
@@ -35,7 +35,7 @@ class a2c_agent():
 
             self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
             self.start_time_str = dt.strftime(self.start_time, '%m%d_%H-%M-%S')
-            self.log_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logs', 'Acrobot-v2_' + self.start_time_str + self.SUFFIX)
+            self.log_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logs', f'Acrobot-{version}_{self.start_time_str}_{self.SUFFIX}')
             os.mkdir(self.log_dir)
             os.mkdir(os.path.join(self.log_dir, 'fft_img'))
 
@@ -157,7 +157,6 @@ class a2c_agent():
                         if not didWait:
                             print(f"\rnever wait {int((time.time()-start_time)*1000)}ms")
                     
-                    print(f'\naction0: {action_cnt[0]:5d}, action1: {action_cnt[1]:5d}')
                     action_probs_buffer = tf.math.log(action_probs_buffer)
 
                     for r in rewards_history[::-1]:
@@ -183,7 +182,7 @@ class a2c_agent():
 
                 now_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
                 now_time_str = dt.strftime(now_time, '%m-%d_%Hh-%Mm-%Ss')
-                log_text = "EMA reward: {:9.2f} at episode {:5} --freq:{:7.3f} --sigma:{:7.2f} --time:{} ".format(self.EMA_reward, self.num_episode, most_freq, sigma, now_time_str)
+                log_text = f"EMA reward: {self.EMA_reward:9.2f} at episode {self.num_episode:5} --freq:{most_freq:7.3f} --sigma:{sigma:7.2f} --action:({action_cnt[0]:4d},{action_cnt[1]:4d}) --time:{now_time_str}"
                 print('\r'+log_text)
 
                 with open(os.path.join(self.log_dir, 'terminal_log.txt'), 'a') as f:

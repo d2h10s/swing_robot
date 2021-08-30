@@ -29,7 +29,7 @@ if __name__ == '__main__' and env.ser.isOpen():
     action_n = env.action_space_n
 
     model = a2c_model(observation_n, hidden_n, action_n, load_dir=_load_dir)
-    agent = a2c_agent(model, lr=1e-4, sampling_time=0.08, suffix="_r1_lr1e_4")
+    agent = a2c_agent(model, lr=1e-3, sampling_time=0.08, version='v4', suffix="r1_1e-3")
     agent.init_message(INIT_MESSAGE)
     file_backup(agent.log_dir)
 

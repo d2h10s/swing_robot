@@ -106,7 +106,6 @@ class a2c_serial:
         while ret:
             reply, data_type = self.write_command(RST)
             if reply.startswith('STX,ACK') and data_type == COMMAND:
-                print(f'max angle is {np.rad2deg(self.max_angle):.3f} deg')
                 print('wait for stabilization...')
                 start_time = time.time()
                 elapsed_time = 0
@@ -172,7 +171,7 @@ class a2c_serial:
         th2 = mx106_pos
         vel1 = ahrs_vel
         vel2 = mx106_vel
-        self.max_angle = np.abs(roll) if self.max_angle < np.abs(roll) else self.max_angle # rad
+        self.max_angle = np.abs(th1) if self.max_angle < np.abs(th1) else self.max_angle # rad
         self.temp_ahrs = ahrs_temp # Celsius
         self.temp_mx106 = mx106_temp # Celsius
         observation = np.array([th1, th2, vel1, vel2], dtype=np.float32)
