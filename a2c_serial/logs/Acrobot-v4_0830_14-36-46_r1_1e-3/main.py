@@ -20,7 +20,7 @@ termination condition: FFT
 _load_dir = sys.argv[1] if len(sys.argv) > 1 else ""
 #_load_dir = 'Acrobot-v2_0819_15-38-25_test'
 env = a2c_serial()
-while not env.serial_open(target_port='COM6'):
+while not env.serial_open(target_port='COM8'):
     sleep(0.5)
 
 if __name__ == '__main__' and env.ser.isOpen():

@@ -57,3 +57,9 @@ EMA reward:    151.70 at episode    50 --freq:  0.000 --sigma: 198.93 --action:(
 EMA reward:    287.21 at episode    51 --freq:  0.000 --sigma: 202.38 --action:(  69, 931) --time:08-30_16h-31m-28s
 EMA reward:     43.96 at episode    52 --freq:  0.000 --sigma:  83.03 --action:(  49, 951) --time:08-30_16h-34m-42s
 EMA reward:     45.88 at episode    53 --freq:  0.000 --sigma:  93.01 --action:(  56, 944) --time:08-30_16h-37m-01s
+
+using acrobot-v2 environment which is d2h10s edition v3.0
+definition of reward : [reward = |sin(theta_1)|]
+termination condition: FFT
+
+
