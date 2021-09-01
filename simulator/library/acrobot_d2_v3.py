@@ -60,7 +60,7 @@ class AcrobotEnv_d2(core.Env):
         'video.frames_per_second' : 15
     }
 
-    dt = .08
+    dt = .025
 
     LINK_LENGTH_1 = 0.393  # [m]
     LINK_LENGTH_2 = 0.116  # [m]

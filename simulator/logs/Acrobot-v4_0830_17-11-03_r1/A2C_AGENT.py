@@ -8,7 +8,7 @@ from PIL import Image
 from pytz import timezone, utc
 from datetime import datetime as dt
 
-os.environ["CUDA_VISABLE_DEVICES"]="-1"
+
 STX = b'\x02'
 ETX = b'\x03'
 ACK = b'\x06'
