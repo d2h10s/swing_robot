@@ -157,15 +157,15 @@ class a2c_agent():
 
         return actor_loss + critic_loss
 
-    def env_step(self, action: np.ndarray) -> np.ndarray:
+    def env_step(self, action: np.ndarray) -> Tuple[np.ndarray]:
         """Returns state, reward and done flag given an action."""
 
         state, _, _, _ = self.env.step(action)
         return state.astype(np.float32)
 
 
-    def tf_env_step(self, action: tf.Tensor) -> tf.Tensor:
-        return tf.numpy_function(self.env_step, [action], tf.float32)
+    def tf_env_step(self, action: tf.Tensor) -> List[tf.Tensor]:
+        return tf.numpy_function(self.env_step, [action], [tf.float32])
 
 
     def run_episode(self, initial_state: tf.Tensor):
@@ -187,7 +187,6 @@ class a2c_agent():
 
             state.set_shape(initial_state_shape)
             state = self.tf_env_step(action)
-            print(np.array(state))
             c1, s1, c2, s2, w1, w2 = state
             #reward = 1/np.abs(state[0]+0.1)-1/(1+0.1)
             reward = np.abs(s1) # sin(theta1)
