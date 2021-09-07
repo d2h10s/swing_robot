@@ -6,12 +6,13 @@ from tensorflow import keras
 from pytz import timezone, utc
 from datetime import datetime as dt
 from typing import Tuple, List
+from functools import reduce
 
 STX = b'\x02'
 ETX = b'\x03'
 ACK = b'\x06'
 NAK = b'\x15'
-
+    
 class a2c_agent():
     def __init__(self, model, lr=1e-3, sampling_time=0.025, version="", suffix=""):
         self.model = model
@@ -75,7 +76,7 @@ class a2c_agent():
             f.write(msg+'\n\n')
 
 
-    def fft(self, deg_list):
+    def fft(self, deg_list: list):
         Fs = 1/self.sampling_time
         n = len(deg_list)
         scale = n//2
@@ -116,39 +117,27 @@ class a2c_agent():
         return most_freq, sigma, plot_image
 
     
-    def get_expected_return(self,
-            rewards: tf.Tensor,
-            standardize: bool = True) -> tf.Tensor:
+    def get_expected_return(self, rewards: list, standardize: bool = True) -> list:
         """Compute expected returns per timestep."""
-
-        n = tf.shape(rewards)[0]
-        returns = tf.TensorArray(dtype=tf.float32, size=n)
+        returns = []
 
         # Start from the end of `rewards` and accumulate reward sums
         # into the `returns` array
-        rewards = tf.cast(rewards[::-1], dtype=tf.float32)
-        discounted_sum = tf.constant(0.0)
-        discounted_sum_shape = discounted_sum.shape
-        for i in tf.range(n):
-            reward = rewards[i]
+        discounted_sum = .0
+        for reward in reversed(rewards):
             discounted_sum = reward + self.GAMMA * discounted_sum
-            discounted_sum.set_shape(discounted_sum_shape)
-            returns = returns.write(i, discounted_sum)
-        returns = returns.stack()[::-1]
+            returns.append(discounted_sum)
+        returns.reverse()
 
         if standardize:
-            returns = ((returns - tf.math.reduce_mean(returns)) / 
-                    (tf.math.reduce_std(returns) + self.EPS))
+            returns = ((returns - tf.math.reduce_mean(returns)) / (np.std(returns) + self.EPS))
 
         return returns
 
-    def compute_loss(self,
-            action_probs: tf.Tensor,  
-            values: tf.Tensor,  
-            returns: tf.Tensor) -> tf.Tensor:
+    def compute_loss(self, action_probs: list, values: list, returns: list) -> list:
         """Computes the combined actor-critic loss."""
 
-        advantage = returns - values
+        advantage = np.array(returns, dtype=np.float32) - np.array(values, dtype=np.float32)
 
         action_log_probs = tf.math.log(action_probs)
         actor_loss = -tf.math.reduce_sum(action_log_probs * advantage)
@@ -157,78 +146,58 @@ class a2c_agent():
 
         return actor_loss + critic_loss
 
-    def env_step(self, action: np.ndarray) -> Tuple[np.ndarray]:
-        """Returns state, reward and done flag given an action."""
 
-        state, _, _, _ = self.env.step(action)
-        return state.astype(np.float32)
-
-
-    def tf_env_step(self, action: tf.Tensor) -> List[tf.Tensor]:
-        return tf.numpy_function(self.env_step, [action], [tf.float32])
-
-
-    def run_episode(self, initial_state: tf.Tensor):
-        initial_state_shape = initial_state.shape
+    def run_episode(self, initial_state: np.array):
         state = initial_state
 
-        action_probs = tf.TensorArray(dtype=tf.float32, size=0, dynamic_size=True)
-        values = tf.TensorArray(dtype=tf.float32, size=0, dynamic_size=True)
-        rewards = tf.TensorArray(dtype=tf.int32, size=0, dynamic_size=True)
-        degrees = tf.TensorArray(dtype=tf.int32, size=0, dynamic_size=True)
-        self.action_cnt = [0, 0]
+        action_probs = [0]*self.MAX_STEP
+        values = [0]*self.MAX_STEP
+        rewards = [0]*self.MAX_STEP
+        degrees = [0]*self.MAX_STEP
+        self.action_cnt = [0,0]
 
-        for step in tf.range(self.MAX_STEP):
-            action_logits_t, value = self.model(state)
-            action = tf.random.categorical(action_logits_t, 1)[0, 0]
-            action_probs_t = tf.nn.softmax(action_logits_t)
-            values = values.write(step, tf.squeeze(value))
-            action_probs = action_probs.write(step, action_probs_t[0, action])
+        for step in range(self.MAX_STEP):
+            action_probs_t, value = self.model(state)
+            action = tf.random.categorical(action_probs_t, 1)[0, 0]
+            action_probs[step] = action_probs_t[0, action]
+            values[step] = value[0,0]
 
-            state.set_shape(initial_state_shape)
-            state = self.tf_env_step(action)
+            state, _, _, _ = self.env.step(action)
             c1, s1, c2, s2, w1, w2 = state
             #reward = 1/np.abs(state[0]+0.1)-1/(1+0.1)
             reward = np.abs(s1) # sin(theta1)
-            rewards = rewards.write(step, reward)
+            rewards[step] = reward
 
             deg = np.rad2deg(np.arctan2(s1, c1))
-            degrees = degrees.write(step, deg)
+            degrees[step] = deg
 
             self.action_cnt[action] += 1
 
         self.most_freq, self.sigma, self.plot_img = self.fft(degrees)
 
-        action_probs = action_probs.stack()
-        values = values.stack()
-        rewards = rewards.stack()
-
         return action_probs, values, rewards
 
-    @tf.function
-    def train_step(self, initial_state: tf.Tensor):
+
+    def train_step(self, initial_state: np.array):
         """Runs a model training step."""
 
         with tf.GradientTape() as tape:
             action_probs, values, rewards = self.run_episode(initial_state)
-            action_probs = tf.math.log(action_probs)
 
             returns = self.get_expected_return(rewards, standardize=True)
-            action_probs, values, returns = [tf.expand_dims(x, 1) for x in [action_probs, values, returns]]
             self.loss = self.compute_loss(action_probs, values, returns)
         grads = tape.gradient(self.loss, self.model.trainable_variables)
         self.optimizer.apply_gradients(zip(grads, self.model.trainable_variables))
         
-        self.episode_reward = tf.math.reduce_sum(rewards)
+        self.episode_reward = np.sum(rewards)
 
 
     def train(self, env):
         self.env = env
         #while env.ser.isOpen():
         while True:
-            initial_state = tf.constant(env.reset(), dtype=tf.float32)
+            initial_state = env.reset()
             self.train_step(initial_state)
-
             self.EMA_reward = self.episode_reward*self.ALPHA + self.EMA_reward * (1-self.ALPHA)
             
             self.write_logs()
