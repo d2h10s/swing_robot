@@ -30,7 +30,7 @@ if __name__ == '__main__':
     hidden_n = 128
 
     model = a2c_model(observation_n, hidden_n, action_n, load_dir=_load_dir)
-    agent = a2c_agent(model, lr=1e-4, sampling_time=0.08, version="v4", suffix="r1")
+    agent = a2c_agent(model, lr=1e-3, sampling_time=0.08, version="v4", suffix="r1")
     agent.init_message(INIT_MESSAGE)
     file_backup(agent.log_dir)
 
