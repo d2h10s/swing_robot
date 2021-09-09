@@ -25,12 +25,10 @@ class a2c_serial:
         self.port = None
         self.observation_space_n = 4
         self.action_space_n = 2
-        self.temp_mx106 = 0
-        self.temp_ahrs = 0
         self.wait_time = 190
-        self.EPS = np.finfo(np.float32).eps.item()
         self.max_angle = 0
         self.zero_angle = 0
+        self.EPS = np.finfo(np.float32).eps.item()
     
     def serial_open(self, target_port=None):
         if target_port==None:
@@ -106,10 +104,11 @@ class a2c_serial:
         while ret:
             reply, data_type = self.write_command(RST)
             if reply.startswith('STX,ACK') and data_type == COMMAND:
-                print('wait for stabilization...')
                 start_time = time.time()
                 elapsed_time = 0
                 time_threshold = self.wait_time/90*np.abs(np.rad2deg(self.max_angle))+30
+                sleep(1)
+                
                 while elapsed_time < time_threshold:
                     elapsed_time = time.time() - start_time
                     print(f'\relapsed {elapsed_time:.2f}s of {time_threshold:.1f}s and completed {np.min([elapsed_time/time_threshold*100,100]):6.2f}%', end='')
@@ -117,8 +116,7 @@ class a2c_serial:
                 if DEBUG_ON: print('end reset')
                 obs = self.get_observation()
                 self.zero_angle = self.roll
-                print(f'\n\nzero angle ({np.rad2deg(self.roll):.3f})-({np.rad2deg(self.zero_angle):.3f})={np.rad2deg(self.roll-self.zero_angle):.3f} deg')
-                print(f'the temperature of ahrs:{self.temp_ahrs:5.1f}℃, mx106:{self.temp_mx106:5.1f}℃')
+                print(f'\n\nzero angle {np.rad2deg(self.zero_angle):.3f} deg')
                 self.max_angle = 0
                 return obs
             else:
@@ -149,17 +147,15 @@ class a2c_serial:
             rx_data, data_type = self.write_command(ACQ)
             if data_type == COMMAND and rx_data.startswith('STX,ACQ'):
                 try:
-                    # STX,ACQ,ROLL,VEL_ahrs,TEMP_ahrs,POS_mx106,VEL_mx106,TEMP_mx106
-                    rx_data = rx_data.replace('STX,ACQ,', '').split(',')
-                    if rx_data[0] == 0 and rx_data[1] == 0 and rx_data[2] == 0:
-                        print('ahrs is not operating')
-
-                    roll = np.deg2rad(float(rx_data[0]))  # rad
-                    ahrs_vel = np.deg2rad(float(rx_data[1]))  # deg/s -> rad/s
-                    ahrs_temp = float(rx_data[2]) # Celsius
-                    mx106_pos = (2100 - float(rx_data[3])) * 0.088 # rad
-                    mx106_vel = float(rx_data[4]) * np.pi / 30  # rpm -> rad/s
-                    mx106_temp = float(rx_data[5]) # Celsius
+                    # STX,ACQ,ROLL,gyro_ahrs,POS_mx106,VEL_mx106
+                    rx_data = [float(x) for x in rx_data.replace('STX,ACQ,', '').split(',')]
+                    if any(np.isnan(rx_data)):
+                        print('get nan value from opencm', rx_data)
+                        continue
+                    roll = np.deg2rad(rx_data[0])  # deg/s -> rad/s
+                    ahrs_vel = np.deg2rad(rx_data[1])  # deg/s -> rad/s
+                    mx106_pos = (2100 - rx_data[2]) * 0.088 # rad
+                    mx106_vel = rx_data[3] * np.pi / 30  # rpm -> rad/s
                     #print('{:6.2f},{:6.2f},{:6.2f},{:6.2f},{:6.2f},{:6.2f}'.format(roll, ahrs_vel, ahrs_temp, mx106_pos, mx106_vel, mx106_temp))
                     ret = False
                 except Exception as e:
@@ -171,13 +167,9 @@ class a2c_serial:
         th2 = mx106_pos
         vel1 = ahrs_vel
         vel2 = mx106_vel
-        self.max_angle = np.abs(th1) if self.max_angle < np.abs(th1) else self.max_angle # rad
-        self.temp_ahrs = ahrs_temp # Celsius
-        self.temp_mx106 = mx106_temp # Celsius
-        observation = np.array([th1, th2, vel1, vel2], dtype=np.float32)
+        self.max_angle = max(self.max_angle,np.abs(th1)) # rad
+
+        observation = np.array([th1+self.EPS, th2+self.EPS, vel1+self.EPS, vel2+self.EPS], dtype=np.float32)
         if DEBUG_ON: print('end obs')
         return observation
-
-    def get_temperature(self):
-        return (self.temp_ahrs, self.temp_mx106)
         

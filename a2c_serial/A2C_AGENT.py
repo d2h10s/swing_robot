@@ -38,8 +38,10 @@ class a2c_agent():
             self.log_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logs', f'Acrobot-{version}_{self.start_time_str}_{self.SUFFIX}')
             os.mkdir(self.log_dir)
             os.mkdir(os.path.join(self.log_dir, 'fft_img'))
+            os.mkdir(os.path.join(self.log_dir, 'tf_model'))
 
         else:
+            print('agent parameter loaded from previous model!')
             self.log_dir = model.load_dir
             with open(os.path.join(self.log_dir, 'backup.yaml')) as f:
                 yaml_data = yaml.safe_load(f)
@@ -128,11 +130,11 @@ class a2c_agent():
                 with tf.GradientTape(persistent=False) as tape:
                     for step in range(1, self.MAX_STEP+1):
                         start_time = time.time()
-                        state = tf.convert_to_tensor(state)
-                        #print(state)
                         action_probs, critic_value = self.model(state)
+                        a0, a1, v = *action_probs.numpy()[0], critic_value.numpy()[0,0]
+                        if any(tf.math.is_nan([a0, a1, v])):
+                            raise Exception(f'Nan value is included in model output, {action_probs}, {critic_value}')
                         action = np.random.choice(self.model.action_n, p=np.squeeze(action_probs))
-                        print(f'\rnow is operating at step {step:5d} with action {action}', end='')
                         action_cnt[action] += 1
                         action_probs_buffer.append(action_probs[0, action])
                         critic_value_buffer.append(critic_value[0, 0])
@@ -142,6 +144,8 @@ class a2c_agent():
                         reward = np.abs(np.sin(th1))
                         #reward = 1/np.abs(np.cos(th1)+0.1)-1/(1+0.1)
                         rewards_history.append(reward)
+
+                        print(f'\r--step {step:5d}  --reward {reward:8.02} --action {action} --action_probs [{a0:8.02} {a1:8.02}] --value [{v:8.02}]', end='')
                         self.episode_reward += reward
 
                         if self.num_episode == 0:
@@ -150,12 +154,12 @@ class a2c_agent():
                             self.EMA_reward = self.ALPHA * self.episode_reward + (1 - self.ALPHA) * self.EMA_reward
                         deg = np.rad2deg(th1)
                         deg_list.append(deg)
-
+                        
                         didWait = False
                         while time.time() - start_time < self.sampling_time:
                             didWait = True
                         if not didWait:
-                            print(f"\rnever wait {int((time.time()-start_time)*1000)}ms")
+                            print(f"\rwait time overed {int((time.time()-start_time)*1000)}ms at step {step:<70}")
                     
                     action_probs_buffer = tf.math.log(action_probs_buffer)
 
@@ -199,7 +203,7 @@ class a2c_agent():
 
                 if self.num_episode % 100 == 0 or self.num_episode == 1:
                     self.yaml_backup()
-                    self.model.save(os.path.join(self.log_dir, 'tf_model', f'learning_model{self.num_episode}'))
+                    self.model.save_weights(os.path.join(self.log_dir, 'tf_model', f'learning_model{self.num_episode}.h5'))
                     with self.summary_writer.as_default():
                         tf.summary.image(f'fft of episode{self.num_episode:05}', plot_img, step=0)
 

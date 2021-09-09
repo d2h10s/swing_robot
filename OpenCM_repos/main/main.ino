@@ -79,9 +79,9 @@ void loop() {
       //wb.goalPosition(MX64_ID, MX64_CW_POS);
     }
     else if (command == ACQ){
-      //while(!status()) motor_init();
+      while(!status()) motor_init();
       
-      sprintf(tx_buf,"STX,ACQ,%f,%f,%f,%f!",
+      sprintf(tx_buf,"STX,ACQ,%f,%f,%d,%d!",
               ahrs_roll_angle, ahrs_roll_gyro, pos_buf[MX106_ID], vel_buf[MX106_ID]);
       Serial.print(tx_buf);
       delay(1);
