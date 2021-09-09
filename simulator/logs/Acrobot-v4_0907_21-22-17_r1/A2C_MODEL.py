@@ -13,9 +13,9 @@ class a2c_model(tf.keras.Model):
 
         if not self.load_dir:
             self.input_layer  = layers.Input(shape=self.observation_n)
-            self.fc1_layer    = layers.Dense(self.hidden_n, activation='relu', kernel_initializer=keras.initializers.HeUniform(seed=None),name='Dense1')(self.input_layer)
-            self.fc2_layer    = layers.Dense(self.hidden_n, activation='relu', kernel_initializer=keras.initializers.HeUniform(seed=None), name='Dense2')(self.fc1_layer)
-            self.actor_layer  = layers.Dense(self.action_n, activation='softmax', kernel_initializer=keras.initializers.GlorotUniform(seed=None), name='Actor')(self.fc2_layer) # 0 <= softmax <= 1
+            self.fc1_layer    = layers.Dense(self.hidden_n, activation='relu', name='Dense1')(self.input_layer)
+            self.fc2_layer    = layers.Dense(self.hidden_n, activation='relu', name='Dense2')(self.fc1_layer)
+            self.actor_layer  = layers.Dense(self.action_n, activation='softmax', name='Actor')(self.fc2_layer) # 0 <= softmax <= 1
             self.critic_layer = layers.Dense(1, name='Critic')(self.fc2_layer)
             self.nn = keras.Model(inputs=self.input_layer, outputs=[self.actor_layer, self.critic_layer])
         else:

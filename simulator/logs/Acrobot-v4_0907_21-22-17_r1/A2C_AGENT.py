@@ -12,8 +12,7 @@ STX = b'\x02'
 ETX = b'\x03'
 ACK = b'\x06'
 NAK = b'\x15'
-
-tf.config.set_visible_devices([], 'GPU')
+    
 class a2c_agent():
     def __init__(self, model, lr=1e-3, sampling_time=0.025, version="", suffix=""):
         self.model = model
@@ -115,7 +114,7 @@ class a2c_agent():
         buf.seek(0)
         plot_image = tf.image.decode_png(buf.getvalue(), channels=4)
         plot_image = tf.expand_dims(plot_image, 0)
-
+        
         return most_freq, sigma, plot_image
 
     

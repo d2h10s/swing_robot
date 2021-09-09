@@ -12,8 +12,7 @@ STX = b'\x02'
 ETX = b'\x03'
 ACK = b'\x06'
 NAK = b'\x15'
-
-tf.config.set_visible_devices([], 'GPU')
+    
 class a2c_agent():
     def __init__(self, model, lr=1e-3, sampling_time=0.025, version="", suffix=""):
         self.model = model
@@ -115,7 +114,6 @@ class a2c_agent():
         buf.seek(0)
         plot_image = tf.image.decode_png(buf.getvalue(), channels=4)
         plot_image = tf.expand_dims(plot_image, 0)
-
         return most_freq, sigma, plot_image
 
     
@@ -136,7 +134,7 @@ class a2c_agent():
 
         return returns
 
-    def compute_loss(self, action_probs: list, values: list, returns: list) -> tf.Tensor:
+    def compute_loss(self, action_probs: list, values: list, returns: list) -> list:
         """Computes the combined actor-critic loss."""
 
         advantage = np.array(returns, dtype=np.float32) - np.array(values, dtype=np.float32)
@@ -145,8 +143,6 @@ class a2c_agent():
         actor_loss = -tf.math.reduce_sum(action_log_probs * advantage)
 
         critic_loss = self.huber_loss(values, returns)
-        
-        del advantage, action_log_probs
 
         return actor_loss + critic_loss
 
@@ -162,10 +158,6 @@ class a2c_agent():
 
         for step in range(self.MAX_STEP):
             action_probs_t, value = self.model(state)
-            if not step:
-                print(f'start with action_probs = {action_probs_t.numpy()[0]}, value = {value.numpy()[0]}')
-            if any(tf.math.is_nan([*action_probs_t[0], *value[0]])):
-                raise Exception('Nan value is included in model output')
             action = tf.random.categorical(action_probs_t, 1)[0, 0]
             action_probs[step] = action_probs_t[0, action]
             values[step] = value[0,0]
@@ -183,8 +175,6 @@ class a2c_agent():
 
         self.most_freq, self.sigma, self.plot_img = self.fft(degrees)
 
-        del degrees
-
         return action_probs, values, rewards
 
 
@@ -200,9 +190,6 @@ class a2c_agent():
         self.optimizer.apply_gradients(zip(grads, self.model.trainable_variables))
         
         self.episode_reward = np.sum(rewards)
-
-        del action_probs, values, rewards, returns, grads
-
 
 
     def train(self, env):

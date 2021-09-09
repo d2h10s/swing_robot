@@ -1,0 +1,429 @@
+
+using acrobot-v2 environment which is d2h10s edition v4.0
+definition of reward : [reward = |sin(theta1)|]
+termination condition: FFT
+
+
+EMA reward:      0.46 at episode     1 --freq:  0.675 --sigma:  99.16 --action:( 539, 461)--time:09-07_18h-56m-09s
+EMA reward:      0.62 at episode     2 --freq:  0.700 --sigma:  30.56 --action:( 538, 462)--time:09-07_18h-56m-13s
+EMA reward:      1.12 at episode     3 --freq:  0.675 --sigma:  80.33 --action:( 512, 488)--time:09-07_18h-56m-17s
+EMA reward:      1.36 at episode     4 --freq:  0.675 --sigma:  73.12 --action:( 529, 471)--time:09-07_18h-56m-20s
+EMA reward:      1.90 at episode     5 --freq:  0.675 --sigma:  92.26 --action:( 547, 453)--time:09-07_18h-56m-24s
+EMA reward:      2.07 at episode     6 --freq:  0.675 --sigma:  46.85 --action:( 536, 464)--time:09-07_18h-56m-28s
+EMA reward:      2.35 at episode     7 --freq:  0.675 --sigma:  78.02 --action:( 558, 442)--time:09-07_18h-56m-31s
+EMA reward:      2.49 at episode     8 --freq:  0.675 --sigma:  49.46 --action:( 569, 431)--time:09-07_18h-56m-35s
+EMA reward:      2.65 at episode     9 --freq:  0.675 --sigma:  44.80 --action:( 538, 462)--time:09-07_18h-56m-39s
+EMA reward:      3.00 at episode    10 --freq:  0.675 --sigma:  96.04 --action:( 538, 462)--time:09-07_18h-56m-42s
+EMA reward:      3.15 at episode    11 --freq:  0.675 --sigma:  54.22 --action:( 523, 477)--time:09-07_18h-56m-46s
+EMA reward:      3.51 at episode    12 --freq:  0.675 --sigma:  87.14 --action:( 546, 454)--time:09-07_18h-56m-50s
+EMA reward:      3.83 at episode    13 --freq:  0.675 --sigma:  82.30 --action:( 543, 457)--time:09-07_18h-56m-53s
+EMA reward:      4.05 at episode    14 --freq:  0.675 --sigma:  68.58 --action:( 536, 464)--time:09-07_18h-56m-57s
+EMA reward:      4.53 at episode    15 --freq:  0.675 --sigma: 103.46 --action:( 536, 464)--time:09-07_18h-57m-01s
+EMA reward:      4.68 at episode    16 --freq:  0.675 --sigma:  59.63 --action:( 549, 451)--time:09-07_18h-57m-04s
+EMA reward:      4.88 at episode    17 --freq:  0.675 --sigma:  68.23 --action:( 553, 447)--time:09-07_18h-57m-08s
+EMA reward:      5.04 at episode    18 --freq:  0.675 --sigma:  55.12 --action:( 500, 500)--time:09-07_18h-57m-11s
+EMA reward:      5.20 at episode    19 --freq:  0.675 --sigma:  59.08 --action:( 550, 450)--time:09-07_18h-57m-15s
+EMA reward:      5.26 at episode    20 --freq:  0.675 --sigma:  21.67 --action:( 544, 456)--time:09-07_18h-57m-18s
+EMA reward:      5.41 at episode    21 --freq:  0.675 --sigma:  49.78 --action:( 574, 426)--time:09-07_18h-57m-22s
+EMA reward:      5.45 at episode    22 --freq:  0.688 --sigma:  16.26 --action:( 571, 429)--time:09-07_18h-57m-25s
+EMA reward:      5.57 at episode    23 --freq:  0.675 --sigma:  53.70 --action:( 535, 465)--time:09-07_18h-57m-29s
+EMA reward:      5.68 at episode    24 --freq:  0.675 --sigma:  47.00 --action:( 554, 446)--time:09-07_18h-57m-32s
+EMA reward:      5.80 at episode    25 --freq:  0.675 --sigma:  50.69 --action:( 539, 461)--time:09-07_18h-57m-36s
+EMA reward:      5.94 at episode    26 --freq:  0.675 --sigma:  50.97 --action:( 537, 463)--time:09-07_18h-57m-40s
+EMA reward:      6.07 at episode    27 --freq:  0.675 --sigma:  67.62 --action:( 525, 475)--time:09-07_18h-57m-43s
+EMA reward:      6.29 at episode    28 --freq:  0.675 --sigma:  72.73 --action:( 499, 501)--time:09-07_18h-57m-47s
+EMA reward:      6.39 at episode    29 --freq:  0.675 --sigma:  46.11 --action:( 497, 503)--time:09-07_18h-57m-50s
+EMA reward:      6.48 at episode    30 --freq:  0.675 --sigma:  58.17 --action:( 504, 496)--time:09-07_18h-57m-54s
+EMA reward:      6.65 at episode    31 --freq:  0.675 --sigma:  54.51 --action:( 516, 484)--time:09-07_18h-57m-57s
+EMA reward:      6.73 at episode    32 --freq:  0.675 --sigma:  41.83 --action:( 474, 526)--time:09-07_18h-58m-01s
+EMA reward:      6.86 at episode    33 --freq:  0.675 --sigma:  56.39 --action:( 483, 517)--time:09-07_18h-58m-05s
+EMA reward:      7.05 at episode    34 --freq:  0.675 --sigma:  77.61 --action:( 482, 518)--time:09-07_18h-58m-08s
+EMA reward:      7.14 at episode    35 --freq:  0.675 --sigma:  55.90 --action:( 479, 521)--time:09-07_18h-58m-12s
+EMA reward:      7.19 at episode    36 --freq:  0.675 --sigma:  33.50 --action:( 500, 500)--time:09-07_18h-58m-15s
+EMA reward:      7.49 at episode    37 --freq:  0.675 --sigma: 102.79 --action:( 467, 533)--time:09-07_18h-58m-19s
+EMA reward:      7.69 at episode    38 --freq:  0.675 --sigma:  83.53 --action:( 495, 505)--time:09-07_18h-58m-22s
+EMA reward:      7.86 at episode    39 --freq:  0.675 --sigma:  69.79 --action:( 483, 517)--time:09-07_18h-58m-26s
+EMA reward:      7.97 at episode    40 --freq:  0.675 --sigma:  62.50 --action:( 469, 531)--time:09-07_18h-58m-30s
+EMA reward:      7.98 at episode    41 --freq:  0.662 --sigma:  25.05 --action:( 496, 504)--time:09-07_18h-58m-33s
+EMA reward:      8.04 at episode    42 --freq:  0.688 --sigma:  38.74 --action:( 484, 516)--time:09-07_18h-58m-37s
+EMA reward:      8.17 at episode    43 --freq:  0.675 --sigma:  71.85 --action:( 491, 509)--time:09-07_18h-58m-40s
+EMA reward:      8.29 at episode    44 --freq:  0.675 --sigma:  62.73 --action:( 474, 526)--time:09-07_18h-58m-44s
+EMA reward:      8.36 at episode    45 --freq:  0.675 --sigma:  42.91 --action:( 473, 527)--time:09-07_18h-58m-48s
+EMA reward:      8.41 at episode    46 --freq:  0.675 --sigma:  35.84 --action:( 502, 498)--time:09-07_18h-58m-51s
+EMA reward:      8.64 at episode    47 --freq:  0.675 --sigma:  94.58 --action:( 474, 526)--time:09-07_18h-58m-55s
+EMA reward:      8.74 at episode    48 --freq:  0.675 --sigma:  68.85 --action:( 454, 546)--time:09-07_18h-58m-58s
+EMA reward:      8.79 at episode    49 --freq:  0.662 --sigma:  44.34 --action:( 480, 520)--time:09-07_18h-59m-02s
+EMA reward:      8.91 at episode    50 --freq:  0.675 --sigma:  66.05 --action:( 469, 531)--time:09-07_18h-59m-06s
+EMA reward:      9.09 at episode    51 --freq:  0.675 --sigma:  58.45 --action:( 449, 551)--time:09-07_18h-59m-09s
+EMA reward:      9.19 at episode    52 --freq:  0.675 --sigma:  62.42 --action:( 440, 560)--time:09-07_18h-59m-13s
+EMA reward:      9.22 at episode    53 --freq:  0.675 --sigma:  47.01 --action:( 437, 563)--time:09-07_18h-59m-17s
+EMA reward:      9.38 at episode    54 --freq:  0.675 --sigma:  64.45 --action:( 409, 591)--time:09-07_18h-59m-20s
+EMA reward:      9.47 at episode    55 --freq:  0.675 --sigma:  49.29 --action:( 431, 569)--time:09-07_18h-59m-24s
+EMA reward:      9.59 at episode    56 --freq:  0.675 --sigma:  61.04 --action:( 427, 573)--time:09-07_18h-59m-28s
+EMA reward:      9.64 at episode    57 --freq:  0.675 --sigma:  49.48 --action:( 421, 579)--time:09-07_18h-59m-32s
+EMA reward:      9.70 at episode    58 --freq:  0.675 --sigma:  37.45 --action:( 397, 603)--time:09-07_18h-59m-36s
+EMA reward:      9.74 at episode    59 --freq:  0.675 --sigma:  52.59 --action:( 396, 604)--time:09-07_18h-59m-39s
+EMA reward:      9.79 at episode    60 --freq:  0.675 --sigma:  48.55 --action:( 382, 618)--time:09-07_18h-59m-43s
+EMA reward:      9.83 at episode    61 --freq:  0.675 --sigma:  42.18 --action:( 403, 597)--time:09-07_18h-59m-47s
+EMA reward:      9.91 at episode    62 --freq:  0.675 --sigma:  55.33 --action:( 356, 644)--time:09-07_18h-59m-51s
+EMA reward:     10.01 at episode    63 --freq:  0.675 --sigma:  64.48 --action:( 373, 627)--time:09-07_18h-59m-54s
+EMA reward:     10.04 at episode    64 --freq:  0.662 --sigma:  31.84 --action:( 354, 646)--time:09-07_18h-59m-58s
+EMA reward:     10.08 at episode    65 --freq:  0.662 --sigma:  34.49 --action:( 363, 637)--time:09-07_19h-00m-02s
+EMA reward:     10.17 at episode    66 --freq:  0.675 --sigma:  59.56 --action:( 345, 655)--time:09-07_19h-00m-06s
+EMA reward:     10.31 at episode    67 --freq:  0.675 --sigma:  80.57 --action:( 326, 674)--time:09-07_19h-00m-10s
+EMA reward:     10.39 at episode    68 --freq:  0.675 --sigma:  68.88 --action:( 336, 664)--time:09-07_19h-00m-14s
+EMA reward:     10.49 at episode    69 --freq:  0.675 --sigma:  63.63 --action:( 332, 668)--time:09-07_19h-00m-17s
+EMA reward:     10.70 at episode    70 --freq:  0.675 --sigma:  78.67 --action:( 305, 695)--time:09-07_19h-00m-21s
+EMA reward:     10.76 at episode    71 --freq:  0.675 --sigma:  39.89 --action:( 321, 679)--time:09-07_19h-00m-24s
+EMA reward:     10.86 at episode    72 --freq:  0.675 --sigma:  53.84 --action:( 325, 675)--time:09-07_19h-00m-28s
+EMA reward:     10.92 at episode    73 --freq:  0.675 --sigma:  48.14 --action:( 299, 701)--time:09-07_19h-00m-32s
+EMA reward:     11.01 at episode    74 --freq:  0.675 --sigma:  50.45 --action:( 313, 687)--time:09-07_19h-00m-35s
+EMA reward:     11.11 at episode    75 --freq:  0.675 --sigma:  67.18 --action:( 287, 713)--time:09-07_19h-00m-39s
+EMA reward:     11.24 at episode    76 --freq:  0.675 --sigma:  66.81 --action:( 292, 708)--time:09-07_19h-00m-42s
+EMA reward:     11.37 at episode    77 --freq:  0.675 --sigma:  63.54 --action:( 257, 743)--time:09-07_19h-00m-46s
+EMA reward:     11.46 at episode    78 --freq:  0.688 --sigma:  39.24 --action:( 280, 720)--time:09-07_19h-00m-50s
+EMA reward:     11.72 at episode    79 --freq:  0.675 --sigma:  74.45 --action:( 279, 721)--time:09-07_19h-00m-53s
+EMA reward:     11.79 at episode    80 --freq:  0.688 --sigma:  42.61 --action:( 276, 724)--time:09-07_19h-00m-57s
+EMA reward:     11.90 at episode    81 --freq:  0.675 --sigma:  52.27 --action:( 291, 709)--time:09-07_19h-01m-01s
+EMA reward:     11.89 at episode    82 --freq:  0.675 --sigma:  21.28 --action:( 291, 709)--time:09-07_19h-01m-04s
+EMA reward:     12.29 at episode    83 --freq:  0.675 --sigma:  73.22 --action:( 305, 695)--time:09-07_19h-01m-08s
+EMA reward:     12.36 at episode    84 --freq:  0.688 --sigma:  33.17 --action:( 265, 735)--time:09-07_19h-01m-11s
+EMA reward:     12.55 at episode    85 --freq:  0.675 --sigma:  80.05 --action:( 284, 716)--time:09-07_19h-01m-15s
+EMA reward:     12.77 at episode    86 --freq:  0.675 --sigma:  93.97 --action:( 276, 724)--time:09-07_19h-01m-19s
+EMA reward:     12.77 at episode    87 --freq:  0.662 --sigma:  21.17 --action:( 288, 712)--time:09-07_19h-01m-22s
+EMA reward:     12.90 at episode    88 --freq:  0.688 --sigma:  45.70 --action:( 266, 734)--time:09-07_19h-01m-26s
+EMA reward:     12.94 at episode    89 --freq:  0.688 --sigma:  39.00 --action:( 262, 738)--time:09-07_19h-01m-30s
+EMA reward:     12.99 at episode    90 --freq:  0.675 --sigma:  38.94 --action:( 271, 729)--time:09-07_19h-01m-33s
+EMA reward:     13.30 at episode    91 --freq:  0.675 --sigma:  95.50 --action:( 279, 721)--time:09-07_19h-01m-37s
+EMA reward:     13.51 at episode    92 --freq:  0.675 --sigma:  65.69 --action:( 270, 730)--time:09-07_19h-01m-41s
+EMA reward:     13.79 at episode    93 --freq:  0.675 --sigma:  79.57 --action:( 268, 732)--time:09-07_19h-01m-45s
+EMA reward:     14.08 at episode    94 --freq:  0.675 --sigma:  77.57 --action:( 272, 728)--time:09-07_19h-01m-48s
+EMA reward:     14.43 at episode    95 --freq:  0.675 --sigma:  99.17 --action:( 273, 727)--time:09-07_19h-01m-52s
+EMA reward:     14.89 at episode    96 --freq:  0.675 --sigma: 102.22 --action:( 267, 733)--time:09-07_19h-01m-56s
+EMA reward:     15.04 at episode    97 --freq:  0.662 --sigma:  53.50 --action:( 297, 703)--time:09-07_19h-02m-00s
+EMA reward:     15.28 at episode    98 --freq:  0.675 --sigma:  79.65 --action:( 264, 736)--time:09-07_19h-02m-04s
+EMA reward:     15.40 at episode    99 --freq:  0.675 --sigma:  54.50 --action:( 284, 716)--time:09-07_19h-02m-07s
+EMA reward:     15.47 at episode   100 --freq:  0.675 --sigma:  60.78 --action:( 288, 712)--time:09-07_19h-02m-11s
+EMA reward:     15.65 at episode   101 --freq:  0.675 --sigma:  65.49 --action:( 271, 729)--time:09-07_19h-02m-16s
+EMA reward:     15.74 at episode   102 --freq:  0.675 --sigma:  53.37 --action:( 287, 713)--time:09-07_19h-02m-20s
+EMA reward:     15.81 at episode   103 --freq:  0.675 --sigma:  39.07 --action:( 262, 738)--time:09-07_19h-02m-23s
+EMA reward:     15.93 at episode   104 --freq:  0.675 --sigma:  66.38 --action:( 272, 728)--time:09-07_19h-02m-27s
+EMA reward:     15.95 at episode   105 --freq:  0.688 --sigma:  39.44 --action:( 277, 723)--time:09-07_19h-02m-31s
+EMA reward:     16.06 at episode   106 --freq:  0.662 --sigma:  39.86 --action:( 289, 711)--time:09-07_19h-02m-35s
+EMA reward:     16.15 at episode   107 --freq:  0.675 --sigma:  42.21 --action:( 266, 734)--time:09-07_19h-02m-39s
+EMA reward:     16.16 at episode   108 --freq:  0.650 --sigma:  27.26 --action:( 240, 760)--time:09-07_19h-02m-42s
+EMA reward:     16.38 at episode   109 --freq:  0.675 --sigma:  84.24 --action:( 258, 742)--time:09-07_19h-02m-46s
+EMA reward:     16.45 at episode   110 --freq:  0.675 --sigma:  73.82 --action:( 269, 731)--time:09-07_19h-02m-50s
+EMA reward:     16.77 at episode   111 --freq:  0.675 --sigma:  77.64 --action:( 263, 737)--time:09-07_19h-02m-53s
+EMA reward:     17.15 at episode   112 --freq:  0.675 --sigma:  86.15 --action:( 268, 732)--time:09-07_19h-02m-57s
+EMA reward:     17.40 at episode   113 --freq:  0.675 --sigma:  76.27 --action:( 305, 695)--time:09-07_19h-03m-01s
+EMA reward:     17.66 at episode   114 --freq:  0.675 --sigma:  79.08 --action:( 269, 731)--time:09-07_19h-03m-04s
+EMA reward:     17.78 at episode   115 --freq:  0.675 --sigma:  64.82 --action:( 251, 749)--time:09-07_19h-03m-08s
+EMA reward:     18.15 at episode   116 --freq:  0.675 --sigma: 101.06 --action:( 262, 738)--time:09-07_19h-03m-11s
+EMA reward:     18.18 at episode   117 --freq:  0.688 --sigma:  40.06 --action:( 301, 699)--time:09-07_19h-03m-15s
+EMA reward:     18.24 at episode   118 --freq:  0.675 --sigma:  70.02 --action:( 252, 748)--time:09-07_19h-03m-18s
+EMA reward:     18.36 at episode   119 --freq:  0.675 --sigma:  60.67 --action:( 279, 721)--time:09-07_19h-03m-22s
+EMA reward:     18.36 at episode   120 --freq:  0.662 --sigma:  37.18 --action:( 248, 752)--time:09-07_19h-03m-26s
+EMA reward:     18.69 at episode   121 --freq:  0.675 --sigma:  81.79 --action:( 272, 728)--time:09-07_19h-03m-30s
+EMA reward:     18.84 at episode   122 --freq:  0.675 --sigma:  72.03 --action:( 258, 742)--time:09-07_19h-03m-33s
+EMA reward:     18.92 at episode   123 --freq:  0.675 --sigma:  62.47 --action:( 262, 738)--time:09-07_19h-03m-37s
+EMA reward:     18.91 at episode   124 --freq:  0.675 --sigma:  49.19 --action:( 277, 723)--time:09-07_19h-03m-40s
+EMA reward:     18.89 at episode   125 --freq:  0.675 --sigma:  29.73 --action:( 292, 708)--time:09-07_19h-03m-44s
+EMA reward:     18.87 at episode   126 --freq:  0.675 --sigma:  32.92 --action:( 275, 725)--time:09-07_19h-03m-48s
+EMA reward:     18.90 at episode   127 --freq:  0.675 --sigma:  64.02 --action:( 293, 707)--time:09-07_19h-03m-51s
+EMA reward:     18.98 at episode   128 --freq:  0.675 --sigma:  66.38 --action:( 238, 762)--time:09-07_19h-03m-55s
+EMA reward:     19.09 at episode   129 --freq:  0.675 --sigma:  62.14 --action:( 270, 730)--time:09-07_19h-03m-59s
+EMA reward:     19.39 at episode   130 --freq:  0.675 --sigma: 109.70 --action:( 263, 737)--time:09-07_19h-04m-02s
+EMA reward:     19.50 at episode   131 --freq:  0.675 --sigma:  57.65 --action:( 281, 719)--time:09-07_19h-04m-06s
+EMA reward:     19.55 at episode   132 --freq:  0.675 --sigma:  77.61 --action:( 235, 765)--time:09-07_19h-04m-10s
+EMA reward:     19.69 at episode   133 --freq:  0.675 --sigma:  80.11 --action:( 265, 735)--time:09-07_19h-04m-13s
+EMA reward:     19.79 at episode   134 --freq:  0.675 --sigma:  76.68 --action:( 253, 747)--time:09-07_19h-04m-17s
+EMA reward:     19.92 at episode   135 --freq:  0.675 --sigma:  93.87 --action:( 269, 731)--time:09-07_19h-04m-21s
+EMA reward:     20.01 at episode   136 --freq:  0.688 --sigma:  52.76 --action:( 268, 732)--time:09-07_19h-04m-24s
+EMA reward:     19.94 at episode   137 --freq:  0.675 --sigma:  22.77 --action:( 280, 720)--time:09-07_19h-04m-28s
+EMA reward:     19.90 at episode   138 --freq:  0.675 --sigma:  48.43 --action:( 285, 715)--time:09-07_19h-04m-32s
+EMA reward:     20.03 at episode   139 --freq:  0.675 --sigma:  55.80 --action:( 261, 739)--time:09-07_19h-04m-36s
+EMA reward:     20.25 at episode   140 --freq:  0.675 --sigma:  73.23 --action:( 273, 727)--time:09-07_19h-04m-39s
+EMA reward:     20.35 at episode   141 --freq:  0.675 --sigma:  68.83 --action:( 267, 733)--time:09-07_19h-04m-43s
+EMA reward:     20.70 at episode   142 --freq:  0.675 --sigma: 108.63 --action:( 251, 749)--time:09-07_19h-04m-47s
+EMA reward:     20.68 at episode   143 --freq:  0.675 --sigma:  52.88 --action:( 278, 722)--time:09-07_19h-04m-50s
+EMA reward:     21.00 at episode   144 --freq:  0.675 --sigma:  89.38 --action:( 270, 730)--time:09-07_19h-04m-54s
+EMA reward:     21.03 at episode   145 --freq:  0.662 --sigma:  51.60 --action:( 273, 727)--time:09-07_19h-04m-57s
+EMA reward:     21.26 at episode   146 --freq:  0.675 --sigma: 103.26 --action:( 267, 733)--time:09-07_19h-05m-01s
+EMA reward:     21.28 at episode   147 --freq:  0.675 --sigma:  54.40 --action:( 268, 732)--time:09-07_19h-05m-05s
+EMA reward:     21.38 at episode   148 --freq:  0.675 --sigma:  88.64 --action:( 263, 737)--time:09-07_19h-05m-08s
+EMA reward:     21.65 at episode   149 --freq:  0.675 --sigma:  89.88 --action:( 262, 738)--time:09-07_19h-05m-12s
+EMA reward:     21.73 at episode   150 --freq:  0.675 --sigma:  62.99 --action:( 228, 772)--time:09-07_19h-05m-15s
+EMA reward:     21.93 at episode   151 --freq:  0.675 --sigma:  97.95 --action:( 258, 742)--time:09-07_19h-05m-19s
+EMA reward:     21.99 at episode   152 --freq:  0.675 --sigma:  74.56 --action:( 263, 737)--time:09-07_19h-05m-22s
+EMA reward:     22.22 at episode   153 --freq:  0.675 --sigma:  82.99 --action:( 270, 730)--time:09-07_19h-05m-26s
+EMA reward:     22.34 at episode   154 --freq:  0.675 --sigma:  72.43 --action:( 264, 736)--time:09-07_19h-05m-30s
+EMA reward:     22.39 at episode   155 --freq:  0.675 --sigma:  73.75 --action:( 258, 742)--time:09-07_19h-05m-33s
+EMA reward:     22.56 at episode   156 --freq:  0.675 --sigma:  90.00 --action:( 268, 732)--time:09-07_19h-05m-37s
+EMA reward:     22.77 at episode   157 --freq:  0.675 --sigma:  83.49 --action:( 271, 729)--time:09-07_19h-05m-41s
+EMA reward:     22.73 at episode   158 --freq:  0.675 --sigma:  49.79 --action:( 271, 729)--time:09-07_19h-05m-44s
+EMA reward:     22.65 at episode   159 --freq:  0.675 --sigma:  33.31 --action:( 264, 736)--time:09-07_19h-05m-48s
+EMA reward:     22.70 at episode   160 --freq:  0.675 --sigma:  71.32 --action:( 254, 746)--time:09-07_19h-05m-52s
+EMA reward:     22.71 at episode   161 --freq:  0.675 --sigma:  36.82 --action:( 261, 739)--time:09-07_19h-05m-55s
+EMA reward:     22.84 at episode   162 --freq:  0.675 --sigma:  83.04 --action:( 252, 748)--time:09-07_19h-05m-59s
+EMA reward:     23.19 at episode   163 --freq:  0.675 --sigma:  80.95 --action:( 269, 731)--time:09-07_19h-06m-03s
+EMA reward:     23.19 at episode   164 --freq:  0.675 --sigma:  52.41 --action:( 266, 734)--time:09-07_19h-06m-06s
+EMA reward:     23.40 at episode   165 --freq:  0.675 --sigma:  95.69 --action:( 266, 734)--time:09-07_19h-06m-10s
+EMA reward:     23.44 at episode   166 --freq:  0.675 --sigma:  56.42 --action:( 250, 750)--time:09-07_19h-06m-13s
+EMA reward:     23.40 at episode   167 --freq:  0.675 --sigma:  36.96 --action:( 253, 747)--time:09-07_19h-06m-17s
+EMA reward:     23.92 at episode   168 --freq:  0.675 --sigma: 104.02 --action:( 282, 718)--time:09-07_19h-06m-20s
+EMA reward:     24.02 at episode   169 --freq:  0.675 --sigma:  80.46 --action:( 266, 734)--time:09-07_19h-06m-24s
+EMA reward:     24.29 at episode   170 --freq:  0.675 --sigma: 105.52 --action:( 273, 727)--time:09-07_19h-06m-28s
+EMA reward:     24.24 at episode   171 --freq:  0.675 --sigma:  44.08 --action:( 294, 706)--time:09-07_19h-06m-32s
+EMA reward:     24.24 at episode   172 --freq:  0.675 --sigma:  61.56 --action:( 286, 714)--time:09-07_19h-06m-35s
+EMA reward:     24.30 at episode   173 --freq:  0.675 --sigma:  63.11 --action:( 256, 744)--time:09-07_19h-06m-39s
+EMA reward:     24.29 at episode   174 --freq:  0.675 --sigma:  61.40 --action:( 269, 731)--time:09-07_19h-06m-42s
+EMA reward:     24.32 at episode   175 --freq:  0.675 --sigma:  73.27 --action:( 282, 718)--time:09-07_19h-06m-46s
+EMA reward:     24.40 at episode   176 --freq:  0.675 --sigma:  60.96 --action:( 263, 737)--time:09-07_19h-06m-49s
+EMA reward:     24.22 at episode   177 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-06m-53s
+EMA reward:     24.05 at episode   178 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-06m-56s
+EMA reward:     23.88 at episode   179 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-01s
+EMA reward:     23.71 at episode   180 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-04s
+EMA reward:     23.54 at episode   181 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-08s
+EMA reward:     23.38 at episode   182 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-11s
+EMA reward:     23.21 at episode   183 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-15s
+EMA reward:     23.05 at episode   184 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-19s
+EMA reward:     22.89 at episode   185 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-22s
+EMA reward:     22.73 at episode   186 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-26s
+EMA reward:     22.57 at episode   187 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-29s
+EMA reward:     22.41 at episode   188 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-34s
+EMA reward:     22.26 at episode   189 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-37s
+EMA reward:     22.10 at episode   190 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-41s
+EMA reward:     21.95 at episode   191 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-45s
+EMA reward:     21.80 at episode   192 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-48s
+EMA reward:     21.65 at episode   193 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-52s
+EMA reward:     21.50 at episode   194 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-07m-56s
+EMA reward:     21.36 at episode   195 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-00s
+EMA reward:     21.21 at episode   196 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-04s
+EMA reward:     21.07 at episode   197 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-07s
+EMA reward:     20.93 at episode   198 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-12s
+EMA reward:     20.79 at episode   199 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-16s
+EMA reward:     20.65 at episode   200 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-19s
+EMA reward:     20.51 at episode   201 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-24s
+EMA reward:     20.38 at episode   202 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-27s
+EMA reward:     20.24 at episode   203 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-31s
+EMA reward:     20.11 at episode   204 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-35s
+EMA reward:     19.98 at episode   205 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-38s
+EMA reward:     19.85 at episode   206 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-42s
+EMA reward:     19.72 at episode   207 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-45s
+EMA reward:     19.59 at episode   208 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-50s
+EMA reward:     19.46 at episode   209 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-53s
+EMA reward:     19.34 at episode   210 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-08m-57s
+EMA reward:     19.21 at episode   211 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-00s
+EMA reward:     19.09 at episode   212 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-04s
+EMA reward:     18.97 at episode   213 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-08s
+EMA reward:     18.85 at episode   214 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-11s
+EMA reward:     18.73 at episode   215 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-15s
+EMA reward:     18.61 at episode   216 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-18s
+EMA reward:     18.49 at episode   217 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-22s
+EMA reward:     18.38 at episode   218 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-26s
+EMA reward:     18.26 at episode   219 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-30s
+EMA reward:     18.15 at episode   220 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-33s
+EMA reward:     18.04 at episode   221 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-37s
+EMA reward:     17.92 at episode   222 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-41s
+EMA reward:     17.81 at episode   223 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-44s
+EMA reward:     17.70 at episode   224 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-48s
+EMA reward:     17.60 at episode   225 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-51s
+EMA reward:     17.49 at episode   226 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-55s
+EMA reward:     17.38 at episode   227 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-09m-59s
+EMA reward:     17.28 at episode   228 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-03s
+EMA reward:     17.18 at episode   229 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-07s
+EMA reward:     17.07 at episode   230 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-11s
+EMA reward:     16.97 at episode   231 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-15s
+EMA reward:     16.87 at episode   232 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-18s
+EMA reward:     16.77 at episode   233 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-22s
+EMA reward:     16.67 at episode   234 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-26s
+EMA reward:     16.57 at episode   235 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-30s
+EMA reward:     16.48 at episode   236 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-34s
+EMA reward:     16.38 at episode   237 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-37s
+EMA reward:     16.29 at episode   238 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-41s
+EMA reward:     16.19 at episode   239 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-45s
+EMA reward:     16.10 at episode   240 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-49s
+EMA reward:     16.01 at episode   241 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-53s
+EMA reward:     15.92 at episode   242 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-10m-56s
+EMA reward:     15.83 at episode   243 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-00s
+EMA reward:     15.74 at episode   244 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-04s
+EMA reward:     15.65 at episode   245 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-07s
+EMA reward:     15.56 at episode   246 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-11s
+EMA reward:     15.48 at episode   247 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-14s
+EMA reward:     15.39 at episode   248 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-18s
+EMA reward:     15.31 at episode   249 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-22s
+EMA reward:     15.22 at episode   250 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-25s
+EMA reward:     15.14 at episode   251 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-29s
+EMA reward:     15.06 at episode   252 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-34s
+EMA reward:     14.98 at episode   253 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-37s
+EMA reward:     14.89 at episode   254 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-41s
+EMA reward:     14.81 at episode   255 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-45s
+EMA reward:     14.74 at episode   256 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-49s
+EMA reward:     14.66 at episode   257 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-53s
+EMA reward:     14.58 at episode   258 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-11m-56s
+EMA reward:     14.50 at episode   259 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-00s
+EMA reward:     14.43 at episode   260 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-04s
+EMA reward:     14.35 at episode   261 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-07s
+EMA reward:     14.28 at episode   262 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-11s
+EMA reward:     14.20 at episode   263 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-14s
+EMA reward:     14.13 at episode   264 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-19s
+EMA reward:     14.06 at episode   265 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-22s
+EMA reward:     13.99 at episode   266 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-26s
+EMA reward:     13.92 at episode   267 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-30s
+EMA reward:     13.85 at episode   268 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-33s
+EMA reward:     13.78 at episode   269 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-37s
+EMA reward:     13.71 at episode   270 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-41s
+EMA reward:     13.64 at episode   271 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-44s
+EMA reward:     13.57 at episode   272 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-48s
+EMA reward:     13.51 at episode   273 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-52s
+EMA reward:     13.44 at episode   274 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-55s
+EMA reward:     13.37 at episode   275 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-12m-59s
+EMA reward:     13.31 at episode   276 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-03s
+EMA reward:     13.25 at episode   277 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-07s
+EMA reward:     13.18 at episode   278 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-11s
+EMA reward:     13.12 at episode   279 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-14s
+EMA reward:     13.06 at episode   280 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-18s
+EMA reward:     13.00 at episode   281 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-22s
+EMA reward:     12.94 at episode   282 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-25s
+EMA reward:     12.88 at episode   283 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-29s
+EMA reward:     12.82 at episode   284 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-33s
+EMA reward:     12.76 at episode   285 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-37s
+EMA reward:     12.70 at episode   286 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-40s
+EMA reward:     12.64 at episode   287 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-44s
+EMA reward:     12.58 at episode   288 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-48s
+EMA reward:     12.53 at episode   289 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-51s
+EMA reward:     12.47 at episode   290 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-13m-55s
+EMA reward:     12.41 at episode   291 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-00s
+EMA reward:     12.36 at episode   292 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-03s
+EMA reward:     12.30 at episode   293 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-07s
+EMA reward:     12.25 at episode   294 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-10s
+EMA reward:     12.20 at episode   295 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-14s
+EMA reward:     12.14 at episode   296 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-18s
+EMA reward:     12.09 at episode   297 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-21s
+EMA reward:     12.04 at episode   298 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-25s
+EMA reward:     11.99 at episode   299 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-29s
+EMA reward:     11.94 at episode   300 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-32s
+EMA reward:     11.89 at episode   301 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-37s
+EMA reward:     11.84 at episode   302 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-40s
+EMA reward:     11.79 at episode   303 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-44s
+EMA reward:     11.74 at episode   304 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-47s
+EMA reward:     11.69 at episode   305 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-52s
+EMA reward:     11.64 at episode   306 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-14m-56s
+EMA reward:     11.60 at episode   307 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-00s
+EMA reward:     11.55 at episode   308 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-03s
+EMA reward:     11.50 at episode   309 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-07s
+EMA reward:     11.46 at episode   310 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-11s
+EMA reward:     11.41 at episode   311 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-15s
+EMA reward:     11.37 at episode   312 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-19s
+EMA reward:     11.32 at episode   313 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-22s
+EMA reward:     11.28 at episode   314 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-26s
+EMA reward:     11.23 at episode   315 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-30s
+EMA reward:     11.19 at episode   316 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-34s
+EMA reward:     11.15 at episode   317 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-37s
+EMA reward:     11.11 at episode   318 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-41s
+EMA reward:     11.06 at episode   319 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-46s
+EMA reward:     11.02 at episode   320 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-50s
+EMA reward:     10.98 at episode   321 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-53s
+EMA reward:     10.94 at episode   322 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-15m-57s
+EMA reward:     10.90 at episode   323 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-01s
+EMA reward:     10.86 at episode   324 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-04s
+EMA reward:     10.82 at episode   325 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-08s
+EMA reward:     10.78 at episode   326 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-12s
+EMA reward:     10.74 at episode   327 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-15s
+EMA reward:     10.70 at episode   328 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-19s
+EMA reward:     10.67 at episode   329 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-23s
+EMA reward:     10.63 at episode   330 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-27s
+EMA reward:     10.59 at episode   331 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-30s
+EMA reward:     10.55 at episode   332 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-34s
+EMA reward:     10.52 at episode   333 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-38s
+EMA reward:     10.48 at episode   334 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-41s
+EMA reward:     10.45 at episode   335 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-46s
+EMA reward:     10.41 at episode   336 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-50s
+EMA reward:     10.38 at episode   337 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-53s
+EMA reward:     10.34 at episode   338 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-16m-57s
+EMA reward:     10.31 at episode   339 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-00s
+EMA reward:     10.27 at episode   340 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-04s
+EMA reward:     10.24 at episode   341 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-07s
+EMA reward:     10.21 at episode   342 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-11s
+EMA reward:     10.17 at episode   343 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-15s
+EMA reward:     10.14 at episode   344 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-18s
+EMA reward:     10.11 at episode   345 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-22s
+EMA reward:     10.08 at episode   346 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-26s
+EMA reward:     10.04 at episode   347 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-29s
+EMA reward:     10.01 at episode   348 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-33s
+EMA reward:      9.98 at episode   349 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-36s
+EMA reward:      9.95 at episode   350 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-40s
+EMA reward:      9.92 at episode   351 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-45s
+EMA reward:      9.89 at episode   352 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-49s
+EMA reward:      9.86 at episode   353 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-53s
+EMA reward:      9.83 at episode   354 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-17m-56s
+EMA reward:      9.80 at episode   355 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-00s
+EMA reward:      9.77 at episode   356 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-04s
+EMA reward:      9.74 at episode   357 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-08s
+EMA reward:      9.72 at episode   358 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-12s
+EMA reward:      9.69 at episode   359 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-15s
+EMA reward:      9.66 at episode   360 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-19s
+EMA reward:      9.63 at episode   361 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-23s
+EMA reward:      9.61 at episode   362 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-27s
+EMA reward:      9.58 at episode   363 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-31s
+EMA reward:      9.55 at episode   364 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-34s
+EMA reward:      9.53 at episode   365 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-38s
+EMA reward:      9.50 at episode   366 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-42s
+EMA reward:      9.47 at episode   367 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-46s
+EMA reward:      9.45 at episode   368 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-51s
+EMA reward:      9.42 at episode   369 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-54s
+EMA reward:      9.40 at episode   370 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-18m-58s
+EMA reward:      9.37 at episode   371 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-02s
+EMA reward:      9.35 at episode   372 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-06s
+EMA reward:      9.32 at episode   373 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-10s
+EMA reward:      9.30 at episode   374 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-13s
+EMA reward:      9.28 at episode   375 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-17s
+EMA reward:      9.25 at episode   376 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-21s
+EMA reward:      9.23 at episode   377 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-25s
+EMA reward:      9.20 at episode   378 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-29s
+EMA reward:      9.18 at episode   379 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-32s
+EMA reward:      9.16 at episode   380 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-36s
+EMA reward:      9.14 at episode   381 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-40s
+EMA reward:      9.11 at episode   382 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-44s
+EMA reward:      9.09 at episode   383 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-47s
+EMA reward:      9.07 at episode   384 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-51s
+EMA reward:      9.05 at episode   385 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-19m-55s
+EMA reward:      9.03 at episode   386 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-00s
+EMA reward:      9.01 at episode   387 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-04s
+EMA reward:      8.99 at episode   388 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-07s
+EMA reward:      8.96 at episode   389 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-11s
+EMA reward:      8.94 at episode   390 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-15s
+EMA reward:      8.92 at episode   391 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-18s
+EMA reward:      8.90 at episode   392 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-22s
+EMA reward:      8.88 at episode   393 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-26s
+EMA reward:      8.86 at episode   394 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-30s
+EMA reward:      8.84 at episode   395 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-34s
+EMA reward:      8.82 at episode   396 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-38s
+EMA reward:      8.81 at episode   397 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-42s
+EMA reward:      8.79 at episode   398 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-45s
+EMA reward:      8.77 at episode   399 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-49s
+EMA reward:      8.75 at episode   400 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-53s
+EMA reward:      8.73 at episode   401 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-20m-58s
+EMA reward:      8.71 at episode   402 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-02s
+EMA reward:      8.69 at episode   403 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-05s
+EMA reward:      8.68 at episode   404 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-09s
+EMA reward:      8.66 at episode   405 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-14s
+EMA reward:      8.64 at episode   406 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-18s
+EMA reward:      8.62 at episode   407 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-22s
+EMA reward:      8.61 at episode   408 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-25s
+EMA reward:      8.59 at episode   409 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-29s
+EMA reward:      8.57 at episode   410 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-33s
+EMA reward:      8.56 at episode   411 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-36s
+EMA reward:      8.54 at episode   412 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-40s
+EMA reward:      8.52 at episode   413 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-44s
+EMA reward:      8.51 at episode   414 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-47s
+EMA reward:      8.49 at episode   415 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-51s
+EMA reward:      8.48 at episode   416 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-55s
+EMA reward:      8.46 at episode   417 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-21m-59s
+EMA reward:      8.44 at episode   418 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-22m-03s
+EMA reward:      8.43 at episode   419 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-22m-07s
+EMA reward:      8.41 at episode   420 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-22m-10s
+EMA reward:      8.40 at episode   421 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-22m-14s
+EMA reward:      8.38 at episode   422 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-22m-18s
+EMA reward:      8.37 at episode   423 --freq:  0.000 --sigma: 176.97 --action:(1000,   0)--time:09-07_19h-22m-22s
