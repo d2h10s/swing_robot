@@ -1,6 +1,8 @@
 #include <DynamixelWorkbench.h>
+#include "LiquidCrystal_I2C.h"
 #include "JY901.h"
 DynamixelWorkbench wb;
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 //FOR CONSTANT VARIABLES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #define SAMPLING_TIME     25     // milli second
@@ -59,6 +61,7 @@ bool isOnline                     = false;
 void setup() {
   Serial.begin(SERIAL_BAUDRATE);
   Serial.setTimeout(1000);
+  lcd.begin();
   pinMode(INNER_LED, OUTPUT);
   ahrs_init();
   while (!motor_init());
@@ -84,6 +87,9 @@ void loop() {
       sprintf(tx_buf,"STX,ACQ,%f,%f,%d,%d!",
               ahrs_roll_angle, ahrs_roll_gyro, pos_buf[MX106_ID], vel_buf[MX106_ID]);
       Serial.print(tx_buf);
+      lcd.clear();
+      sprintf(tx_buf,"%8.2f, %8.2f", ahrs_roll_angle, ahrs_roll_gyro);
+      lcd.print(tx_buf);
       delay(1);
     }
     else{
@@ -106,7 +112,6 @@ int status(){
   while(Serial2.available()) JY901.CopeSerialData(Serial2.read());
   ahrs_roll_gyro = (float)JY901.stcGyro.w[0]/32768.*2000.;
   ahrs_roll_angle = (float)JY901.stcAngle.Angle[0]/32768*180;
-  
   return 1;
 }
 

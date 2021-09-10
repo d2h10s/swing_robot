@@ -26,7 +26,6 @@ class a2c_agent():
             self.LEARNING_RATE = lr
             self.EPSILON = 1e-3
             self.MAX_DONE = 20
-            self.NORM = 0.5
 
             self.num_episode = 1
             self.episode_reward = 0
@@ -140,10 +139,10 @@ class a2c_agent():
     def compute_loss(self, action_probs: tf.Tensor, values: tf.Tensor, returns: tf.Tensor) -> tf.Tensor:
         """Computes the combined actor-critic loss."""
 
-        advantage = returns - tf.stop_gradient(values) # 역전파 방지
+        advantage = returns - tf.stop_gradient(values)
 
         action_log_probs = tf.math.log(action_probs)
-        actor_loss = -tf.math.reduce_sum(action_log_probs * advantage)
+        actor_loss = -tf.math.reduce_sum(action_log_probs * advantage)/self.MAX_STEP # 역전파 방지
     
         critic_loss = self.huber_loss(values, returns) # for gradient clipping
         print('\ncritic loss is', critic_loss.numpy(), 'actor loss is', actor_loss.numpy(),end=' ')
@@ -176,9 +175,8 @@ class a2c_agent():
             state = self.env.step(action)
             th1, th2, vel1, vel2 = state
             #reward = -np.abs(np.cos(th1))
-            #reward = np.abs(np.sin(th1))
+            reward = np.abs(np.sin(th1))
             #reward = 1/np.abs(np.cos(th1)+0.1)-1/(1+0.1)
-            reward = -np.cos(th1*2)
             rewards = rewards.write(step-1, reward)
 
             print(f'\r--step {step:5d}  --reward {reward:8.02} --action {action} --action_probs [{a0:8.02} {a1:8.02}] --value [{v:8.02}]', end='')
@@ -215,7 +213,6 @@ class a2c_agent():
             self.loss = self.compute_loss(action_probs, values, returns)
             print('loss is', self.loss.numpy())
         grads = tape.gradient(self.loss, self.model.trainable_variables)
-        grads = [tf.clip_by_norm(g, self.NORM) for g in grads]
         self.optimizer.apply_gradients(zip(grads, self.model.trainable_variables))
         
         self.episode_reward = np.sum(rewards)
@@ -262,7 +259,7 @@ class a2c_agent():
     def write_logs(self):
         now_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
         now_time_str = dt.strftime(now_time, '%m-%d_%Hh-%Mm-%Ss')
-        log_text = f"reward: {self.episode_reward:9.2g} --episode: {self.num_episode:5} --max angle:{self.env.max_angle:5.2f} --freq:{self.most_freq:7.3f} --sigma:{self.sigma:7.2f} --action:({self.action_cnt[0]:4d},{self.action_cnt[1]:4d})--time:{now_time_str}"
+        log_text = f"EMA reward: {self.EMA_reward:9.2f} at episode {self.num_episode:5} --freq:{self.most_freq:7.3f} --sigma:{self.sigma:7.2f} --action:({self.action_cnt[0]:4d},{self.action_cnt[1]:4d})--time:{now_time_str}"
         print(log_text)
 
         with open(os.path.join(self.log_dir, 'terminal_log.txt'), 'a') as f:
@@ -273,7 +270,6 @@ class a2c_agent():
             tf.summary.scalar('reward of episodes', self.episode_reward, step=self.num_episode)
             tf.summary.scalar('frequency of episodes', self.most_freq, step=self.num_episode)
             tf.summary.scalar('sigma of episodes', self.sigma, step=self.num_episode)
-            tf.summary.scalar('max angle o episodes', self.env.max_angle, step=self.num_episode)
 
         with open(os.path.join(self.log_dir, 'episode-reward-loss-freq-sigma.txt'), 'a') as f:
             f.write(f'{self.num_episode} {self.episode_reward} {self.loss} {self.most_freq} {self.sigma}\n')
