@@ -1,0 +1,852 @@
+
+using acrobot-v2 environment which is d2h10s edition v3.0
+definition of reward : [reward = |sin(theta_1)|]
+termination condition: FFT
+
+
+reward:    -1e+03 --episode:     1 --max angle: 3.66 --freq:  0.000 --sigma:  53.28 --action:( 479, 521)--time:09-13_14h-19m-08s
+reward:    -1e+03 --episode:     2 --max angle: 4.70 --freq:  0.000 --sigma:  52.70 --action:( 481, 519)--time:09-13_14h-20m-37s
+reward:    -1e+03 --episode:     3 --max angle: 3.66 --freq:  0.000 --sigma:  55.45 --action:( 483, 517)--time:09-13_14h-22m-07s
+reward:    -1e+03 --episode:     4 --max angle: 3.55 --freq:  0.000 --sigma:  59.32 --action:( 485, 515)--time:09-13_14h-23m-35s
+reward:    -1e+03 --episode:     5 --max angle: 4.16 --freq:  0.000 --sigma:  53.44 --action:( 482, 518)--time:09-13_14h-25m-02s
+reward:    -1e+03 --episode:     6 --max angle: 3.34 --freq:  0.000 --sigma:  30.84 --action:( 482, 518)--time:09-13_14h-26m-31s
+reward:    -1e+03 --episode:     7 --max angle: 3.86 --freq:  0.000 --sigma:  53.01 --action:( 481, 519)--time:09-13_14h-27m-57s
+reward:    -1e+03 --episode:     8 --max angle: 4.11 --freq:  0.000 --sigma:  57.27 --action:( 481, 519)--time:09-13_14h-29m-25s
+reward:    -1e+03 --episode:     9 --max angle: 3.34 --freq:  0.000 --sigma:  26.57 --action:( 481, 519)--time:09-13_14h-30m-54s
+reward:    -1e+03 --episode:    10 --max angle: 4.14 --freq:  0.000 --sigma:  56.46 --action:( 479, 521)--time:09-13_14h-32m-20s
+reward:    -1e+03 --episode:    11 --max angle: 4.03 --freq:  0.000 --sigma:  60.85 --action:( 480, 520)--time:09-13_14h-33m-49s
+reward:    -1e+03 --episode:    12 --max angle: 3.87 --freq:  0.000 --sigma:  56.46 --action:( 483, 517)--time:09-13_14h-35m-18s
+reward:    -1e+03 --episode:    13 --max angle: 3.78 --freq:  0.000 --sigma:  53.48 --action:( 477, 523)--time:09-13_14h-36m-45s
+reward:    -1e+03 --episode:    14 --max angle: 3.99 --freq:  0.000 --sigma:  57.86 --action:( 485, 515)--time:09-13_14h-38m-13s
+reward:    -1e+03 --episode:    15 --max angle: 4.41 --freq:  0.000 --sigma:  58.97 --action:( 480, 520)--time:09-13_14h-39m-41s
+reward:    -1e+03 --episode:    16 --max angle: 4.12 --freq:  0.000 --sigma:  55.61 --action:( 478, 522)--time:09-13_14h-41m-11s
+reward:    -1e+03 --episode:    17 --max angle: 4.31 --freq:  0.000 --sigma:  57.21 --action:( 483, 517)--time:09-13_14h-42m-40s
+reward:    -1e+03 --episode:    18 --max angle: 4.19 --freq:  0.000 --sigma:  59.77 --action:( 482, 518)--time:09-13_14h-44m-08s
+reward:    -1e+03 --episode:    19 --max angle: 2.60 --freq:  2.025 --sigma:  20.02 --action:( 485, 515)--time:09-13_14h-45m-37s
+reward:    -1e+03 --episode:    20 --max angle: 3.84 --freq:  0.000 --sigma:  52.39 --action:( 472, 528)--time:09-13_14h-47m-02s
+reward:    -1e+03 --episode:    21 --max angle: 4.03 --freq:  0.000 --sigma:  57.90 --action:( 484, 516)--time:09-13_14h-48m-30s
+reward:    -1e+03 --episode:    22 --max angle: 3.67 --freq:  0.000 --sigma:  60.17 --action:( 484, 516)--time:09-13_14h-49m-59s
+reward:    -1e+03 --episode:    23 --max angle: 3.71 --freq:  0.000 --sigma:  50.88 --action:( 481, 519)--time:09-13_14h-51m-26s
+reward:    -1e+03 --episode:    24 --max angle: 3.61 --freq:  0.000 --sigma:  54.14 --action:( 479, 521)--time:09-13_14h-52m-54s
+reward:    -1e+03 --episode:    25 --max angle: 3.63 --freq:  0.000 --sigma:  60.66 --action:( 485, 515)--time:09-13_14h-54m-21s
+reward:    -1e+03 --episode:    26 --max angle: 3.80 --freq:  0.000 --sigma:  60.44 --action:( 483, 517)--time:09-13_14h-55m-49s
+reward:    -1e+03 --episode:    27 --max angle: 3.54 --freq:  0.000 --sigma:  57.49 --action:( 478, 522)--time:09-13_14h-57m-17s
+reward:    -1e+03 --episode:    28 --max angle: 3.78 --freq:  0.000 --sigma:  60.92 --action:( 483, 517)--time:09-13_14h-58m-44s
+reward:    -1e+03 --episode:    29 --max angle: 3.74 --freq:  0.000 --sigma:  57.62 --action:( 487, 513)--time:09-13_15h-00m-12s
+reward:    -1e+03 --episode:    30 --max angle: 4.17 --freq:  0.000 --sigma:  52.83 --action:( 473, 527)--time:09-13_15h-01m-40s
+reward:    -1e+03 --episode:    31 --max angle: 4.30 --freq:  0.000 --sigma:  55.76 --action:( 480, 520)--time:09-13_15h-03m-08s
+reward:    -1e+03 --episode:    32 --max angle: 3.54 --freq:  0.000 --sigma:  42.37 --action:( 480, 520)--time:09-13_15h-04m-37s
+reward:    -1e+03 --episode:    33 --max angle: 3.77 --freq:  0.000 --sigma:  57.77 --action:( 486, 514)--time:09-13_15h-06m-04s
+reward:    -1e+03 --episode:    34 --max angle: 3.86 --freq:  0.000 --sigma:  62.48 --action:( 483, 517)--time:09-13_15h-07m-32s
+reward:    -1e+03 --episode:    35 --max angle: 3.69 --freq:  0.000 --sigma:  56.16 --action:( 481, 519)--time:09-13_15h-09m-00s
+reward:    -1e+03 --episode:    36 --max angle: 3.71 --freq:  0.000 --sigma:  55.48 --action:( 485, 515)--time:09-13_15h-10m-27s
+reward:    -1e+03 --episode:    37 --max angle: 3.94 --freq:  0.000 --sigma:  58.65 --action:( 483, 517)--time:09-13_15h-11m-55s
+reward:    -1e+03 --episode:    38 --max angle: 3.77 --freq:  0.000 --sigma:  56.25 --action:( 477, 523)--time:09-13_15h-13m-23s
+reward:    -1e+03 --episode:    39 --max angle: 4.20 --freq:  0.000 --sigma:  53.27 --action:( 479, 521)--time:09-13_15h-14m-51s
+reward:    -1e+03 --episode:    40 --max angle: 4.08 --freq:  0.000 --sigma:  71.98 --action:( 485, 515)--time:09-13_15h-16m-20s
+reward:    -1e+03 --episode:    41 --max angle: 3.46 --freq:  0.000 --sigma:  50.85 --action:( 487, 513)--time:09-13_15h-17m-48s
+reward:    -1e+03 --episode:    42 --max angle: 3.69 --freq:  0.000 --sigma:  56.41 --action:( 481, 519)--time:09-13_15h-19m-16s
+reward:    -1e+03 --episode:    43 --max angle: 4.32 --freq:  0.000 --sigma:  57.15 --action:( 478, 522)--time:09-13_15h-20m-43s
+reward:    -1e+03 --episode:    44 --max angle: 4.00 --freq:  0.000 --sigma:  56.25 --action:( 489, 511)--time:09-13_15h-22m-12s
+reward:    -1e+03 --episode:    45 --max angle: 3.78 --freq:  0.000 --sigma:  54.79 --action:( 485, 515)--time:09-13_15h-23m-41s
+reward:    -1e+03 --episode:    46 --max angle: 3.61 --freq:  0.000 --sigma:  56.46 --action:( 486, 514)--time:09-13_15h-25m-08s
+reward:    -1e+03 --episode:    47 --max angle: 4.05 --freq:  0.000 --sigma:  56.60 --action:( 486, 514)--time:09-13_15h-26m-36s
+reward:    -1e+03 --episode:    48 --max angle: 4.22 --freq:  0.000 --sigma:  56.87 --action:( 483, 517)--time:09-13_15h-28m-05s
+reward:    -1e+03 --episode:    49 --max angle: 3.60 --freq:  0.000 --sigma:  47.83 --action:( 484, 516)--time:09-13_15h-29m-33s
+reward:    -1e+03 --episode:    50 --max angle: 4.08 --freq:  0.000 --sigma:  53.85 --action:( 482, 518)--time:09-13_15h-31m-01s
+reward:    -1e+03 --episode:    51 --max angle: 3.93 --freq:  0.000 --sigma:  59.36 --action:( 487, 513)--time:09-13_15h-32m-29s
+reward:    -1e+03 --episode:    52 --max angle: 3.99 --freq:  0.000 --sigma:  56.99 --action:( 491, 509)--time:09-13_15h-33m-57s
+reward:  -9.4e+02 --episode:    53 --max angle:173.04 --freq:  0.000 --sigma: 304.69 --action:( 370, 630)--time:09-13_15h-35m-26s
+reward:    -1e+03 --episode:    54 --max angle: 3.97 --freq:  0.000 --sigma:  49.60 --action:( 486, 514)--time:09-13_15h-42m-51s
+reward:    -1e+03 --episode:    55 --max angle: 3.55 --freq:  0.000 --sigma:  50.86 --action:( 494, 506)--time:09-13_15h-44m-20s
+reward:    -1e+03 --episode:    56 --max angle: 3.97 --freq:  0.000 --sigma:  62.00 --action:( 489, 511)--time:09-13_15h-45m-47s
+reward:    -1e+03 --episode:    57 --max angle: 3.11 --freq:  2.125 --sigma:  18.04 --action:( 480, 520)--time:09-13_15h-47m-16s
+reward:    -1e+03 --episode:    58 --max angle: 4.10 --freq:  0.000 --sigma:  58.46 --action:( 490, 510)--time:09-13_15h-48m-43s
+reward:    -1e+03 --episode:    59 --max angle: 3.59 --freq:  0.000 --sigma:  48.04 --action:( 489, 511)--time:09-13_15h-50m-11s
+reward:    -1e+03 --episode:    60 --max angle: 3.97 --freq:  0.000 --sigma:  58.19 --action:( 485, 515)--time:09-13_15h-51m-39s
+reward:    -1e+03 --episode:    61 --max angle: 4.24 --freq:  0.000 --sigma:  61.43 --action:( 488, 512)--time:09-13_15h-53m-08s
+reward:    -1e+03 --episode:    62 --max angle: 4.25 --freq:  0.000 --sigma:  60.63 --action:( 491, 509)--time:09-13_15h-54m-36s
+reward:    -1e+03 --episode:    63 --max angle: 3.67 --freq:  0.000 --sigma:  48.61 --action:( 489, 511)--time:09-13_15h-56m-05s
+reward:    -1e+03 --episode:    64 --max angle: 4.02 --freq:  0.000 --sigma:  53.93 --action:( 492, 508)--time:09-13_15h-57m-32s
+reward:    -1e+03 --episode:    65 --max angle: 3.50 --freq:  0.000 --sigma:  49.26 --action:( 487, 513)--time:09-13_15h-59m-01s
+reward:    -1e+03 --episode:    66 --max angle: 4.59 --freq:  0.000 --sigma:  53.49 --action:( 484, 516)--time:09-13_16h-00m-29s
+reward:    -1e+03 --episode:    67 --max angle: 3.83 --freq:  0.000 --sigma:  56.56 --action:( 492, 508)--time:09-13_16h-01m-58s
+reward:    -1e+03 --episode:    68 --max angle: 4.69 --freq:  0.000 --sigma:  52.03 --action:( 490, 510)--time:09-13_16h-03m-26s
+reward:    -1e+03 --episode:    69 --max angle: 3.65 --freq:  0.000 --sigma:  62.15 --action:( 490, 510)--time:09-13_16h-04m-56s
+reward:    -1e+03 --episode:    70 --max angle: 3.56 --freq:  0.000 --sigma:  56.77 --action:( 486, 514)--time:09-13_16h-06m-23s
+reward:    -1e+03 --episode:    71 --max angle: 3.92 --freq:  0.000 --sigma:  61.61 --action:( 497, 503)--time:09-13_16h-07m-51s
+reward:    -1e+03 --episode:    72 --max angle: 4.43 --freq:  0.000 --sigma:  52.33 --action:( 494, 506)--time:09-13_16h-09m-18s
+reward:    -1e+03 --episode:    73 --max angle: 3.77 --freq:  0.000 --sigma:  65.46 --action:( 491, 509)--time:09-13_16h-10m-48s
+reward:    -1e+03 --episode:    74 --max angle: 3.78 --freq:  0.000 --sigma:  61.60 --action:( 485, 515)--time:09-13_16h-12m-16s
+reward:    -1e+03 --episode:    75 --max angle: 4.39 --freq:  0.000 --sigma:  56.08 --action:( 492, 508)--time:09-13_16h-13m-43s
+reward:    -1e+03 --episode:    76 --max angle: 4.44 --freq:  0.000 --sigma:  58.90 --action:( 491, 509)--time:09-13_16h-15m-12s
+reward:    -1e+03 --episode:    77 --max angle: 3.26 --freq:  0.925 --sigma:  16.88 --action:( 492, 508)--time:09-13_16h-16m-42s
+reward:    -1e+03 --episode:    78 --max angle: 4.65 --freq:  0.000 --sigma:  57.83 --action:( 496, 504)--time:09-13_16h-18m-08s
+reward:    -1e+03 --episode:    79 --max angle: 3.69 --freq:  0.000 --sigma:  57.93 --action:( 484, 516)--time:09-13_16h-19m-38s
+reward:    -1e+03 --episode:    80 --max angle: 4.06 --freq:  0.000 --sigma:  54.75 --action:( 491, 509)--time:09-13_16h-21m-05s
+reward:    -1e+03 --episode:    81 --max angle: 4.63 --freq:  0.000 --sigma:  53.10 --action:( 490, 510)--time:09-13_16h-22m-34s
+reward:    -1e+03 --episode:    82 --max angle: 3.26 --freq:  0.000 --sigma:  39.52 --action:( 495, 505)--time:09-13_16h-24m-04s
+reward:    -1e+03 --episode:    83 --max angle: 4.00 --freq:  0.000 --sigma:  59.69 --action:( 497, 503)--time:09-13_16h-25m-30s
+reward:    -1e+03 --episode:    84 --max angle: 4.16 --freq:  0.000 --sigma:  54.79 --action:( 493, 507)--time:09-13_16h-26m-59s
+reward:    -1e+03 --episode:    85 --max angle: 4.76 --freq:  0.000 --sigma:  51.56 --action:( 494, 506)--time:09-13_16h-28m-28s
+reward:    -1e+03 --episode:    86 --max angle: 2.93 --freq:  2.075 --sigma:  23.17 --action:( 493, 507)--time:09-13_16h-29m-57s
+reward:    -1e+03 --episode:    87 --max angle: 4.85 --freq:  0.000 --sigma:  52.74 --action:( 490, 510)--time:09-13_16h-31m-23s
+reward:    -1e+03 --episode:    88 --max angle: 3.35 --freq:  2.075 --sigma:  20.09 --action:( 492, 508)--time:09-13_16h-32m-52s
+reward:    -1e+03 --episode:    89 --max angle: 4.00 --freq:  0.000 --sigma:  55.53 --action:( 490, 510)--time:09-13_16h-34m-19s
+reward:    -1e+03 --episode:    90 --max angle: 3.96 --freq:  0.000 --sigma:  57.41 --action:( 487, 513)--time:09-13_16h-35m-48s
+reward:    -1e+03 --episode:    91 --max angle: 4.34 --freq:  0.000 --sigma:  62.55 --action:( 494, 506)--time:09-13_16h-37m-17s
+reward:    -1e+03 --episode:    92 --max angle: 3.68 --freq:  0.000 --sigma:  58.24 --action:( 493, 507)--time:09-13_16h-38m-45s
+reward:    -1e+03 --episode:    93 --max angle: 4.08 --freq:  0.000 --sigma:  61.45 --action:( 492, 508)--time:09-13_16h-40m-13s
+reward:    -1e+03 --episode:    94 --max angle: 4.22 --freq:  0.000 --sigma:  54.67 --action:( 486, 514)--time:09-13_16h-41m-41s
+reward:    -1e+03 --episode:    95 --max angle: 4.69 --freq:  0.000 --sigma:  52.91 --action:( 493, 507)--time:09-13_16h-43m-10s
+reward:  -9.9e+02 --episode:    96 --max angle: 5.97 --freq:  0.000 --sigma: 112.17 --action:( 493, 507)--time:09-13_16h-44m-40s
+reward:    -1e+03 --episode:    97 --max angle: 3.99 --freq:  0.000 --sigma:  57.83 --action:( 494, 506)--time:09-13_16h-46m-12s
+reward:    -1e+03 --episode:    98 --max angle: 3.84 --freq:  0.000 --sigma:  61.24 --action:( 488, 512)--time:09-13_16h-47m-41s
+reward:    -1e+03 --episode:    99 --max angle: 4.42 --freq:  0.000 --sigma:  59.50 --action:( 492, 508)--time:09-13_16h-49m-09s
+reward:    -1e+03 --episode:   100 --max angle: 4.23 --freq:  0.000 --sigma:  63.02 --action:( 495, 505)--time:09-13_16h-50m-37s
+reward:    -1e+03 --episode:   101 --max angle: 4.28 --freq:  0.000 --sigma:  53.25 --action:( 493, 507)--time:09-13_16h-52m-07s
+reward:    -1e+03 --episode:   102 --max angle: 4.94 --freq:  0.000 --sigma:  55.58 --action:( 490, 510)--time:09-13_16h-53m-36s
+reward:    -1e+03 --episode:   103 --max angle: 4.03 --freq:  0.000 --sigma:  58.29 --action:( 491, 509)--time:09-13_16h-55m-07s
+reward:    -1e+03 --episode:   104 --max angle: 3.88 --freq:  0.000 --sigma:  56.31 --action:( 492, 508)--time:09-13_16h-56m-35s
+reward:    -1e+03 --episode:   105 --max angle: 4.30 --freq:  0.000 --sigma:  58.96 --action:( 492, 508)--time:09-13_16h-58m-03s
+reward:    -1e+03 --episode:   106 --max angle: 6.39 --freq:  0.000 --sigma:  94.26 --action:( 484, 516)--time:09-13_16h-59m-31s
+reward:    -1e+03 --episode:   107 --max angle: 4.21 --freq:  0.000 --sigma:  56.31 --action:( 488, 512)--time:09-13_17h-01m-05s
+reward:    -1e+03 --episode:   108 --max angle: 3.73 --freq:  0.000 --sigma:  52.29 --action:( 488, 512)--time:09-13_17h-02m-34s
+reward:    -1e+03 --episode:   109 --max angle: 4.36 --freq:  0.000 --sigma:  62.11 --action:( 490, 510)--time:09-13_17h-04m-01s
+reward:    -1e+03 --episode:   110 --max angle: 4.32 --freq:  0.000 --sigma:  84.76 --action:( 491, 509)--time:09-13_17h-05m-30s
+reward:    -1e+03 --episode:   111 --max angle: 4.69 --freq:  0.000 --sigma:  52.52 --action:( 490, 510)--time:09-13_17h-06m-59s
+reward:    -1e+03 --episode:   112 --max angle: 3.77 --freq:  0.000 --sigma:  60.69 --action:( 489, 511)--time:09-13_17h-08m-28s
+reward:    -1e+03 --episode:   113 --max angle: 4.07 --freq:  0.000 --sigma:  56.17 --action:( 488, 512)--time:09-13_17h-09m-56s
+reward:    -1e+03 --episode:   114 --max angle: 4.66 --freq:  0.000 --sigma:  81.03 --action:( 492, 508)--time:09-13_17h-11m-24s
+reward:    -1e+03 --episode:   115 --max angle: 4.33 --freq:  0.000 --sigma:  61.14 --action:( 483, 517)--time:09-13_17h-12m-54s
+reward:    -1e+03 --episode:   116 --max angle: 4.74 --freq:  0.000 --sigma:  54.59 --action:( 490, 510)--time:09-13_17h-14m-23s
+reward:    -1e+03 --episode:   117 --max angle: 3.85 --freq:  0.000 --sigma:  58.57 --action:( 490, 510)--time:09-13_17h-15m-52s
+reward:    -1e+03 --episode:   118 --max angle: 4.15 --freq:  0.000 --sigma:  53.30 --action:( 491, 509)--time:09-13_17h-17m-20s
+reward:  -9.9e+02 --episode:   119 --max angle: 5.73 --freq:  0.000 --sigma: 131.14 --action:( 489, 511)--time:09-13_17h-18m-48s
+reward:    -1e+03 --episode:   120 --max angle: 3.52 --freq:  0.000 --sigma:  58.45 --action:( 489, 511)--time:09-13_17h-20m-20s
+reward:    -1e+03 --episode:   121 --max angle: 3.59 --freq:  0.000 --sigma:  60.16 --action:( 490, 510)--time:09-13_17h-21m-48s
+reward:    -1e+03 --episode:   122 --max angle: 3.78 --freq:  0.000 --sigma:  57.91 --action:( 494, 506)--time:09-13_17h-23m-15s
+reward:    -1e+03 --episode:   123 --max angle: 4.08 --freq:  0.000 --sigma:  58.35 --action:( 488, 512)--time:09-13_17h-24m-43s
+reward:    -1e+03 --episode:   124 --max angle: 4.08 --freq:  0.000 --sigma:  57.12 --action:( 489, 511)--time:09-13_17h-26m-12s
+reward:    -1e+03 --episode:   125 --max angle: 4.08 --freq:  0.000 --sigma:  58.36 --action:( 491, 509)--time:09-13_17h-27m-40s
+reward:    -1e+03 --episode:   126 --max angle: 3.96 --freq:  0.000 --sigma:  51.64 --action:( 486, 514)--time:09-13_17h-29m-09s
+reward:    -1e+03 --episode:   127 --max angle: 3.31 --freq:  0.000 --sigma:  34.33 --action:( 492, 508)--time:09-13_17h-30m-37s
+reward:    -1e+03 --episode:   128 --max angle: 4.13 --freq:  0.000 --sigma:  54.43 --action:( 494, 506)--time:09-13_17h-32m-04s
+reward:    -1e+03 --episode:   129 --max angle: 3.77 --freq:  0.000 --sigma:  52.40 --action:( 492, 508)--time:09-13_17h-33m-33s
+reward:    -1e+03 --episode:   130 --max angle: 4.26 --freq:  0.000 --sigma:  51.89 --action:( 488, 512)--time:09-13_17h-35m-00s
+reward:    -1e+03 --episode:   131 --max angle: 4.15 --freq:  0.000 --sigma:  52.08 --action:( 484, 516)--time:09-13_17h-36m-29s
+reward:    -1e+03 --episode:   132 --max angle: 5.26 --freq:  0.000 --sigma: 103.98 --action:( 486, 514)--time:09-13_17h-37m-58s
+reward:    -1e+03 --episode:   133 --max angle: 4.01 --freq:  0.000 --sigma:  58.27 --action:( 493, 507)--time:09-13_17h-39m-28s
+reward:    -1e+03 --episode:   134 --max angle: 3.89 --freq:  0.000 --sigma:  45.70 --action:( 490, 510)--time:09-13_17h-40m-57s
+reward:    -1e+03 --episode:   135 --max angle: 3.81 --freq:  0.000 --sigma:  52.28 --action:( 488, 512)--time:09-13_17h-42m-24s
+reward:    -1e+03 --episode:   136 --max angle: 4.27 --freq:  0.000 --sigma:  54.99 --action:( 492, 508)--time:09-13_17h-43m-52s
+reward:  -9.9e+02 --episode:   137 --max angle: 5.95 --freq:  0.000 --sigma: 116.99 --action:( 489, 511)--time:09-13_17h-45m-21s
+reward:    -1e+03 --episode:   138 --max angle: 3.97 --freq:  0.000 --sigma:  61.30 --action:( 494, 506)--time:09-13_17h-46m-53s
+reward:    -1e+03 --episode:   139 --max angle: 3.78 --freq:  0.000 --sigma:  23.17 --action:( 490, 510)--time:09-13_17h-48m-22s
+reward:    -1e+03 --episode:   140 --max angle: 4.10 --freq:  0.000 --sigma:  59.44 --action:( 492, 508)--time:09-13_17h-49m-49s
+reward:    -1e+03 --episode:   141 --max angle: 3.18 --freq:  0.000 --sigma:  27.65 --action:( 492, 508)--time:09-13_17h-51m-18s
+reward:    -1e+03 --episode:   142 --max angle: 4.82 --freq:  0.000 --sigma:  54.23 --action:( 487, 513)--time:09-13_17h-52m-45s
+reward:    -1e+03 --episode:   143 --max angle: 4.56 --freq:  0.000 --sigma:  54.69 --action:( 494, 506)--time:09-13_17h-54m-14s
+reward:    -1e+03 --episode:   144 --max angle: 4.53 --freq:  0.000 --sigma:  57.36 --action:( 489, 511)--time:09-13_17h-55m-44s
+reward:    -1e+03 --episode:   145 --max angle: 4.72 --freq:  0.000 --sigma:  53.34 --action:( 487, 513)--time:09-13_17h-57m-13s
+reward:    -1e+03 --episode:   146 --max angle: 3.86 --freq:  0.000 --sigma:  59.46 --action:( 496, 504)--time:09-13_17h-58m-43s
+reward:    -1e+03 --episode:   147 --max angle: 3.97 --freq:  0.000 --sigma:  59.45 --action:( 492, 508)--time:09-13_18h-00m-11s
+reward:    -1e+03 --episode:   148 --max angle: 4.79 --freq:  0.000 --sigma:  48.11 --action:( 484, 516)--time:09-13_18h-01m-39s
+reward:    -1e+03 --episode:   149 --max angle: 4.49 --freq:  0.000 --sigma:  55.95 --action:( 491, 509)--time:09-13_18h-03m-09s
+reward:    -1e+03 --episode:   150 --max angle: 4.03 --freq:  0.000 --sigma:  55.76 --action:( 491, 509)--time:09-13_18h-04m-38s
+reward:    -1e+03 --episode:   151 --max angle: 4.49 --freq:  0.000 --sigma:  56.69 --action:( 496, 504)--time:09-13_18h-06m-07s
+reward:    -1e+03 --episode:   152 --max angle: 4.21 --freq:  0.000 --sigma:  54.72 --action:( 495, 505)--time:09-13_18h-07m-37s
+reward:    -1e+03 --episode:   153 --max angle: 4.36 --freq:  0.000 --sigma:  57.48 --action:( 495, 505)--time:09-13_18h-09m-05s
+reward:    -1e+03 --episode:   154 --max angle: 4.09 --freq:  0.000 --sigma:  54.77 --action:( 491, 509)--time:09-13_18h-10m-34s
+reward:    -1e+03 --episode:   155 --max angle: 4.04 --freq:  0.000 --sigma:  50.73 --action:( 489, 511)--time:09-13_18h-12m-03s
+reward:    -1e+03 --episode:   156 --max angle: 4.32 --freq:  0.000 --sigma:  53.94 --action:( 493, 507)--time:09-13_18h-13m-31s
+reward:    -1e+03 --episode:   157 --max angle: 4.14 --freq:  0.000 --sigma:  38.51 --action:( 492, 508)--time:09-13_18h-15m-00s
+reward:    -1e+03 --episode:   158 --max angle: 3.55 --freq:  0.000 --sigma:  35.70 --action:( 496, 504)--time:09-13_18h-16m-29s
+reward:    -1e+03 --episode:   159 --max angle: 4.61 --freq:  0.000 --sigma:  51.63 --action:( 495, 505)--time:09-13_18h-17m-56s
+reward:    -1e+03 --episode:   160 --max angle: 5.34 --freq:  0.000 --sigma:  50.81 --action:( 495, 505)--time:09-13_18h-19m-26s
+reward:    -1e+03 --episode:   161 --max angle: 4.81 --freq:  0.000 --sigma:  52.43 --action:( 496, 504)--time:09-13_18h-20m-56s
+reward:    -1e+03 --episode:   162 --max angle: 3.85 --freq:  0.000 --sigma:  53.19 --action:( 494, 506)--time:09-13_18h-22m-26s
+reward:    -1e+03 --episode:   163 --max angle: 4.39 --freq:  0.000 --sigma:  54.04 --action:( 496, 504)--time:09-13_18h-23m-54s
+reward:    -1e+03 --episode:   164 --max angle: 3.99 --freq:  0.925 --sigma:  26.01 --action:( 494, 506)--time:09-13_18h-25m-22s
+reward:    -1e+03 --episode:   165 --max angle: 4.85 --freq:  0.000 --sigma:  54.02 --action:( 492, 508)--time:09-13_18h-26m-51s
+reward:    -1e+03 --episode:   166 --max angle: 4.08 --freq:  0.000 --sigma:  59.91 --action:( 494, 506)--time:09-13_18h-28m-20s
+reward:    -1e+03 --episode:   167 --max angle: 4.80 --freq:  0.000 --sigma:  74.57 --action:( 497, 503)--time:09-13_18h-29m-49s
+reward:    -1e+03 --episode:   168 --max angle: 5.49 --freq:  0.000 --sigma:  52.59 --action:( 495, 505)--time:09-13_18h-31m-19s
+reward:    -1e+03 --episode:   169 --max angle: 4.59 --freq:  0.000 --sigma:  51.38 --action:( 493, 507)--time:09-13_18h-32m-50s
+reward:    -1e+03 --episode:   170 --max angle: 5.11 --freq:  0.000 --sigma:  49.33 --action:( 495, 505)--time:09-13_18h-34m-20s
+reward:    -1e+03 --episode:   171 --max angle: 5.13 --freq:  0.000 --sigma:  53.01 --action:( 498, 502)--time:09-13_18h-35m-51s
+reward:    -1e+03 --episode:   172 --max angle: 4.70 --freq:  0.000 --sigma:  52.49 --action:( 495, 505)--time:09-13_18h-37m-21s
+reward:    -1e+03 --episode:   173 --max angle: 4.31 --freq:  0.000 --sigma:  55.44 --action:( 501, 499)--time:09-13_18h-38m-51s
+reward:    -1e+03 --episode:   174 --max angle: 5.29 --freq:  0.000 --sigma:  55.29 --action:( 494, 506)--time:09-13_18h-40m-20s
+reward:    -1e+03 --episode:   175 --max angle: 6.03 --freq:  0.000 --sigma:  48.96 --action:( 497, 503)--time:09-13_18h-41m-50s
+reward:    -1e+03 --episode:   176 --max angle: 5.80 --freq:  0.000 --sigma:  89.16 --action:( 496, 504)--time:09-13_18h-43m-23s
+reward:    -1e+03 --episode:   177 --max angle: 5.61 --freq:  0.000 --sigma:  57.08 --action:( 499, 501)--time:09-13_18h-44m-55s
+reward:    -1e+03 --episode:   178 --max angle: 5.14 --freq:  0.000 --sigma:  53.61 --action:( 496, 504)--time:09-13_18h-46m-26s
+reward:    -1e+03 --episode:   179 --max angle: 4.13 --freq:  0.000 --sigma:  60.25 --action:( 498, 502)--time:09-13_18h-47m-57s
+reward:    -1e+03 --episode:   180 --max angle: 4.52 --freq:  0.000 --sigma:  58.35 --action:( 496, 504)--time:09-13_18h-49m-26s
+reward:    -1e+03 --episode:   181 --max angle: 4.86 --freq:  0.000 --sigma:  55.58 --action:( 501, 499)--time:09-13_18h-50m-55s
+reward:    -1e+03 --episode:   182 --max angle: 4.33 --freq:  0.000 --sigma:  64.01 --action:( 500, 500)--time:09-13_18h-52m-25s
+reward:    -1e+03 --episode:   183 --max angle: 3.96 --freq:  0.000 --sigma:  25.57 --action:( 501, 499)--time:09-13_18h-53m-53s
+reward:    -1e+03 --episode:   184 --max angle: 4.70 --freq:  0.000 --sigma:  32.75 --action:( 499, 501)--time:09-13_18h-55m-22s
+reward:    -1e+03 --episode:   185 --max angle: 4.91 --freq:  0.000 --sigma:  57.67 --action:( 497, 503)--time:09-13_18h-56m-52s
+reward:    -1e+03 --episode:   186 --max angle: 4.37 --freq:  0.000 --sigma:  56.66 --action:( 495, 505)--time:09-13_18h-58m-22s
+reward:    -1e+03 --episode:   187 --max angle: 5.09 --freq:  0.000 --sigma:  53.59 --action:( 498, 502)--time:09-13_18h-59m-51s
+reward:    -1e+03 --episode:   188 --max angle: 5.36 --freq:  0.000 --sigma:  56.36 --action:( 502, 498)--time:09-13_19h-01m-22s
+reward:    -1e+03 --episode:   189 --max angle: 5.75 --freq:  0.000 --sigma:  52.61 --action:( 502, 498)--time:09-13_19h-02m-52s
+reward:    -1e+03 --episode:   190 --max angle: 5.67 --freq:  0.000 --sigma:  53.63 --action:( 496, 504)--time:09-13_19h-04m-24s
+reward:    -1e+03 --episode:   191 --max angle: 4.64 --freq:  0.000 --sigma:  56.18 --action:( 503, 497)--time:09-13_19h-05m-55s
+reward:    -1e+03 --episode:   192 --max angle: 4.47 --freq:  0.000 --sigma:  62.00 --action:( 501, 499)--time:09-13_19h-07m-25s
+reward:    -1e+03 --episode:   193 --max angle: 5.10 --freq:  0.000 --sigma:  58.27 --action:( 506, 494)--time:09-13_19h-08m-55s
+reward:    -1e+03 --episode:   194 --max angle: 4.37 --freq:  0.000 --sigma:  53.36 --action:( 500, 500)--time:09-13_19h-10m-25s
+reward:    -1e+03 --episode:   195 --max angle: 5.08 --freq:  0.000 --sigma:  53.25 --action:( 503, 497)--time:09-13_19h-11m-54s
+reward:    -1e+03 --episode:   196 --max angle: 4.89 --freq:  0.000 --sigma:  60.38 --action:( 503, 497)--time:09-13_19h-13m-24s
+reward:    -1e+03 --episode:   197 --max angle: 5.01 --freq:  0.000 --sigma:  53.47 --action:( 501, 499)--time:09-13_19h-14m-55s
+reward:    -1e+03 --episode:   198 --max angle: 4.73 --freq:  0.000 --sigma:  57.17 --action:( 497, 503)--time:09-13_19h-16m-26s
+reward:    -1e+03 --episode:   199 --max angle: 5.00 --freq:  0.000 --sigma:  56.30 --action:( 503, 497)--time:09-13_19h-17m-55s
+reward:    -1e+03 --episode:   200 --max angle: 4.58 --freq:  0.000 --sigma:  56.20 --action:( 501, 499)--time:09-13_19h-19m-26s
+reward:    -1e+03 --episode:   201 --max angle: 6.27 --freq:  0.000 --sigma:  49.43 --action:( 502, 498)--time:09-13_19h-20m-57s
+reward:    -1e+03 --episode:   202 --max angle: 4.40 --freq:  0.000 --sigma:  57.43 --action:( 498, 502)--time:09-13_19h-22m-30s
+reward:    -1e+03 --episode:   203 --max angle: 4.68 --freq:  0.000 --sigma:  55.42 --action:( 497, 503)--time:09-13_19h-24m-00s
+reward:    -1e+03 --episode:   204 --max angle: 4.24 --freq:  0.000 --sigma:  31.96 --action:( 499, 501)--time:09-13_19h-25m-29s
+reward:    -1e+03 --episode:   205 --max angle: 4.49 --freq:  0.000 --sigma:  58.34 --action:( 498, 502)--time:09-13_19h-26m-58s
+reward:    -1e+03 --episode:   206 --max angle: 4.71 --freq:  0.000 --sigma:  58.13 --action:( 500, 500)--time:09-13_19h-28m-28s
+reward:    -1e+03 --episode:   207 --max angle: 4.12 --freq:  0.000 --sigma:  29.44 --action:( 507, 493)--time:09-13_19h-29m-57s
+reward:    -1e+03 --episode:   208 --max angle: 5.08 --freq:  0.000 --sigma:  66.82 --action:( 498, 502)--time:09-13_19h-31m-26s
+reward:    -1e+03 --episode:   209 --max angle: 5.32 --freq:  0.000 --sigma:  53.36 --action:( 493, 507)--time:09-13_19h-32m-56s
+reward:    -1e+03 --episode:   210 --max angle: 5.91 --freq:  0.000 --sigma:  53.24 --action:( 503, 497)--time:09-13_19h-34m-27s
+reward:    -1e+03 --episode:   211 --max angle: 5.17 --freq:  0.000 --sigma:  55.89 --action:( 500, 500)--time:09-13_19h-36m-00s
+reward:    -1e+03 --episode:   212 --max angle: 4.49 --freq:  0.000 --sigma:  56.75 --action:( 500, 500)--time:09-13_19h-37m-30s
+reward:    -1e+03 --episode:   213 --max angle: 4.72 --freq:  0.000 --sigma:  69.18 --action:( 497, 503)--time:09-13_19h-39m-00s
+reward:    -1e+03 --episode:   214 --max angle: 4.91 --freq:  0.000 --sigma:  58.35 --action:( 502, 498)--time:09-13_19h-40m-30s
+reward:    -1e+03 --episode:   215 --max angle: 5.76 --freq:  0.000 --sigma:  54.26 --action:( 502, 498)--time:09-13_19h-42m-00s
+reward:    -1e+03 --episode:   216 --max angle: 4.88 --freq:  0.000 --sigma:  60.93 --action:( 504, 496)--time:09-13_19h-43m-32s
+reward:    -1e+03 --episode:   217 --max angle: 4.44 --freq:  0.000 --sigma:  56.99 --action:( 509, 491)--time:09-13_19h-45m-02s
+reward:    -1e+03 --episode:   218 --max angle: 5.91 --freq:  0.000 --sigma:  51.43 --action:( 508, 492)--time:09-13_19h-46m-31s
+reward:    -1e+03 --episode:   219 --max angle: 4.83 --freq:  0.000 --sigma:  61.08 --action:( 505, 495)--time:09-13_19h-48m-04s
+reward:    -1e+03 --episode:   220 --max angle: 5.10 --freq:  0.000 --sigma:  56.91 --action:( 505, 495)--time:09-13_19h-49m-34s
+reward:    -1e+03 --episode:   221 --max angle: 5.98 --freq:  0.000 --sigma:  48.73 --action:( 505, 495)--time:09-13_19h-51m-04s
+reward:  -9.8e+02 --episode:   222 --max angle: 7.93 --freq:  0.000 --sigma: 151.48 --action:( 500, 500)--time:09-13_19h-52m-37s
+reward:    -1e+03 --episode:   223 --max angle: 4.64 --freq:  0.000 --sigma:  60.09 --action:( 501, 499)--time:09-13_19h-54m-14s
+reward:    -1e+03 --episode:   224 --max angle: 4.19 --freq:  0.000 --sigma:  58.93 --action:( 506, 494)--time:09-13_19h-55m-43s
+reward:    -1e+03 --episode:   225 --max angle: 5.61 --freq:  0.000 --sigma:  52.17 --action:( 498, 502)--time:09-13_19h-57m-12s
+reward:    -1e+03 --episode:   226 --max angle: 5.82 --freq:  0.000 --sigma:  55.00 --action:( 501, 499)--time:09-13_19h-58m-44s
+reward:    -1e+03 --episode:   227 --max angle: 4.97 --freq:  0.000 --sigma:  62.02 --action:( 503, 497)--time:09-13_20h-00m-15s
+reward:    -1e+03 --episode:   228 --max angle: 4.30 --freq:  0.000 --sigma:  66.34 --action:( 500, 500)--time:09-13_20h-01m-46s
+reward:    -1e+03 --episode:   229 --max angle: 5.00 --freq:  0.000 --sigma:  58.10 --action:( 500, 500)--time:09-13_20h-03m-15s
+reward:    -1e+03 --episode:   230 --max angle: 5.30 --freq:  0.000 --sigma:  60.37 --action:( 502, 498)--time:09-13_20h-04m-45s
+reward:    -1e+03 --episode:   231 --max angle: 4.55 --freq:  0.000 --sigma:  60.39 --action:( 504, 496)--time:09-13_20h-06m-16s
+reward:    -1e+03 --episode:   232 --max angle: 5.32 --freq:  0.000 --sigma:  54.79 --action:( 500, 500)--time:09-13_20h-07m-46s
+reward:    -1e+03 --episode:   233 --max angle: 4.81 --freq:  0.000 --sigma:  59.82 --action:( 502, 498)--time:09-13_20h-09m-16s
+reward:    -1e+03 --episode:   234 --max angle: 6.47 --freq:  0.000 --sigma:  56.91 --action:( 500, 500)--time:09-13_20h-10m-46s
+reward:    -1e+03 --episode:   235 --max angle: 4.19 --freq:  0.000 --sigma:  37.17 --action:( 500, 500)--time:09-13_20h-12m-20s
+reward:    -1e+03 --episode:   236 --max angle: 3.86 --freq:  0.000 --sigma:  24.69 --action:( 505, 495)--time:09-13_20h-13m-48s
+reward:    -1e+03 --episode:   237 --max angle: 4.63 --freq:  0.000 --sigma:  56.32 --action:( 501, 499)--time:09-13_20h-15m-16s
+reward:    -1e+03 --episode:   238 --max angle: 5.18 --freq:  0.000 --sigma:  57.44 --action:( 505, 495)--time:09-13_20h-16m-46s
+reward:    -1e+03 --episode:   239 --max angle: 5.19 --freq:  0.000 --sigma:  58.58 --action:( 501, 499)--time:09-13_20h-18m-16s
+reward:    -1e+03 --episode:   240 --max angle: 6.00 --freq:  0.000 --sigma:  56.84 --action:( 502, 498)--time:09-13_20h-19m-47s
+reward:    -1e+03 --episode:   241 --max angle: 5.43 --freq:  0.000 --sigma:  56.77 --action:( 499, 501)--time:09-13_20h-21m-19s
+reward:    -1e+03 --episode:   242 --max angle: 5.05 --freq:  0.000 --sigma:  55.36 --action:( 502, 498)--time:09-13_20h-22m-51s
+reward:    -1e+03 --episode:   243 --max angle: 4.47 --freq:  0.000 --sigma:  62.27 --action:( 499, 501)--time:09-13_20h-24m-22s
+reward:    -1e+03 --episode:   244 --max angle: 4.72 --freq:  0.000 --sigma:  58.43 --action:( 504, 496)--time:09-13_20h-25m-51s
+reward:    -1e+03 --episode:   245 --max angle: 4.95 --freq:  0.000 --sigma:  80.06 --action:( 505, 495)--time:09-13_20h-27m-21s
+reward:    -1e+03 --episode:   246 --max angle: 5.34 --freq:  0.000 --sigma:  53.75 --action:( 501, 499)--time:09-13_20h-28m-52s
+reward:    -1e+03 --episode:   247 --max angle: 4.49 --freq:  0.000 --sigma:  53.66 --action:( 502, 498)--time:09-13_20h-30m-23s
+reward:    -1e+03 --episode:   248 --max angle: 5.47 --freq:  0.000 --sigma:  59.10 --action:( 501, 499)--time:09-13_20h-31m-53s
+reward:    -1e+03 --episode:   249 --max angle: 5.26 --freq:  0.000 --sigma:  53.03 --action:( 502, 498)--time:09-13_20h-33m-25s
+reward:    -1e+03 --episode:   250 --max angle: 4.67 --freq:  0.000 --sigma:  63.29 --action:( 503, 497)--time:09-13_20h-34m-55s
+reward:    -1e+03 --episode:   251 --max angle: 5.26 --freq:  0.000 --sigma:  58.09 --action:( 504, 496)--time:09-13_20h-36m-25s
+reward:    -1e+03 --episode:   252 --max angle: 5.08 --freq:  0.000 --sigma:  56.96 --action:( 507, 493)--time:09-13_20h-37m-56s
+reward:    -1e+03 --episode:   253 --max angle: 4.58 --freq:  0.000 --sigma:  57.41 --action:( 504, 496)--time:09-13_20h-39m-26s
+reward:    -1e+03 --episode:   254 --max angle: 5.42 --freq:  0.000 --sigma:  62.63 --action:( 503, 497)--time:09-13_20h-40m-56s
+reward:    -1e+03 --episode:   255 --max angle: 5.56 --freq:  0.000 --sigma:  57.34 --action:( 502, 498)--time:09-13_20h-42m-28s
+reward:    -1e+03 --episode:   256 --max angle: 5.63 --freq:  0.000 --sigma:  55.52 --action:( 504, 496)--time:09-13_20h-44m-00s
+reward:    -1e+03 --episode:   257 --max angle: 5.44 --freq:  0.000 --sigma:  62.92 --action:( 505, 495)--time:09-13_20h-45m-31s
+reward:    -1e+03 --episode:   258 --max angle: 5.55 --freq:  0.000 --sigma:  55.71 --action:( 503, 497)--time:09-13_20h-47m-03s
+reward:    -1e+03 --episode:   259 --max angle: 5.22 --freq:  0.000 --sigma:  55.19 --action:( 506, 494)--time:09-13_20h-48m-34s
+reward:    -1e+03 --episode:   260 --max angle: 5.14 --freq:  0.000 --sigma:  60.82 --action:( 509, 491)--time:09-13_20h-50m-05s
+reward:    -1e+03 --episode:   261 --max angle: 5.29 --freq:  0.000 --sigma:  59.39 --action:( 506, 494)--time:09-13_20h-51m-36s
+reward:    -1e+03 --episode:   262 --max angle: 5.50 --freq:  0.000 --sigma:  53.73 --action:( 500, 500)--time:09-13_20h-53m-07s
+reward:    -1e+03 --episode:   263 --max angle: 5.45 --freq:  0.000 --sigma:  56.73 --action:( 507, 493)--time:09-13_20h-54m-38s
+reward:    -1e+03 --episode:   264 --max angle: 5.55 --freq:  0.000 --sigma:  55.61 --action:( 506, 494)--time:09-13_20h-56m-10s
+reward:    -1e+03 --episode:   265 --max angle: 5.40 --freq:  0.000 --sigma:  55.39 --action:( 502, 498)--time:09-13_20h-57m-42s
+reward:    -1e+03 --episode:   266 --max angle: 5.43 --freq:  0.000 --sigma:  60.48 --action:( 506, 494)--time:09-13_20h-59m-13s
+reward:    -1e+03 --episode:   267 --max angle: 5.26 --freq:  0.000 --sigma:  56.45 --action:( 506, 494)--time:09-13_21h-00m-45s
+reward:    -1e+03 --episode:   268 --max angle: 4.63 --freq:  0.000 --sigma:  61.01 --action:( 505, 495)--time:09-13_21h-02m-16s
+reward:    -1e+03 --episode:   269 --max angle: 5.82 --freq:  0.000 --sigma:  56.15 --action:( 507, 493)--time:09-13_21h-03m-45s
+reward:    -1e+03 --episode:   270 --max angle: 6.10 --freq:  0.000 --sigma:  49.38 --action:( 502, 498)--time:09-13_21h-05m-17s
+reward:    -1e+03 --episode:   271 --max angle: 5.26 --freq:  0.000 --sigma:  55.44 --action:( 503, 497)--time:09-13_21h-06m-50s
+reward:    -1e+03 --episode:   272 --max angle: 4.48 --freq:  0.000 --sigma:  66.59 --action:( 502, 498)--time:09-13_21h-08m-20s
+reward:    -1e+03 --episode:   273 --max angle: 4.54 --freq:  0.000 --sigma:  34.20 --action:( 502, 498)--time:09-13_21h-09m-50s
+reward:    -1e+03 --episode:   274 --max angle: 4.25 --freq:  0.000 --sigma:  62.85 --action:( 508, 492)--time:09-13_21h-11m-20s
+reward:    -1e+03 --episode:   275 --max angle: 4.62 --freq:  0.000 --sigma:  51.47 --action:( 503, 497)--time:09-13_21h-12m-48s
+reward:    -1e+03 --episode:   276 --max angle: 5.48 --freq:  0.000 --sigma:  54.68 --action:( 505, 495)--time:09-13_21h-14m-18s
+reward:    -1e+03 --episode:   277 --max angle: 4.74 --freq:  0.000 --sigma:  59.89 --action:( 506, 494)--time:09-13_21h-15m-50s
+reward:    -1e+03 --episode:   278 --max angle: 6.02 --freq:  0.000 --sigma:  56.76 --action:( 508, 492)--time:09-13_21h-17m-19s
+reward:    -1e+03 --episode:   279 --max angle: 5.70 --freq:  0.000 --sigma:  54.23 --action:( 507, 493)--time:09-13_21h-18m-52s
+reward:    -1e+03 --episode:   280 --max angle: 5.37 --freq:  0.000 --sigma:  54.92 --action:( 503, 497)--time:09-13_21h-20m-24s
+reward:    -1e+03 --episode:   281 --max angle: 4.66 --freq:  0.000 --sigma:  62.98 --action:( 509, 491)--time:09-13_21h-21m-55s
+reward:    -1e+03 --episode:   282 --max angle: 5.34 --freq:  0.000 --sigma:  53.55 --action:( 504, 496)--time:09-13_21h-23m-25s
+reward:    -1e+03 --episode:   283 --max angle: 5.86 --freq:  0.000 --sigma:  58.21 --action:( 500, 500)--time:09-13_21h-24m-56s
+reward:    -1e+03 --episode:   284 --max angle: 5.47 --freq:  0.000 --sigma:  57.43 --action:( 506, 494)--time:09-13_21h-26m-28s
+reward:    -1e+03 --episode:   285 --max angle: 4.99 --freq:  0.000 --sigma:  56.45 --action:( 502, 498)--time:09-13_21h-28m-00s
+reward:    -1e+03 --episode:   286 --max angle: 5.41 --freq:  0.000 --sigma:  56.09 --action:( 501, 499)--time:09-13_21h-29m-31s
+reward:    -1e+03 --episode:   287 --max angle: 6.34 --freq:  0.000 --sigma:  55.25 --action:( 506, 494)--time:09-13_21h-31m-02s
+reward:    -1e+03 --episode:   288 --max angle: 6.43 --freq:  0.000 --sigma:  54.53 --action:( 505, 495)--time:09-13_21h-32m-36s
+reward:    -1e+03 --episode:   289 --max angle: 7.40 --freq:  0.000 --sigma:  49.79 --action:( 507, 493)--time:09-13_21h-34m-10s
+reward:    -1e+03 --episode:   290 --max angle: 5.03 --freq:  0.000 --sigma:  60.16 --action:( 499, 501)--time:09-13_21h-35m-45s
+reward:    -1e+03 --episode:   291 --max angle: 4.67 --freq:  0.000 --sigma:  57.50 --action:( 504, 496)--time:09-13_21h-37m-16s
+reward:    -1e+03 --episode:   292 --max angle: 5.61 --freq:  0.000 --sigma:  58.48 --action:( 504, 496)--time:09-13_21h-38m-46s
+reward:    -1e+03 --episode:   293 --max angle: 6.03 --freq:  0.000 --sigma:  58.05 --action:( 506, 494)--time:09-13_21h-40m-17s
+reward:    -1e+03 --episode:   294 --max angle: 5.87 --freq:  0.000 --sigma:  54.69 --action:( 499, 501)--time:09-13_21h-41m-50s
+reward:    -1e+03 --episode:   295 --max angle: 5.35 --freq:  0.000 --sigma:  61.06 --action:( 504, 496)--time:09-13_21h-43m-22s
+reward:    -1e+03 --episode:   296 --max angle: 5.00 --freq:  0.000 --sigma:  60.41 --action:( 501, 499)--time:09-13_21h-44m-52s
+reward:    -1e+03 --episode:   297 --max angle: 5.25 --freq:  0.000 --sigma:  53.82 --action:( 502, 498)--time:09-13_21h-46m-23s
+reward:    -1e+03 --episode:   298 --max angle: 5.03 --freq:  0.000 --sigma:  60.29 --action:( 504, 496)--time:09-13_21h-47m-54s
+reward:    -1e+03 --episode:   299 --max angle: 4.90 --freq:  0.000 --sigma:  54.64 --action:( 507, 493)--time:09-13_21h-49m-24s
+reward:    -1e+03 --episode:   300 --max angle: 5.44 --freq:  0.000 --sigma:  66.05 --action:( 509, 491)--time:09-13_21h-50m-55s
+reward:    -1e+03 --episode:   301 --max angle: 4.30 --freq:  0.000 --sigma:  58.65 --action:( 504, 496)--time:09-13_21h-52m-28s
+reward:    -1e+03 --episode:   302 --max angle: 4.93 --freq:  0.000 --sigma:  61.58 --action:( 507, 493)--time:09-13_21h-53m-57s
+reward:    -1e+03 --episode:   303 --max angle: 5.28 --freq:  0.000 --sigma:  53.68 --action:( 503, 497)--time:09-13_21h-55m-27s
+reward:    -1e+03 --episode:   304 --max angle: 5.32 --freq:  0.000 --sigma:  57.31 --action:( 505, 495)--time:09-13_21h-56m-58s
+reward:    -1e+03 --episode:   305 --max angle: 4.72 --freq:  0.000 --sigma:  58.48 --action:( 508, 492)--time:09-13_21h-58m-29s
+reward:    -1e+03 --episode:   306 --max angle: 5.12 --freq:  0.000 --sigma:  60.86 --action:( 510, 490)--time:09-13_21h-59m-58s
+reward:    -1e+03 --episode:   307 --max angle: 7.31 --freq:  0.000 --sigma:  51.18 --action:( 508, 492)--time:09-13_22h-01m-29s
+reward:    -1e+03 --episode:   308 --max angle: 6.25 --freq:  0.000 --sigma:  56.69 --action:( 505, 495)--time:09-13_22h-03m-05s
+reward:    -1e+03 --episode:   309 --max angle: 5.68 --freq:  0.000 --sigma:  53.98 --action:( 505, 495)--time:09-13_22h-04m-37s
+reward:    -1e+03 --episode:   310 --max angle: 4.66 --freq:  0.000 --sigma:  60.00 --action:( 504, 496)--time:09-13_22h-06m-09s
+reward:    -1e+03 --episode:   311 --max angle: 5.15 --freq:  0.000 --sigma:  57.69 --action:( 503, 497)--time:09-13_22h-07m-39s
+reward:    -1e+03 --episode:   312 --max angle: 5.04 --freq:  0.000 --sigma:  59.53 --action:( 504, 496)--time:09-13_22h-09m-09s
+reward:    -1e+03 --episode:   313 --max angle: 5.23 --freq:  0.000 --sigma:  59.27 --action:( 507, 493)--time:09-13_22h-10m-40s
+reward:    -1e+03 --episode:   314 --max angle: 5.61 --freq:  0.000 --sigma:  56.22 --action:( 506, 494)--time:09-13_22h-12m-11s
+reward:    -1e+03 --episode:   315 --max angle: 6.02 --freq:  0.000 --sigma:  53.21 --action:( 507, 493)--time:09-13_22h-13m-42s
+reward:    -1e+03 --episode:   316 --max angle: 5.64 --freq:  0.000 --sigma:  62.48 --action:( 508, 492)--time:09-13_22h-15m-15s
+reward:    -1e+03 --episode:   317 --max angle: 5.62 --freq:  0.000 --sigma:  56.49 --action:( 503, 497)--time:09-13_22h-16m-47s
+reward:    -1e+03 --episode:   318 --max angle: 4.58 --freq:  0.000 --sigma:  55.19 --action:( 503, 497)--time:09-13_22h-18m-18s
+reward:  -9.9e+02 --episode:   319 --max angle: 7.26 --freq:  0.000 --sigma: 142.03 --action:( 506, 494)--time:09-13_22h-19m-48s
+reward:    -1e+03 --episode:   320 --max angle: 4.78 --freq:  0.000 --sigma:  60.24 --action:( 506, 494)--time:09-13_22h-21m-23s
+reward:    -1e+03 --episode:   321 --max angle: 5.81 --freq:  0.000 --sigma:  89.45 --action:( 505, 495)--time:09-13_22h-22m-52s
+reward:    -1e+03 --episode:   322 --max angle: 6.58 --freq:  0.000 --sigma:  55.39 --action:( 504, 496)--time:09-13_22h-24m-24s
+reward:    -1e+03 --episode:   323 --max angle: 5.89 --freq:  0.000 --sigma:  81.28 --action:( 500, 500)--time:09-13_22h-25m-58s
+reward:    -1e+03 --episode:   324 --max angle: 3.72 --freq:  1.850 --sigma:  28.74 --action:( 501, 499)--time:09-13_22h-27m-30s
+reward:    -1e+03 --episode:   325 --max angle: 4.38 --freq:  0.000 --sigma:  65.18 --action:( 502, 498)--time:09-13_22h-28m-58s
+reward:    -1e+03 --episode:   326 --max angle: 4.80 --freq:  0.000 --sigma:  61.47 --action:( 506, 494)--time:09-13_22h-30m-27s
+reward:    -1e+03 --episode:   327 --max angle: 5.17 --freq:  0.000 --sigma:  36.16 --action:( 499, 501)--time:09-13_22h-31m-56s
+reward:    -1e+03 --episode:   328 --max angle: 4.83 --freq:  0.000 --sigma:  59.07 --action:( 504, 496)--time:09-13_22h-33m-27s
+reward:    -1e+03 --episode:   329 --max angle: 4.17 --freq:  0.000 --sigma:  65.10 --action:( 508, 492)--time:09-13_22h-34m-56s
+reward:    -1e+03 --episode:   330 --max angle: 4.92 --freq:  0.000 --sigma:  64.69 --action:( 506, 494)--time:09-13_22h-36m-25s
+reward:    -1e+03 --episode:   331 --max angle: 5.25 --freq:  0.000 --sigma:  61.21 --action:( 502, 498)--time:09-13_22h-37m-56s
+reward:    -1e+03 --episode:   332 --max angle: 4.81 --freq:  0.000 --sigma:  60.67 --action:( 498, 502)--time:09-13_22h-39m-26s
+reward:  -9.9e+02 --episode:   333 --max angle: 6.97 --freq:  0.000 --sigma: 117.98 --action:( 502, 498)--time:09-13_22h-40m-56s
+reward:    -1e+03 --episode:   334 --max angle: 5.08 --freq:  0.000 --sigma:  59.58 --action:( 504, 496)--time:09-13_22h-42m-31s
+reward:    -1e+03 --episode:   335 --max angle: 5.21 --freq:  0.000 --sigma:  55.99 --action:( 510, 490)--time:09-13_22h-44m-01s
+reward:    -1e+03 --episode:   336 --max angle: 5.57 --freq:  0.000 --sigma:  54.82 --action:( 503, 497)--time:09-13_22h-45m-32s
+reward:    -1e+03 --episode:   337 --max angle: 4.82 --freq:  0.000 --sigma:  62.25 --action:( 501, 499)--time:09-13_22h-47m-04s
+reward:    -1e+03 --episode:   338 --max angle: 4.28 --freq:  0.000 --sigma:  65.00 --action:( 506, 494)--time:09-13_22h-48m-33s
+reward:    -1e+03 --episode:   339 --max angle: 5.39 --freq:  0.000 --sigma:  56.41 --action:( 501, 499)--time:09-13_22h-50m-02s
+reward:    -1e+03 --episode:   340 --max angle: 5.99 --freq:  0.000 --sigma:  60.61 --action:( 505, 495)--time:09-13_22h-51m-34s
+reward:    -1e+03 --episode:   341 --max angle: 4.42 --freq:  0.000 --sigma:  58.82 --action:( 505, 495)--time:09-13_22h-53m-06s
+reward:    -1e+03 --episode:   342 --max angle: 5.76 --freq:  0.000 --sigma:  56.67 --action:( 507, 493)--time:09-13_22h-54m-36s
+reward:    -1e+03 --episode:   343 --max angle: 5.21 --freq:  0.000 --sigma:  63.85 --action:( 500, 500)--time:09-13_22h-56m-08s
+reward:    -1e+03 --episode:   344 --max angle: 6.30 --freq:  0.000 --sigma:  56.12 --action:( 509, 491)--time:09-13_22h-57m-38s
+reward:    -1e+03 --episode:   345 --max angle: 4.87 --freq:  0.000 --sigma:  62.41 --action:( 509, 491)--time:09-13_22h-59m-11s
+reward:    -1e+03 --episode:   346 --max angle: 4.41 --freq:  0.000 --sigma:  59.67 --action:( 509, 491)--time:09-13_23h-00m-41s
+reward:    -1e+03 --episode:   347 --max angle: 5.38 --freq:  0.000 --sigma:  63.32 --action:( 508, 492)--time:09-13_23h-02m-09s
+reward:    -1e+03 --episode:   348 --max angle: 6.08 --freq:  0.000 --sigma:  53.61 --action:( 509, 491)--time:09-13_23h-03m-41s
+reward:    -1e+03 --episode:   349 --max angle: 6.44 --freq:  0.000 --sigma:  60.32 --action:( 502, 498)--time:09-13_23h-05m-13s
+reward:    -1e+03 --episode:   350 --max angle: 7.45 --freq:  0.000 --sigma:  52.35 --action:( 512, 488)--time:09-13_23h-06m-47s
+reward:    -1e+03 --episode:   351 --max angle: 6.70 --freq:  0.000 --sigma:  61.16 --action:( 509, 491)--time:09-13_23h-08m-23s
+reward:    -1e+03 --episode:   352 --max angle: 6.62 --freq:  0.000 --sigma:  57.32 --action:( 509, 491)--time:09-13_23h-09m-56s
+reward:    -1e+03 --episode:   353 --max angle: 5.47 --freq:  0.000 --sigma:  51.15 --action:( 510, 490)--time:09-13_23h-11m-30s
+reward:    -1e+03 --episode:   354 --max angle: 8.21 --freq:  0.000 --sigma:  55.71 --action:( 508, 492)--time:09-13_23h-13m-02s
+reward:    -1e+03 --episode:   355 --max angle: 6.67 --freq:  0.000 --sigma:  56.92 --action:( 510, 490)--time:09-13_23h-14m-39s
+reward:    -1e+03 --episode:   356 --max angle: 6.19 --freq:  0.000 --sigma:  55.87 --action:( 512, 488)--time:09-13_23h-16m-13s
+reward:    -1e+03 --episode:   357 --max angle: 7.81 --freq:  0.000 --sigma:  52.57 --action:( 508, 492)--time:09-13_23h-17m-45s
+reward:  -9.9e+02 --episode:   358 --max angle: 7.50 --freq:  0.000 --sigma:  51.97 --action:( 508, 492)--time:09-13_23h-19m-22s
+reward:    -1e+03 --episode:   359 --max angle: 5.99 --freq:  0.000 --sigma:  60.82 --action:( 512, 488)--time:09-13_23h-20m-58s
+reward:    -1e+03 --episode:   360 --max angle: 3.76 --freq:  1.600 --sigma:  13.35 --action:( 512, 488)--time:09-13_23h-22m-31s
+reward:    -1e+03 --episode:   361 --max angle: 6.75 --freq:  0.000 --sigma:  58.07 --action:( 510, 490)--time:09-13_23h-23m-58s
+reward:    -1e+03 --episode:   362 --max angle: 7.84 --freq:  0.000 --sigma:  61.00 --action:( 509, 491)--time:09-13_23h-25m-32s
+reward:    -1e+03 --episode:   363 --max angle: 7.16 --freq:  0.000 --sigma:  59.04 --action:( 506, 494)--time:09-13_23h-27m-08s
+reward:  -9.9e+02 --episode:   364 --max angle: 7.71 --freq:  0.000 --sigma:  54.85 --action:( 511, 489)--time:09-13_23h-28m-43s
+reward:  -9.9e+02 --episode:   365 --max angle:10.59 --freq:  0.000 --sigma:  49.43 --action:( 510, 490)--time:09-13_23h-30m-19s
+reward:    -1e+03 --episode:   366 --max angle: 6.60 --freq:  0.000 --sigma:  62.97 --action:( 516, 484)--time:09-13_23h-32m-01s
+reward:    -1e+03 --episode:   367 --max angle: 6.30 --freq:  0.000 --sigma:  39.25 --action:( 517, 483)--time:09-13_23h-33m-34s
+reward:  -9.9e+02 --episode:   368 --max angle:10.11 --freq:  0.000 --sigma:  55.24 --action:( 516, 484)--time:09-13_23h-35m-07s
+reward:  -9.9e+02 --episode:   369 --max angle: 7.54 --freq:  0.000 --sigma:  66.43 --action:( 513, 487)--time:09-13_23h-36m-47s
+reward:  -9.9e+02 --episode:   370 --max angle: 8.18 --freq:  0.000 --sigma:  61.33 --action:( 521, 479)--time:09-13_23h-38m-23s
+reward:    -1e+03 --episode:   371 --max angle: 7.23 --freq:  0.000 --sigma:  70.30 --action:( 524, 476)--time:09-13_23h-40m-00s
+reward:  -9.9e+02 --episode:   372 --max angle: 8.14 --freq:  0.000 --sigma:  66.06 --action:( 526, 474)--time:09-13_23h-41m-34s
+reward:  -9.9e+02 --episode:   373 --max angle: 8.74 --freq:  0.000 --sigma:  62.18 --action:( 526, 474)--time:09-13_23h-43m-11s
+reward:  -9.9e+02 --episode:   374 --max angle:10.62 --freq:  0.000 --sigma:  57.88 --action:( 537, 463)--time:09-13_23h-44m-50s
+reward:  -9.9e+02 --episode:   375 --max angle: 6.66 --freq:  0.000 --sigma:  73.89 --action:( 526, 474)--time:09-13_23h-46m-32s
+reward:  -9.9e+02 --episode:   376 --max angle: 7.56 --freq:  0.000 --sigma:  69.03 --action:( 531, 469)--time:09-13_23h-48m-06s
+reward:  -9.9e+02 --episode:   377 --max angle: 8.32 --freq:  0.000 --sigma:  67.34 --action:( 539, 461)--time:09-13_23h-49m-42s
+reward:    -1e+03 --episode:   378 --max angle: 7.01 --freq:  0.000 --sigma:  64.73 --action:( 543, 457)--time:09-13_23h-51m-19s
+reward:  -9.9e+02 --episode:   379 --max angle: 7.15 --freq:  0.000 --sigma:  70.26 --action:( 537, 463)--time:09-13_23h-52m-54s
+reward:  -9.9e+02 --episode:   380 --max angle: 7.97 --freq:  0.000 --sigma:  62.48 --action:( 538, 462)--time:09-13_23h-54m-29s
+reward:  -9.9e+02 --episode:   381 --max angle: 9.85 --freq:  0.000 --sigma:  92.58 --action:( 537, 463)--time:09-13_23h-56m-05s
+reward:    -1e+03 --episode:   382 --max angle: 6.01 --freq:  0.000 --sigma:  80.44 --action:( 531, 469)--time:09-13_23h-57m-46s
+reward:  -9.9e+02 --episode:   383 --max angle: 7.72 --freq:  0.000 --sigma:  66.47 --action:( 529, 471)--time:09-13_23h-59m-19s
+reward:  -9.9e+02 --episode:   384 --max angle: 8.61 --freq:  0.000 --sigma:  66.81 --action:( 552, 448)--time:09-14_00h-00m-54s
+reward:  -9.9e+02 --episode:   385 --max angle: 7.93 --freq:  0.000 --sigma:  65.63 --action:( 536, 464)--time:09-14_00h-02m-32s
+reward:  -9.9e+02 --episode:   386 --max angle: 8.74 --freq:  0.000 --sigma:  67.20 --action:( 524, 476)--time:09-14_00h-04m-09s
+reward:  -9.8e+02 --episode:   387 --max angle:10.66 --freq:  0.000 --sigma: 147.81 --action:( 540, 460)--time:09-14_00h-05m-46s
+reward:  -9.9e+02 --episode:   388 --max angle: 7.99 --freq:  0.000 --sigma:  67.19 --action:( 534, 466)--time:09-14_00h-07m-29s
+reward:  -9.9e+02 --episode:   389 --max angle: 6.66 --freq:  0.000 --sigma:  74.44 --action:( 536, 464)--time:09-14_00h-09m-06s
+reward:  -9.9e+02 --episode:   390 --max angle: 8.27 --freq:  0.000 --sigma:  68.68 --action:( 529, 471)--time:09-14_00h-10m-39s
+reward:  -9.9e+02 --episode:   391 --max angle: 7.34 --freq:  0.000 --sigma:  64.86 --action:( 533, 467)--time:09-14_00h-12m-17s
+reward:  -9.9e+02 --episode:   392 --max angle: 8.09 --freq:  0.000 --sigma:  67.46 --action:( 530, 470)--time:09-14_00h-13m-53s
+reward:  -9.9e+02 --episode:   393 --max angle:11.15 --freq:  0.000 --sigma:  60.12 --action:( 544, 456)--time:09-14_00h-15m-29s
+reward:  -9.9e+02 --episode:   394 --max angle: 7.76 --freq:  0.000 --sigma: 113.94 --action:( 532, 468)--time:09-14_00h-17m-13s
+reward:  -9.9e+02 --episode:   395 --max angle: 8.65 --freq:  0.000 --sigma:  64.55 --action:( 539, 461)--time:09-14_00h-18m-50s
+reward:  -9.9e+02 --episode:   396 --max angle: 8.99 --freq:  0.000 --sigma:  63.25 --action:( 543, 457)--time:09-14_00h-20m-28s
+reward:  -9.9e+02 --episode:   397 --max angle: 8.42 --freq:  0.000 --sigma:  72.26 --action:( 543, 457)--time:09-14_00h-22m-06s
+reward:  -9.9e+02 --episode:   398 --max angle: 8.92 --freq:  0.000 --sigma:  62.20 --action:( 549, 451)--time:09-14_00h-23m-44s
+reward:  -9.9e+02 --episode:   399 --max angle: 7.47 --freq:  0.000 --sigma:  71.83 --action:( 543, 457)--time:09-14_00h-25m-23s
+reward:  -9.9e+02 --episode:   400 --max angle: 9.69 --freq:  0.000 --sigma:  62.14 --action:( 565, 435)--time:09-14_00h-26m-59s
+reward:  -9.9e+02 --episode:   401 --max angle: 9.25 --freq:  0.000 --sigma:  67.15 --action:( 551, 449)--time:09-14_00h-28m-41s
+reward:  -9.9e+02 --episode:   402 --max angle: 7.48 --freq:  0.000 --sigma:  67.10 --action:( 565, 435)--time:09-14_00h-30m-20s
+reward:  -9.9e+02 --episode:   403 --max angle: 7.38 --freq:  0.000 --sigma:  73.93 --action:( 556, 444)--time:09-14_00h-31m-56s
+reward:  -9.9e+02 --episode:   404 --max angle: 7.65 --freq:  0.000 --sigma:  79.20 --action:( 560, 440)--time:09-14_00h-33m-32s
+reward:  -9.9e+02 --episode:   405 --max angle: 9.07 --freq:  0.000 --sigma:  64.87 --action:( 570, 430)--time:09-14_00h-35m-07s
+reward:  -9.9e+02 --episode:   406 --max angle: 6.42 --freq:  0.000 --sigma:  71.85 --action:( 563, 437)--time:09-14_00h-36m-46s
+reward:  -9.9e+02 --episode:   407 --max angle: 7.47 --freq:  0.000 --sigma:  68.83 --action:( 575, 425)--time:09-14_00h-38m-19s
+reward:  -9.9e+02 --episode:   408 --max angle: 8.00 --freq:  0.000 --sigma:  79.67 --action:( 579, 421)--time:09-14_00h-39m-55s
+reward:    -1e+03 --episode:   409 --max angle: 6.10 --freq:  0.925 --sigma:  31.78 --action:( 573, 427)--time:09-14_00h-41m-32s
+reward:  -9.8e+02 --episode:   410 --max angle:11.87 --freq:  0.000 --sigma: 121.67 --action:( 578, 422)--time:09-14_00h-43m-04s
+reward:  -9.9e+02 --episode:   411 --max angle: 6.93 --freq:  0.000 --sigma:  79.76 --action:( 565, 435)--time:09-14_00h-44m-49s
+reward:  -9.9e+02 --episode:   412 --max angle: 7.50 --freq:  0.000 --sigma:  64.36 --action:( 583, 417)--time:09-14_00h-46m-24s
+reward:  -9.9e+02 --episode:   413 --max angle: 9.51 --freq:  0.000 --sigma:  64.60 --action:( 583, 417)--time:09-14_00h-47m-59s
+reward:  -9.9e+02 --episode:   414 --max angle: 8.07 --freq:  0.000 --sigma:  77.04 --action:( 590, 410)--time:09-14_00h-49m-39s
+reward:  -9.9e+02 --episode:   415 --max angle: 7.56 --freq:  0.000 --sigma: 119.19 --action:( 574, 426)--time:09-14_00h-51m-16s
+reward:  -9.9e+02 --episode:   416 --max angle: 7.54 --freq:  0.000 --sigma:  76.04 --action:( 589, 411)--time:09-14_00h-52m-51s
+reward:    -1e+03 --episode:   417 --max angle: 6.05 --freq:  0.000 --sigma:  49.92 --action:( 589, 411)--time:09-14_00h-54m-27s
+reward:    -1e+03 --episode:   418 --max angle: 6.94 --freq:  0.000 --sigma:  37.07 --action:( 587, 413)--time:09-14_00h-55m-59s
+reward:  -9.9e+02 --episode:   419 --max angle: 8.04 --freq:  0.000 --sigma:  77.98 --action:( 594, 406)--time:09-14_00h-57m-34s
+reward:  -9.9e+02 --episode:   420 --max angle: 7.28 --freq:  0.000 --sigma:  81.61 --action:( 597, 403)--time:09-14_00h-59m-11s
+reward:  -9.9e+02 --episode:   421 --max angle: 7.52 --freq:  0.000 --sigma:  73.99 --action:( 599, 401)--time:09-14_01h-00m-46s
+reward:  -9.9e+02 --episode:   422 --max angle: 7.88 --freq:  0.000 --sigma:  82.05 --action:( 595, 405)--time:09-14_01h-02m-22s
+reward:  -9.9e+02 --episode:   423 --max angle: 6.73 --freq:  0.000 --sigma:  83.53 --action:( 591, 409)--time:09-14_01h-03m-59s
+reward:  -9.9e+02 --episode:   424 --max angle: 7.27 --freq:  0.000 --sigma:  82.79 --action:( 606, 394)--time:09-14_01h-05m-33s
+reward:  -9.9e+02 --episode:   425 --max angle: 7.58 --freq:  0.000 --sigma:  73.22 --action:( 604, 396)--time:09-14_01h-07m-08s
+reward:  -9.9e+02 --episode:   426 --max angle: 7.71 --freq:  0.000 --sigma:  74.69 --action:( 599, 401)--time:09-14_01h-08m-44s
+reward:  -9.9e+02 --episode:   427 --max angle: 8.25 --freq:  0.000 --sigma:  77.79 --action:( 615, 385)--time:09-14_01h-10m-19s
+reward:  -9.9e+02 --episode:   428 --max angle:10.26 --freq:  0.000 --sigma:  63.62 --action:( 616, 384)--time:09-14_01h-11m-57s
+reward:  -9.9e+02 --episode:   429 --max angle: 7.58 --freq:  0.000 --sigma:  77.37 --action:( 616, 384)--time:09-14_01h-13m-39s
+reward:  -9.9e+02 --episode:   430 --max angle: 9.37 --freq:  0.000 --sigma:  65.47 --action:( 625, 375)--time:09-14_01h-15m-15s
+reward:  -9.9e+02 --episode:   431 --max angle: 7.11 --freq:  0.000 --sigma:  91.72 --action:( 624, 376)--time:09-14_01h-16m-54s
+reward:  -9.9e+02 --episode:   432 --max angle: 6.82 --freq:  0.000 --sigma:  81.77 --action:( 624, 376)--time:09-14_01h-18m-29s
+reward:  -9.9e+02 --episode:   433 --max angle: 8.10 --freq:  0.000 --sigma:  73.53 --action:( 630, 370)--time:09-14_01h-20m-04s
+reward:  -9.9e+02 --episode:   434 --max angle: 8.36 --freq:  0.000 --sigma:  77.13 --action:( 619, 381)--time:09-14_01h-21m-41s
+reward:  -9.9e+02 --episode:   435 --max angle:11.27 --freq:  0.000 --sigma:  65.82 --action:( 620, 380)--time:09-14_01h-23m-18s
+reward:  -9.9e+02 --episode:   436 --max angle: 8.34 --freq:  0.000 --sigma:  73.47 --action:( 624, 376)--time:09-14_01h-25m-02s
+reward:  -9.9e+02 --episode:   437 --max angle: 7.67 --freq:  0.000 --sigma:  68.82 --action:( 621, 379)--time:09-14_01h-26m-40s
+reward:  -9.9e+02 --episode:   438 --max angle:10.22 --freq:  0.000 --sigma:  60.64 --action:( 632, 368)--time:09-14_01h-28m-15s
+reward:  -9.9e+02 --episode:   439 --max angle: 9.21 --freq:  0.000 --sigma:  74.25 --action:( 635, 365)--time:09-14_01h-29m-57s
+reward:  -9.9e+02 --episode:   440 --max angle: 8.15 --freq:  0.000 --sigma:  74.10 --action:( 636, 364)--time:09-14_01h-31m-36s
+reward:    -1e+03 --episode:   441 --max angle: 6.69 --freq:  0.000 --sigma:  58.23 --action:( 645, 355)--time:09-14_01h-33m-13s
+reward:  -9.9e+02 --episode:   442 --max angle: 9.92 --freq:  0.000 --sigma:  70.84 --action:( 643, 357)--time:09-14_01h-34m-47s
+reward:  -9.9e+02 --episode:   443 --max angle: 9.06 --freq:  0.000 --sigma:  76.92 --action:( 642, 358)--time:09-14_01h-36m-28s
+reward:  -9.9e+02 --episode:   444 --max angle: 8.91 --freq:  0.000 --sigma:  70.52 --action:( 642, 358)--time:09-14_01h-38m-06s
+reward:  -9.9e+02 --episode:   445 --max angle: 7.14 --freq:  0.000 --sigma:  84.61 --action:( 648, 352)--time:09-14_01h-39m-45s
+reward:  -9.9e+02 --episode:   446 --max angle:10.05 --freq:  0.000 --sigma:  60.77 --action:( 633, 367)--time:09-14_01h-41m-19s
+reward:  -9.9e+02 --episode:   447 --max angle: 7.75 --freq:  0.000 --sigma:  83.75 --action:( 642, 358)--time:09-14_01h-43m-00s
+reward:  -9.9e+02 --episode:   448 --max angle: 8.46 --freq:  0.000 --sigma:  76.23 --action:( 646, 354)--time:09-14_01h-44m-36s
+reward:  -9.9e+02 --episode:   449 --max angle:11.58 --freq:  0.000 --sigma:  63.93 --action:( 658, 342)--time:09-14_01h-46m-14s
+reward:  -9.9e+02 --episode:   450 --max angle: 9.85 --freq:  0.000 --sigma:  71.37 --action:( 660, 340)--time:09-14_01h-47m-58s
+reward:  -9.9e+02 --episode:   451 --max angle: 9.42 --freq:  0.000 --sigma:  73.74 --action:( 656, 344)--time:09-14_01h-49m-39s
+reward:  -9.9e+02 --episode:   452 --max angle: 8.29 --freq:  0.000 --sigma:  76.36 --action:( 657, 343)--time:09-14_01h-51m-19s
+reward:  -9.9e+02 --episode:   453 --max angle: 7.31 --freq:  0.000 --sigma:  87.58 --action:( 670, 330)--time:09-14_01h-52m-56s
+reward:  -9.9e+02 --episode:   454 --max angle: 9.84 --freq:  0.000 --sigma:  71.97 --action:( 671, 329)--time:09-14_01h-54m-32s
+reward:  -9.9e+02 --episode:   455 --max angle: 9.19 --freq:  0.000 --sigma:  86.22 --action:( 671, 329)--time:09-14_01h-56m-12s
+reward:  -9.9e+02 --episode:   456 --max angle: 8.57 --freq:  0.000 --sigma:  75.95 --action:( 672, 328)--time:09-14_01h-57m-51s
+reward:  -9.9e+02 --episode:   457 --max angle: 6.91 --freq:  0.000 --sigma:  83.80 --action:( 676, 324)--time:09-14_01h-59m-29s
+reward:  -9.9e+02 --episode:   458 --max angle:10.11 --freq:  0.000 --sigma:  70.98 --action:( 680, 320)--time:09-14_02h-01m-04s
+reward:  -9.9e+02 --episode:   459 --max angle:10.04 --freq:  0.000 --sigma: 115.76 --action:( 696, 304)--time:09-14_02h-02m-44s
+reward:  -9.8e+02 --episode:   460 --max angle:17.68 --freq:  0.000 --sigma:  71.66 --action:( 694, 306)--time:09-14_02h-04m-25s
+reward:  -9.8e+02 --episode:   461 --max angle:15.36 --freq:  0.000 --sigma:  63.65 --action:( 709, 291)--time:09-14_02h-06m-22s
+reward:  -9.9e+02 --episode:   462 --max angle:13.79 --freq:  0.000 --sigma:  64.36 --action:( 712, 288)--time:09-14_02h-08m-14s
+reward:  -9.8e+02 --episode:   463 --max angle:13.81 --freq:  0.900 --sigma:  70.33 --action:( 755, 245)--time:09-14_02h-10m-02s
+reward:  -9.9e+02 --episode:   464 --max angle: 8.87 --freq:  0.000 --sigma:  93.12 --action:( 752, 248)--time:09-14_02h-11m-51s
+reward:  -9.9e+02 --episode:   465 --max angle:12.01 --freq:  0.000 --sigma:  75.24 --action:( 773, 227)--time:09-14_02h-13m-30s
+reward:  -9.9e+02 --episode:   466 --max angle: 8.11 --freq:  0.000 --sigma: 111.68 --action:( 835, 165)--time:09-14_02h-15m-14s
+reward:  -9.9e+02 --episode:   467 --max angle:11.95 --freq:  0.000 --sigma:  84.67 --action:( 825, 175)--time:09-14_02h-16m-51s
+reward:    -1e+03 --episode:   468 --max angle: 3.76 --freq:  0.000 --sigma:  36.41 --action:( 910,  90)--time:09-14_02h-18m-36s
+reward:  -9.9e+02 --episode:   469 --max angle: 7.32 --freq:  0.000 --sigma: 120.79 --action:( 901,  99)--time:09-14_02h-20m-03s
+reward:  -9.9e+02 --episode:   470 --max angle: 6.99 --freq:  0.000 --sigma: 148.50 --action:( 925,  75)--time:09-14_02h-21m-39s
+reward:  -9.9e+02 --episode:   471 --max angle: 5.56 --freq:  0.000 --sigma: 185.22 --action:( 939,  61)--time:09-14_02h-23m-14s
+reward:  -9.9e+02 --episode:   472 --max angle: 7.38 --freq:  0.000 --sigma: 123.63 --action:( 951,  49)--time:09-14_02h-24m-45s
+reward:  -9.9e+02 --episode:   473 --max angle: 4.34 --freq:  0.000 --sigma: 256.16 --action:( 987,  13)--time:09-14_02h-26m-21s
+reward:  -9.9e+02 --episode:   474 --max angle: 4.82 --freq:  0.000 --sigma: 237.48 --action:( 992,   8)--time:09-14_02h-27m-50s
+reward:  -9.9e+02 --episode:   475 --max angle: 4.49 --freq:  0.000 --sigma: 255.96 --action:( 994,   6)--time:09-14_02h-29m-19s
+reward:  -9.9e+02 --episode:   476 --max angle: 4.45 --freq:  0.000 --sigma: 257.29 --action:( 997,   3)--time:09-14_02h-30m-49s
+reward:  -9.9e+02 --episode:   477 --max angle: 4.47 --freq:  0.000 --sigma: 255.83 --action:(1000,   0)--time:09-14_02h-32m-19s
+reward:  -9.9e+02 --episode:   478 --max angle: 4.50 --freq:  0.000 --sigma: 246.31 --action:( 994,   6)--time:09-14_02h-33m-48s
+reward:  -9.9e+02 --episode:   479 --max angle: 4.41 --freq:  0.000 --sigma: 257.61 --action:( 998,   2)--time:09-14_02h-35m-18s
+reward:    -1e+03 --episode:   480 --max angle: 3.38 --freq:  0.950 --sigma:  17.21 --action:( 999,   1)--time:09-14_02h-36m-46s
+reward:  -9.9e+02 --episode:   481 --max angle: 4.49 --freq:  0.000 --sigma: 257.19 --action:(1000,   0)--time:09-14_02h-38m-13s
+reward:  -9.9e+02 --episode:   482 --max angle: 4.33 --freq:  0.000 --sigma: 256.33 --action:(1000,   0)--time:09-14_02h-39m-43s
+reward:    -1e+03 --episode:   483 --max angle: 3.38 --freq:  0.950 --sigma:  16.68 --action:(1000,   0)--time:09-14_02h-41m-11s
+reward:  -9.9e+02 --episode:   484 --max angle: 4.25 --freq:  0.000 --sigma: 256.07 --action:(1000,   0)--time:09-14_02h-42m-38s
+reward:  -9.9e+02 --episode:   485 --max angle: 4.36 --freq:  0.000 --sigma: 255.36 --action:(1000,   0)--time:09-14_02h-44m-06s
+reward:  -9.9e+02 --episode:   486 --max angle: 4.44 --freq:  0.000 --sigma: 257.02 --action:(1000,   0)--time:09-14_02h-45m-35s
+reward:  -9.9e+02 --episode:   487 --max angle: 4.27 --freq:  0.000 --sigma: 255.58 --action:(1000,   0)--time:09-14_02h-47m-04s
+reward:    -1e+03 --episode:   488 --max angle: 3.38 --freq:  0.950 --sigma:  16.56 --action:(1000,   0)--time:09-14_02h-48m-33s
+reward:  -9.9e+02 --episode:   489 --max angle: 4.38 --freq:  0.000 --sigma: 255.98 --action:(1000,   0)--time:09-14_02h-50m-00s
+reward:    -1e+03 --episode:   490 --max angle: 3.38 --freq:  0.950 --sigma:  16.21 --action:(1000,   0)--time:09-14_02h-51m-28s
+reward:  -9.9e+02 --episode:   491 --max angle: 4.47 --freq:  0.000 --sigma: 256.23 --action:(1000,   0)--time:09-14_02h-52m-55s
+reward:  -9.9e+02 --episode:   492 --max angle: 4.48 --freq:  0.000 --sigma: 255.85 --action:(1000,   0)--time:09-14_02h-54m-24s
+reward:  -9.9e+02 --episode:   493 --max angle: 4.42 --freq:  0.000 --sigma: 254.16 --action:(1000,   0)--time:09-14_02h-55m-54s
+reward:  -9.9e+02 --episode:   494 --max angle: 4.28 --freq:  0.000 --sigma: 256.32 --action:(1000,   0)--time:09-14_02h-57m-23s
+reward:  -9.9e+02 --episode:   495 --max angle: 4.39 --freq:  0.000 --sigma: 255.15 --action:(1000,   0)--time:09-14_02h-58m-51s
+reward:   3.8e+02 --episode:   496 --max angle:59.45 --freq:  0.000 --sigma: 304.14 --action:(1000,   0)--time:09-14_03h-00m-20s
+reward:  -9.9e+02 --episode:   497 --max angle: 4.48 --freq:  0.000 --sigma: 257.25 --action:(1000,   0)--time:09-14_03h-03m-45s
+reward:  -9.9e+02 --episode:   498 --max angle: 4.27 --freq:  0.000 --sigma: 256.43 --action:(1000,   0)--time:09-14_03h-05m-15s
+reward:    -1e+03 --episode:   499 --max angle: 3.38 --freq:  0.950 --sigma:  16.74 --action:(1000,   0)--time:09-14_03h-06m-43s
+reward:  -9.9e+02 --episode:   500 --max angle: 4.39 --freq:  0.000 --sigma: 256.19 --action:(1000,   0)--time:09-14_03h-08m-10s
+reward:  -9.9e+02 --episode:   501 --max angle: 4.42 --freq:  0.000 --sigma: 255.65 --action:(1000,   0)--time:09-14_03h-09m-40s
+reward:  -9.9e+02 --episode:   502 --max angle: 4.46 --freq:  0.000 --sigma: 257.74 --action:(1000,   0)--time:09-14_03h-11m-09s
+reward:  -9.9e+02 --episode:   503 --max angle: 4.36 --freq:  0.000 --sigma: 256.85 --action:(1000,   0)--time:09-14_03h-12m-38s
+reward:  -9.9e+02 --episode:   504 --max angle: 4.43 --freq:  0.000 --sigma: 257.13 --action:(1000,   0)--time:09-14_03h-14m-07s
+reward:  -9.9e+02 --episode:   505 --max angle: 4.41 --freq:  0.000 --sigma: 257.41 --action:(1000,   0)--time:09-14_03h-15m-37s
+reward:  -9.9e+02 --episode:   506 --max angle: 4.30 --freq:  0.000 --sigma: 255.11 --action:(1000,   0)--time:09-14_03h-17m-06s
+reward:    -1e+03 --episode:   507 --max angle: 3.38 --freq:  0.950 --sigma:  16.43 --action:(1000,   0)--time:09-14_03h-18m-35s
+reward:  -9.9e+02 --episode:   508 --max angle: 4.40 --freq:  0.000 --sigma: 258.06 --action:(1000,   0)--time:09-14_03h-20m-01s
+reward:    -1e+03 --episode:   509 --max angle: 3.37 --freq:  0.950 --sigma:  16.72 --action:(1000,   0)--time:09-14_03h-21m-30s
+reward:  -9.9e+02 --episode:   510 --max angle: 4.44 --freq:  0.000 --sigma: 256.89 --action:(1000,   0)--time:09-14_03h-22m-56s
+reward:  -9.9e+02 --episode:   511 --max angle: 4.48 --freq:  0.000 --sigma: 256.88 --action:(1000,   0)--time:09-14_03h-24m-26s
+reward:  -9.9e+02 --episode:   512 --max angle: 4.37 --freq:  0.000 --sigma: 254.21 --action:(1000,   0)--time:09-14_03h-25m-56s
+reward:  -9.9e+02 --episode:   513 --max angle: 4.43 --freq:  0.000 --sigma: 257.92 --action:(1000,   0)--time:09-14_03h-27m-24s
+reward:    -1e+03 --episode:   514 --max angle: 3.37 --freq:  0.950 --sigma:  16.27 --action:(1000,   0)--time:09-14_03h-28m-54s
+reward:  -9.9e+02 --episode:   515 --max angle: 4.39 --freq:  0.000 --sigma: 256.40 --action:(1000,   0)--time:09-14_03h-30m-21s
+reward:  -9.9e+02 --episode:   516 --max angle: 4.41 --freq:  0.000 --sigma: 257.23 --action:(1000,   0)--time:09-14_03h-31m-49s
+reward:  -9.9e+02 --episode:   517 --max angle: 4.30 --freq:  0.000 --sigma: 258.42 --action:(1000,   0)--time:09-14_03h-33m-19s
+reward:  -9.9e+02 --episode:   518 --max angle: 4.33 --freq:  0.000 --sigma: 256.45 --action:(1000,   0)--time:09-14_03h-34m-47s
+reward:    -1e+03 --episode:   519 --max angle: 3.38 --freq:  0.950 --sigma:  16.45 --action:(1000,   0)--time:09-14_03h-36m-16s
+reward:  -9.9e+02 --episode:   520 --max angle: 4.30 --freq:  0.000 --sigma: 256.82 --action:(1000,   0)--time:09-14_03h-37m-43s
+reward:    -1e+03 --episode:   521 --max angle: 3.34 --freq:  0.950 --sigma:  16.85 --action:(1000,   0)--time:09-14_03h-39m-11s
+reward:  -9.9e+02 --episode:   522 --max angle: 4.47 --freq:  0.000 --sigma: 256.08 --action:(1000,   0)--time:09-14_03h-40m-38s
+reward:  -9.9e+02 --episode:   523 --max angle: 4.41 --freq:  0.000 --sigma: 255.16 --action:(1000,   0)--time:09-14_03h-42m-07s
+reward:  -9.9e+02 --episode:   524 --max angle: 4.45 --freq:  0.000 --sigma: 257.51 --action:(1000,   0)--time:09-14_03h-43m-36s
+reward:  -9.9e+02 --episode:   525 --max angle: 4.35 --freq:  0.000 --sigma: 255.46 --action:(1000,   0)--time:09-14_03h-45m-06s
+reward:  -9.9e+02 --episode:   526 --max angle: 4.29 --freq:  0.000 --sigma: 257.02 --action:(1000,   0)--time:09-14_03h-46m-34s
+reward:    -1e+03 --episode:   527 --max angle: 3.38 --freq:  0.950 --sigma:  16.55 --action:(1000,   0)--time:09-14_03h-48m-03s
+reward:  -9.9e+02 --episode:   528 --max angle: 4.36 --freq:  0.000 --sigma: 254.53 --action:(1000,   0)--time:09-14_03h-49m-29s
+reward:  -9.9e+02 --episode:   529 --max angle: 4.29 --freq:  0.000 --sigma: 254.10 --action:( 999,   1)--time:09-14_03h-50m-58s
+reward:  -9.9e+02 --episode:   530 --max angle: 4.43 --freq:  0.000 --sigma: 256.93 --action:(1000,   0)--time:09-14_03h-52m-27s
+reward:  -9.9e+02 --episode:   531 --max angle: 4.43 --freq:  0.000 --sigma: 256.51 --action:(1000,   0)--time:09-14_03h-53m-56s
+reward:  -9.9e+02 --episode:   532 --max angle: 4.36 --freq:  0.000 --sigma: 256.14 --action:(1000,   0)--time:09-14_03h-55m-26s
+reward:    -1e+03 --episode:   533 --max angle: 3.37 --freq:  0.950 --sigma:  16.46 --action:(1000,   0)--time:09-14_03h-56m-55s
+reward:  -9.9e+02 --episode:   534 --max angle: 4.47 --freq:  0.000 --sigma: 257.64 --action:(1000,   0)--time:09-14_03h-58m-21s
+reward:  -9.9e+02 --episode:   535 --max angle: 4.44 --freq:  0.000 --sigma: 258.13 --action:(1000,   0)--time:09-14_03h-59m-50s
+reward:  -9.9e+02 --episode:   536 --max angle: 4.31 --freq:  0.000 --sigma: 257.22 --action:( 999,   1)--time:09-14_04h-01m-20s
+reward:    -1e+03 --episode:   537 --max angle: 3.38 --freq:  0.950 --sigma:  15.98 --action:( 999,   1)--time:09-14_04h-02m-49s
+reward:  -9.9e+02 --episode:   538 --max angle: 4.45 --freq:  0.000 --sigma: 256.95 --action:(1000,   0)--time:09-14_04h-04m-15s
+reward:  -9.9e+02 --episode:   539 --max angle: 4.35 --freq:  0.000 --sigma: 257.87 --action:(1000,   0)--time:09-14_04h-05m-45s
+reward:  -9.9e+02 --episode:   540 --max angle: 4.49 --freq:  0.000 --sigma: 258.38 --action:(1000,   0)--time:09-14_04h-07m-13s
+reward:  -9.9e+02 --episode:   541 --max angle: 4.49 --freq:  0.000 --sigma: 256.33 --action:(1000,   0)--time:09-14_04h-08m-43s
+reward:    -1e+03 --episode:   542 --max angle: 3.38 --freq:  0.950 --sigma:  16.67 --action:(1000,   0)--time:09-14_04h-10m-13s
+reward:  -9.9e+02 --episode:   543 --max angle: 4.48 --freq:  0.000 --sigma: 256.33 --action:(1000,   0)--time:09-14_04h-11m-39s
+reward:  -9.9e+02 --episode:   544 --max angle: 4.39 --freq:  0.000 --sigma: 255.76 --action:(1000,   0)--time:09-14_04h-13m-09s
+reward:  -9.9e+02 --episode:   545 --max angle: 4.44 --freq:  0.000 --sigma: 257.57 --action:( 998,   2)--time:09-14_04h-14m-38s
+reward:  -9.9e+02 --episode:   546 --max angle: 4.32 --freq:  0.000 --sigma: 253.76 --action:(1000,   0)--time:09-14_04h-16m-07s
+reward:  -9.9e+02 --episode:   547 --max angle: 4.47 --freq:  0.000 --sigma: 256.61 --action:(1000,   0)--time:09-14_04h-17m-36s
+reward:  -9.9e+02 --episode:   548 --max angle: 4.37 --freq:  0.000 --sigma: 256.07 --action:(1000,   0)--time:09-14_04h-19m-05s
+reward:    -1e+03 --episode:   549 --max angle: 3.37 --freq:  0.950 --sigma:  16.74 --action:(1000,   0)--time:09-14_04h-20m-34s
+reward:  -9.9e+02 --episode:   550 --max angle: 4.42 --freq:  0.000 --sigma: 257.64 --action:(1000,   0)--time:09-14_04h-22m-00s
+reward:    -1e+03 --episode:   551 --max angle: 3.38 --freq:  0.950 --sigma:  16.01 --action:( 999,   1)--time:09-14_04h-23m-29s
+reward:  -9.9e+02 --episode:   552 --max angle: 4.27 --freq:  0.000 --sigma: 257.12 --action:( 998,   2)--time:09-14_04h-24m-56s
+reward:    -1e+03 --episode:   553 --max angle: 3.38 --freq:  0.950 --sigma:  16.70 --action:(1000,   0)--time:09-14_04h-26m-24s
+reward:  -9.9e+02 --episode:   554 --max angle: 4.23 --freq:  0.000 --sigma: 260.39 --action:( 998,   2)--time:09-14_04h-27m-51s
+reward:    -1e+03 --episode:   555 --max angle: 3.38 --freq:  0.950 --sigma:  16.50 --action:(1000,   0)--time:09-14_04h-29m-19s
+reward:  -9.9e+02 --episode:   556 --max angle: 4.31 --freq:  0.000 --sigma: 257.74 --action:(1000,   0)--time:09-14_04h-30m-46s
+reward:    -1e+03 --episode:   557 --max angle: 3.38 --freq:  0.950 --sigma:  16.12 --action:( 999,   1)--time:09-14_04h-32m-15s
+reward:  -9.9e+02 --episode:   558 --max angle: 4.17 --freq:  0.000 --sigma: 253.66 --action:( 999,   1)--time:09-14_04h-33m-41s
+reward:  -9.9e+02 --episode:   559 --max angle: 4.45 --freq:  0.000 --sigma: 256.50 --action:(1000,   0)--time:09-14_04h-35m-10s
+reward:  -9.9e+02 --episode:   560 --max angle: 4.35 --freq:  0.000 --sigma: 254.94 --action:(1000,   0)--time:09-14_04h-36m-39s
+reward:  -9.9e+02 --episode:   561 --max angle: 4.34 --freq:  0.000 --sigma: 252.71 --action:(1000,   0)--time:09-14_04h-38m-08s
+reward:  -9.9e+02 --episode:   562 --max angle: 4.38 --freq:  0.000 --sigma: 257.46 --action:(1000,   0)--time:09-14_04h-39m-36s
+reward:  -9.9e+02 --episode:   563 --max angle: 4.31 --freq:  0.000 --sigma: 254.02 --action:( 998,   2)--time:09-14_04h-41m-05s
+reward:  -9.9e+02 --episode:   564 --max angle: 4.48 --freq:  0.000 --sigma: 255.69 --action:(1000,   0)--time:09-14_04h-42m-34s
+reward:  -9.9e+02 --episode:   565 --max angle: 4.32 --freq:  0.000 --sigma: 253.06 --action:( 999,   1)--time:09-14_04h-44m-03s
+reward:  -9.9e+02 --episode:   566 --max angle: 4.26 --freq:  0.000 --sigma: 252.14 --action:( 997,   3)--time:09-14_04h-45m-32s
+reward:    -1e+03 --episode:   567 --max angle: 3.38 --freq:  0.950 --sigma:  16.15 --action:( 999,   1)--time:09-14_04h-47m-01s
+reward:  -9.9e+02 --episode:   568 --max angle: 4.53 --freq:  0.000 --sigma: 258.12 --action:(1000,   0)--time:09-14_04h-48m-27s
+reward:  -9.9e+02 --episode:   569 --max angle: 4.45 --freq:  0.000 --sigma: 254.57 --action:(1000,   0)--time:09-14_04h-49m-57s
+reward:    -1e+03 --episode:   570 --max angle: 3.37 --freq:  0.950 --sigma:  16.44 --action:( 999,   1)--time:09-14_04h-51m-26s
+reward:  -9.9e+02 --episode:   571 --max angle: 4.33 --freq:  0.000 --sigma: 258.19 --action:( 999,   1)--time:09-14_04h-52m-53s
+reward:  -9.9e+02 --episode:   572 --max angle: 4.39 --freq:  0.000 --sigma: 254.35 --action:( 998,   2)--time:09-14_04h-54m-22s
+reward:  -9.9e+02 --episode:   573 --max angle: 4.45 --freq:  0.000 --sigma: 256.91 --action:(1000,   0)--time:09-14_04h-55m-50s
+reward:  -9.9e+02 --episode:   574 --max angle: 4.40 --freq:  0.000 --sigma: 259.19 --action:( 998,   2)--time:09-14_04h-57m-20s
+reward:  -9.9e+02 --episode:   575 --max angle: 4.39 --freq:  0.000 --sigma: 255.69 --action:( 997,   3)--time:09-14_04h-58m-49s
+reward:    -1e+03 --episode:   576 --max angle: 3.38 --freq:  0.950 --sigma:  15.94 --action:( 999,   1)--time:09-14_05h-00m-18s
+reward:  -9.9e+02 --episode:   577 --max angle: 4.43 --freq:  0.000 --sigma: 258.09 --action:( 999,   1)--time:09-14_05h-01m-44s
+reward:  -9.9e+02 --episode:   578 --max angle: 4.39 --freq:  0.000 --sigma: 257.64 --action:( 999,   1)--time:09-14_05h-03m-14s
+reward:  -9.9e+02 --episode:   579 --max angle: 4.25 --freq:  0.000 --sigma: 254.56 --action:( 999,   1)--time:09-14_05h-04m-43s
+reward:    -1e+03 --episode:   580 --max angle: 3.35 --freq:  0.950 --sigma:  15.99 --action:( 998,   2)--time:09-14_05h-06m-11s
+reward:  -9.9e+02 --episode:   581 --max angle: 4.35 --freq:  0.000 --sigma: 257.29 --action:(1000,   0)--time:09-14_05h-07m-38s
+reward:  -9.9e+02 --episode:   582 --max angle: 4.40 --freq:  0.000 --sigma: 256.66 --action:( 999,   1)--time:09-14_05h-09m-06s
+reward:    -1e+03 --episode:   583 --max angle: 3.38 --freq:  0.950 --sigma:  16.62 --action:(1000,   0)--time:09-14_05h-10m-35s
+reward:  -9.9e+02 --episode:   584 --max angle: 4.31 --freq:  0.000 --sigma: 256.68 --action:( 998,   2)--time:09-14_05h-12m-02s
+reward:    -1e+03 --episode:   585 --max angle: 3.38 --freq:  0.950 --sigma:  16.74 --action:(1000,   0)--time:09-14_05h-13m-30s
+reward:  -9.9e+02 --episode:   586 --max angle: 4.35 --freq:  0.000 --sigma: 254.70 --action:(1000,   0)--time:09-14_05h-14m-57s
+reward:  -9.9e+02 --episode:   587 --max angle: 4.36 --freq:  0.000 --sigma: 259.14 --action:(1000,   0)--time:09-14_05h-16m-26s
+reward:  -9.9e+02 --episode:   588 --max angle: 4.43 --freq:  0.000 --sigma: 260.05 --action:( 999,   1)--time:09-14_05h-17m-54s
+reward:  -9.9e+02 --episode:   589 --max angle: 4.37 --freq:  0.000 --sigma: 254.72 --action:(1000,   0)--time:09-14_05h-19m-24s
+reward:  -9.9e+02 --episode:   590 --max angle: 4.40 --freq:  0.000 --sigma: 259.58 --action:( 999,   1)--time:09-14_05h-20m-52s
+reward:    -1e+03 --episode:   591 --max angle: 3.38 --freq:  0.950 --sigma:  16.40 --action:(1000,   0)--time:09-14_05h-22m-21s
+reward:  -9.9e+02 --episode:   592 --max angle: 4.30 --freq:  0.000 --sigma: 255.92 --action:( 999,   1)--time:09-14_05h-23m-48s
+reward:  -9.9e+02 --episode:   593 --max angle: 4.37 --freq:  0.000 --sigma: 256.43 --action:(1000,   0)--time:09-14_05h-25m-16s
+reward:  -9.9e+02 --episode:   594 --max angle: 4.30 --freq:  0.000 --sigma: 252.84 --action:( 997,   3)--time:09-14_05h-26m-45s
+reward:    -1e+03 --episode:   595 --max angle: 3.38 --freq:  0.950 --sigma:  16.64 --action:(1000,   0)--time:09-14_05h-28m-13s
+reward:  -9.9e+02 --episode:   596 --max angle: 4.45 --freq:  0.000 --sigma: 259.72 --action:( 999,   1)--time:09-14_05h-29m-40s
+reward:  -9.9e+02 --episode:   597 --max angle: 4.37 --freq:  0.000 --sigma: 254.04 --action:( 997,   3)--time:09-14_05h-31m-10s
+reward:  -9.9e+02 --episode:   598 --max angle: 4.33 --freq:  0.000 --sigma: 255.55 --action:(1000,   0)--time:09-14_05h-32m-38s
+reward:  -9.9e+02 --episode:   599 --max angle: 4.26 --freq:  0.000 --sigma: 260.06 --action:( 999,   1)--time:09-14_05h-34m-07s
+reward:  -9.9e+02 --episode:   600 --max angle: 4.56 --freq:  0.000 --sigma: 255.93 --action:( 999,   1)--time:09-14_05h-35m-36s
+reward:  -9.9e+02 --episode:   601 --max angle: 4.35 --freq:  0.000 --sigma: 253.74 --action:(1000,   0)--time:09-14_05h-37m-07s
+reward:  -9.9e+02 --episode:   602 --max angle: 4.24 --freq:  0.000 --sigma: 258.70 --action:( 999,   1)--time:09-14_05h-38m-35s
+reward:  -9.9e+02 --episode:   603 --max angle: 4.31 --freq:  0.000 --sigma: 247.40 --action:( 996,   4)--time:09-14_05h-40m-04s
+reward:  -9.9e+02 --episode:   604 --max angle: 4.41 --freq:  0.000 --sigma: 253.46 --action:( 999,   1)--time:09-14_05h-41m-33s
+reward:  -9.9e+02 --episode:   605 --max angle: 4.50 --freq:  0.000 --sigma: 253.94 --action:( 999,   1)--time:09-14_05h-43m-02s
+reward:  -9.9e+02 --episode:   606 --max angle: 4.44 --freq:  0.000 --sigma: 257.57 --action:( 999,   1)--time:09-14_05h-44m-32s
+reward:  -9.9e+02 --episode:   607 --max angle: 4.31 --freq:  0.000 --sigma: 255.40 --action:(1000,   0)--time:09-14_05h-46m-01s
+reward:    -1e+03 --episode:   608 --max angle: 3.37 --freq:  0.950 --sigma:  15.84 --action:( 998,   2)--time:09-14_05h-47m-30s
+reward:  -9.9e+02 --episode:   609 --max angle: 4.32 --freq:  0.000 --sigma: 258.45 --action:(1000,   0)--time:09-14_05h-48m-56s
+reward:  -9.9e+02 --episode:   610 --max angle: 4.37 --freq:  0.000 --sigma: 252.86 --action:( 998,   2)--time:09-14_05h-50m-25s
+reward:  -9.9e+02 --episode:   611 --max angle: 4.39 --freq:  0.000 --sigma: 256.06 --action:( 999,   1)--time:09-14_05h-51m-54s
+reward:  -9.9e+02 --episode:   612 --max angle: 4.39 --freq:  0.000 --sigma: 257.17 --action:(1000,   0)--time:09-14_05h-53m-22s
+reward:    -1e+03 --episode:   613 --max angle: 3.38 --freq:  0.950 --sigma:  16.89 --action:(1000,   0)--time:09-14_05h-54m-51s
+reward:  -9.9e+02 --episode:   614 --max angle: 4.41 --freq:  0.000 --sigma: 255.73 --action:( 998,   2)--time:09-14_05h-56m-17s
+reward:  -9.9e+02 --episode:   615 --max angle: 4.38 --freq:  0.000 --sigma: 257.75 --action:( 999,   1)--time:09-14_05h-57m-47s
+reward:    -1e+03 --episode:   616 --max angle: 3.38 --freq:  0.950 --sigma:  16.32 --action:( 999,   1)--time:09-14_05h-59m-15s
+reward:  -9.9e+02 --episode:   617 --max angle: 4.42 --freq:  0.000 --sigma: 255.63 --action:(1000,   0)--time:09-14_06h-00m-42s
+reward:  -9.9e+02 --episode:   618 --max angle: 4.37 --freq:  0.000 --sigma: 257.19 --action:(1000,   0)--time:09-14_06h-02m-11s
+reward:  -9.9e+02 --episode:   619 --max angle: 4.46 --freq:  0.000 --sigma: 254.77 --action:(1000,   0)--time:09-14_06h-03m-39s
+reward:  -9.9e+02 --episode:   620 --max angle: 4.25 --freq:  0.000 --sigma: 252.86 --action:( 999,   1)--time:09-14_06h-05m-09s
+reward:    -1e+03 --episode:   621 --max angle: 3.37 --freq:  0.950 --sigma:  16.04 --action:( 999,   1)--time:09-14_06h-06m-37s
+reward:  -9.9e+02 --episode:   622 --max angle: 4.25 --freq:  0.000 --sigma: 254.76 --action:( 999,   1)--time:09-14_06h-08m-04s
+reward:  -9.9e+02 --episode:   623 --max angle: 4.25 --freq:  0.000 --sigma: 257.90 --action:( 999,   1)--time:09-14_06h-09m-32s
+reward:  -9.9e+02 --episode:   624 --max angle: 4.37 --freq:  0.000 --sigma: 254.38 --action:(1000,   0)--time:09-14_06h-11m-01s
+reward:  -9.9e+02 --episode:   625 --max angle: 4.25 --freq:  0.000 --sigma: 258.71 --action:( 999,   1)--time:09-14_06h-12m-30s
+reward:  -9.9e+02 --episode:   626 --max angle: 4.32 --freq:  0.000 --sigma: 253.28 --action:(1000,   0)--time:09-14_06h-13m-59s
+reward:  -9.9e+02 --episode:   627 --max angle: 4.32 --freq:  0.000 --sigma: 257.54 --action:(1000,   0)--time:09-14_06h-15m-28s
+reward:    -1e+03 --episode:   628 --max angle: 3.38 --freq:  0.950 --sigma:  16.68 --action:(1000,   0)--time:09-14_06h-16m-56s
+reward:  -9.9e+02 --episode:   629 --max angle: 4.49 --freq:  0.000 --sigma: 259.58 --action:( 999,   1)--time:09-14_06h-18m-23s
+reward:  -9.9e+02 --episode:   630 --max angle: 4.45 --freq:  0.000 --sigma: 258.25 --action:(1000,   0)--time:09-14_06h-19m-52s
+reward:  -9.9e+02 --episode:   631 --max angle: 4.39 --freq:  0.000 --sigma: 256.19 --action:(1000,   0)--time:09-14_06h-21m-22s
+reward:  -9.9e+02 --episode:   632 --max angle: 4.33 --freq:  0.000 --sigma: 257.61 --action:(1000,   0)--time:09-14_06h-22m-52s
+reward:  -9.9e+02 --episode:   633 --max angle: 4.21 --freq:  0.000 --sigma: 258.29 --action:( 999,   1)--time:09-14_06h-24m-20s
+reward:    -1e+03 --episode:   634 --max angle: 3.38 --freq:  0.950 --sigma:  17.05 --action:(1000,   0)--time:09-14_06h-25m-49s
+reward:  -9.9e+02 --episode:   635 --max angle: 4.19 --freq:  0.000 --sigma: 255.34 --action:( 999,   1)--time:09-14_06h-27m-15s
+reward:  -9.9e+02 --episode:   636 --max angle: 4.41 --freq:  0.000 --sigma: 255.26 --action:(1000,   0)--time:09-14_06h-28m-44s
+reward:    -1e+03 --episode:   637 --max angle: 3.38 --freq:  0.950 --sigma:  16.67 --action:(1000,   0)--time:09-14_06h-30m-13s
+reward:  -9.9e+02 --episode:   638 --max angle: 4.22 --freq:  0.000 --sigma: 250.36 --action:( 997,   3)--time:09-14_06h-31m-39s
+reward:    -1e+03 --episode:   639 --max angle: 3.36 --freq:  0.950 --sigma:  17.07 --action:(1000,   0)--time:09-14_06h-33m-08s
+reward:  -9.9e+02 --episode:   640 --max angle: 4.37 --freq:  0.000 --sigma: 254.20 --action:(1000,   0)--time:09-14_06h-34m-34s
+reward:    -1e+03 --episode:   641 --max angle: 3.38 --freq:  0.950 --sigma:  16.84 --action:(1000,   0)--time:09-14_06h-36m-03s
+reward:  -9.9e+02 --episode:   642 --max angle: 4.45 --freq:  0.000 --sigma: 257.34 --action:(1000,   0)--time:09-14_06h-37m-29s
+reward:  -9.9e+02 --episode:   643 --max angle: 4.45 --freq:  0.000 --sigma: 257.33 --action:(1000,   0)--time:09-14_06h-38m-59s
+reward:  -9.9e+02 --episode:   644 --max angle: 4.41 --freq:  0.000 --sigma: 257.20 --action:(1000,   0)--time:09-14_06h-40m-28s
+reward:    -1e+03 --episode:   645 --max angle: 3.38 --freq:  0.950 --sigma:  16.38 --action:(1000,   0)--time:09-14_06h-41m-57s
+reward:  -9.9e+02 --episode:   646 --max angle: 4.27 --freq:  0.000 --sigma: 253.24 --action:( 999,   1)--time:09-14_06h-43m-24s
+reward:  -9.9e+02 --episode:   647 --max angle: 4.58 --freq:  0.000 --sigma: 256.09 --action:( 998,   2)--time:09-14_06h-44m-52s
+reward:  -9.9e+02 --episode:   648 --max angle: 4.22 --freq:  0.000 --sigma: 255.32 --action:( 999,   1)--time:09-14_06h-46m-22s
+reward:  -9.9e+02 --episode:   649 --max angle: 4.42 --freq:  0.000 --sigma: 258.21 --action:( 998,   2)--time:09-14_06h-47m-50s
+reward:  -9.9e+02 --episode:   650 --max angle: 4.42 --freq:  0.000 --sigma: 256.58 --action:(1000,   0)--time:09-14_06h-49m-20s
+reward:  -9.9e+02 --episode:   651 --max angle: 4.28 --freq:  0.000 --sigma: 256.22 --action:(1000,   0)--time:09-14_06h-50m-50s
+reward:  -9.9e+02 --episode:   652 --max angle: 4.26 --freq:  0.000 --sigma: 255.98 --action:( 998,   2)--time:09-14_06h-52m-18s
+reward:    -1e+03 --episode:   653 --max angle: 3.38 --freq:  0.950 --sigma:  15.86 --action:( 999,   1)--time:09-14_06h-53m-47s
+reward:  -9.9e+02 --episode:   654 --max angle: 4.31 --freq:  0.000 --sigma: 255.93 --action:(1000,   0)--time:09-14_06h-55m-13s
+reward:  -9.9e+02 --episode:   655 --max angle: 4.29 --freq:  0.000 --sigma: 254.53 --action:( 998,   2)--time:09-14_06h-56m-42s
+reward:    -1e+03 --episode:   656 --max angle: 3.38 --freq:  0.950 --sigma:  16.93 --action:(1000,   0)--time:09-14_06h-58m-10s
+reward:  -9.9e+02 --episode:   657 --max angle: 4.43 --freq:  0.000 --sigma: 259.64 --action:( 999,   1)--time:09-14_06h-59m-37s
+reward:  -9.9e+02 --episode:   658 --max angle: 4.44 --freq:  0.000 --sigma: 254.45 --action:(1000,   0)--time:09-14_07h-01m-07s
+reward:  -9.9e+02 --episode:   659 --max angle: 4.34 --freq:  0.000 --sigma: 257.81 --action:(1000,   0)--time:09-14_07h-02m-36s
+reward:    -1e+03 --episode:   660 --max angle: 3.38 --freq:  0.950 --sigma:  15.77 --action:( 999,   1)--time:09-14_07h-04m-05s
+reward:  -9.9e+02 --episode:   661 --max angle: 4.42 --freq:  0.000 --sigma: 254.33 --action:(1000,   0)--time:09-14_07h-05m-31s
+reward:  -9.9e+02 --episode:   662 --max angle: 4.32 --freq:  0.000 --sigma: 259.42 --action:( 999,   1)--time:09-14_07h-07m-01s
+reward:    -1e+03 --episode:   663 --max angle: 3.38 --freq:  0.950 --sigma:  16.84 --action:(1000,   0)--time:09-14_07h-08m-29s
+reward:  -9.9e+02 --episode:   664 --max angle: 4.28 --freq:  0.000 --sigma: 258.19 --action:( 999,   1)--time:09-14_07h-09m-56s
+reward:  -9.9e+02 --episode:   665 --max angle: 4.37 --freq:  0.000 --sigma: 255.50 --action:(1000,   0)--time:09-14_07h-11m-25s
+reward:  -9.9e+02 --episode:   666 --max angle: 4.33 --freq:  0.000 --sigma: 259.54 --action:( 999,   1)--time:09-14_07h-12m-53s
+reward:  -9.9e+02 --episode:   667 --max angle: 4.20 --freq:  0.000 --sigma: 252.96 --action:( 999,   1)--time:09-14_07h-14m-22s
+reward:    -1e+03 --episode:   668 --max angle: 3.38 --freq:  0.950 --sigma:  16.79 --action:(1000,   0)--time:09-14_07h-15m-50s
+reward:  -9.9e+02 --episode:   669 --max angle: 4.32 --freq:  0.000 --sigma: 257.57 --action:( 999,   1)--time:09-14_07h-17m-17s
+reward:    -1e+03 --episode:   670 --max angle: 3.36 --freq:  0.950 --sigma:  16.55 --action:( 999,   1)--time:09-14_07h-18m-45s
+reward:  -9.9e+02 --episode:   671 --max angle: 4.48 --freq:  0.000 --sigma: 257.60 --action:( 998,   2)--time:09-14_07h-20m-12s
+reward:  -9.9e+02 --episode:   672 --max angle: 4.32 --freq:  0.000 --sigma: 256.13 --action:( 998,   2)--time:09-14_07h-21m-42s
+reward:    -1e+03 --episode:   673 --max angle: 3.38 --freq:  0.950 --sigma:  16.29 --action:( 999,   1)--time:09-14_07h-23m-10s
+reward:  -9.9e+02 --episode:   674 --max angle: 4.41 --freq:  0.000 --sigma: 255.20 --action:(1000,   0)--time:09-14_07h-24m-37s
+reward:  -9.9e+02 --episode:   675 --max angle: 4.41 --freq:  0.000 --sigma: 256.66 --action:(1000,   0)--time:09-14_07h-26m-05s
+reward:  -9.9e+02 --episode:   676 --max angle: 4.45 --freq:  0.000 --sigma: 252.33 --action:( 998,   2)--time:09-14_07h-27m-35s
+reward:  -9.9e+02 --episode:   677 --max angle: 4.36 --freq:  0.000 --sigma: 257.87 --action:( 999,   1)--time:09-14_07h-29m-04s
+reward:    -1e+03 --episode:   678 --max angle: 3.38 --freq:  0.950 --sigma:  17.04 --action:(1000,   0)--time:09-14_07h-30m-33s
+reward:  -9.9e+02 --episode:   679 --max angle: 4.55 --freq:  0.000 --sigma: 254.35 --action:( 999,   1)--time:09-14_07h-32m-00s
+reward:  -9.9e+02 --episode:   680 --max angle: 4.42 --freq:  0.000 --sigma: 255.03 --action:(1000,   0)--time:09-14_07h-33m-29s
+reward:  -9.9e+02 --episode:   681 --max angle: 4.20 --freq:  0.000 --sigma: 256.31 --action:( 999,   1)--time:09-14_07h-34m-59s
+reward:    -1e+03 --episode:   682 --max angle: 3.39 --freq:  0.950 --sigma:  16.16 --action:(1000,   0)--time:09-14_07h-36m-27s
+reward:  -9.9e+02 --episode:   683 --max angle: 4.25 --freq:  0.000 --sigma: 256.30 --action:( 999,   1)--time:09-14_07h-37m-54s
+reward:  -9.9e+02 --episode:   684 --max angle: 4.42 --freq:  0.000 --sigma: 256.62 --action:(1000,   0)--time:09-14_07h-39m-23s
+reward:  -9.9e+02 --episode:   685 --max angle: 4.48 --freq:  0.000 --sigma: 256.80 --action:( 999,   1)--time:09-14_07h-40m-52s
+reward:  -9.9e+02 --episode:   686 --max angle: 4.39 --freq:  0.000 --sigma: 256.88 --action:(1000,   0)--time:09-14_07h-42m-22s
+reward:    -1e+03 --episode:   687 --max angle: 3.37 --freq:  0.950 --sigma:  16.71 --action:(1000,   0)--time:09-14_07h-43m-50s
+reward:  -9.9e+02 --episode:   688 --max angle: 4.37 --freq:  0.000 --sigma: 257.38 --action:( 999,   1)--time:09-14_07h-45m-17s
+reward:  -9.9e+02 --episode:   689 --max angle: 4.35 --freq:  0.000 --sigma: 256.76 --action:(1000,   0)--time:09-14_07h-46m-46s
+reward:    -1e+03 --episode:   690 --max angle: 3.38 --freq:  0.950 --sigma:  16.89 --action:(1000,   0)--time:09-14_07h-48m-14s
+reward:  -9.9e+02 --episode:   691 --max angle: 4.30 --freq:  0.000 --sigma: 258.74 --action:( 999,   1)--time:09-14_07h-49m-41s
+reward:    -1e+03 --episode:   692 --max angle: 3.26 --freq:  0.950 --sigma:  17.42 --action:(1000,   0)--time:09-14_07h-51m-09s
+reward:  -9.9e+02 --episode:   693 --max angle: 4.46 --freq:  0.000 --sigma: 258.77 --action:( 999,   1)--time:09-14_07h-52m-36s
+reward:  -9.9e+02 --episode:   694 --max angle: 4.36 --freq:  0.000 --sigma: 257.82 --action:(1000,   0)--time:09-14_07h-54m-05s
+reward:    -1e+03 --episode:   695 --max angle: 3.38 --freq:  0.950 --sigma:  15.79 --action:( 999,   1)--time:09-14_07h-55m-34s
+reward:  -9.9e+02 --episode:   696 --max angle: 4.42 --freq:  0.000 --sigma: 258.47 --action:(1000,   0)--time:09-14_07h-57m-00s
+reward:  -9.9e+02 --episode:   697 --max angle: 4.30 --freq:  0.000 --sigma: 254.16 --action:(1000,   0)--time:09-14_07h-58m-30s
+reward:  -9.9e+02 --episode:   698 --max angle: 4.44 --freq:  0.000 --sigma: 255.61 --action:( 999,   1)--time:09-14_07h-59m-59s
+reward:  -9.9e+02 --episode:   699 --max angle: 4.32 --freq:  0.000 --sigma: 255.17 --action:(1000,   0)--time:09-14_08h-01m-28s
+reward:    -1e+03 --episode:   700 --max angle: 3.38 --freq:  0.950 --sigma:  16.45 --action:( 999,   1)--time:09-14_08h-02m-57s
+reward:  -9.9e+02 --episode:   701 --max angle: 4.26 --freq:  0.000 --sigma: 259.05 --action:( 999,   1)--time:09-14_08h-04m-25s
+reward:  -9.9e+02 --episode:   702 --max angle: 4.48 --freq:  0.000 --sigma: 255.34 --action:( 999,   1)--time:09-14_08h-05m-54s
+reward:  -9.9e+02 --episode:   703 --max angle: 4.50 --freq:  0.000 --sigma: 258.93 --action:( 999,   1)--time:09-14_08h-07m-23s
+reward:  -9.9e+02 --episode:   704 --max angle: 4.42 --freq:  0.000 --sigma: 256.17 --action:(1000,   0)--time:09-14_08h-08m-53s
+reward:    -1e+03 --episode:   705 --max angle: 3.36 --freq:  0.950 --sigma:  17.15 --action:(1000,   0)--time:09-14_08h-10m-22s
+reward:  -9.9e+02 --episode:   706 --max angle: 4.31 --freq:  0.000 --sigma: 258.02 --action:(1000,   0)--time:09-14_08h-11m-49s
+reward:  -9.9e+02 --episode:   707 --max angle: 4.29 --freq:  0.000 --sigma: 257.65 --action:(1000,   0)--time:09-14_08h-13m-17s
+reward:  -9.9e+02 --episode:   708 --max angle: 4.30 --freq:  0.000 --sigma: 255.75 --action:( 999,   1)--time:09-14_08h-14m-46s
+reward:  -9.9e+02 --episode:   709 --max angle: 4.40 --freq:  0.000 --sigma: 248.62 --action:( 996,   4)--time:09-14_08h-16m-15s
+reward:  -9.9e+02 --episode:   710 --max angle: 4.56 --freq:  0.000 --sigma: 257.08 --action:( 999,   1)--time:09-14_08h-17m-43s
+reward:  -9.9e+02 --episode:   711 --max angle: 4.32 --freq:  0.000 --sigma: 257.01 --action:(1000,   0)--time:09-14_08h-19m-13s
+reward:    -1e+03 --episode:   712 --max angle: 3.38 --freq:  0.950 --sigma:  17.03 --action:(1000,   0)--time:09-14_08h-20m-42s
+reward:  -9.9e+02 --episode:   713 --max angle: 4.28 --freq:  0.000 --sigma: 255.16 --action:(1000,   0)--time:09-14_08h-22m-08s
+reward:  -9.9e+02 --episode:   714 --max angle: 4.41 --freq:  0.000 --sigma: 255.98 --action:(1000,   0)--time:09-14_08h-23m-37s
+reward:  -9.9e+02 --episode:   715 --max angle: 4.26 --freq:  0.000 --sigma: 258.07 --action:( 999,   1)--time:09-14_08h-25m-06s
+reward:  -9.9e+02 --episode:   716 --max angle: 4.45 --freq:  0.000 --sigma: 255.04 --action:(1000,   0)--time:09-14_08h-26m-35s
+reward:    -1e+03 --episode:   717 --max angle: 3.38 --freq:  0.950 --sigma:  17.12 --action:(1000,   0)--time:09-14_08h-28m-04s
+reward:  -9.9e+02 --episode:   718 --max angle: 4.41 --freq:  0.000 --sigma: 256.47 --action:(1000,   0)--time:09-14_08h-29m-31s
+reward:    -1e+03 --episode:   719 --max angle: 3.38 --freq:  0.950 --sigma:  16.80 --action:(1000,   0)--time:09-14_08h-31m-01s
+reward:  -9.9e+02 --episode:   720 --max angle: 4.24 --freq:  0.000 --sigma: 253.51 --action:( 998,   2)--time:09-14_08h-32m-27s
+reward:  -9.9e+02 --episode:   721 --max angle: 4.33 --freq:  0.000 --sigma: 255.32 --action:(1000,   0)--time:09-14_08h-33m-56s
+reward:  -9.9e+02 --episode:   722 --max angle: 4.37 --freq:  0.000 --sigma: 255.30 --action:( 998,   2)--time:09-14_08h-35m-24s
+reward:  -9.9e+02 --episode:   723 --max angle: 4.38 --freq:  0.000 --sigma: 257.79 --action:(1000,   0)--time:09-14_08h-36m-53s
+reward:    -1e+03 --episode:   724 --max angle: 3.38 --freq:  0.950 --sigma:  17.54 --action:( 995,   5)--time:09-14_08h-38m-22s
+reward:  -9.9e+02 --episode:   725 --max angle: 4.47 --freq:  0.000 --sigma: 256.70 --action:( 999,   1)--time:09-14_08h-39m-48s
+reward:  -9.9e+02 --episode:   726 --max angle: 4.34 --freq:  0.000 --sigma: 255.80 --action:( 999,   1)--time:09-14_08h-41m-18s
+reward:  -9.9e+02 --episode:   727 --max angle: 4.29 --freq:  0.000 --sigma: 257.59 --action:( 998,   2)--time:09-14_08h-42m-46s
+reward:    -1e+03 --episode:   728 --max angle: 3.38 --freq:  0.950 --sigma:  16.24 --action:( 998,   2)--time:09-14_08h-44m-15s
+reward:  -9.9e+02 --episode:   729 --max angle: 4.29 --freq:  0.000 --sigma: 257.70 --action:(1000,   0)--time:09-14_08h-45m-42s
+reward:    -1e+03 --episode:   730 --max angle: 3.38 --freq:  0.950 --sigma:  16.82 --action:(1000,   0)--time:09-14_08h-47m-10s
+reward:  -9.9e+02 --episode:   731 --max angle: 4.45 --freq:  0.000 --sigma: 257.98 --action:( 999,   1)--time:09-14_08h-48m-37s
+reward:  -9.9e+02 --episode:   732 --max angle: 4.32 --freq:  0.000 --sigma: 255.03 --action:(1000,   0)--time:09-14_08h-50m-06s
+reward:  -9.9e+02 --episode:   733 --max angle: 4.33 --freq:  0.000 --sigma: 258.54 --action:( 999,   1)--time:09-14_08h-51m-35s
+reward:    -1e+03 --episode:   734 --max angle: 3.37 --freq:  0.950 --sigma:  16.35 --action:( 999,   1)--time:09-14_08h-53m-04s
+reward:  -9.9e+02 --episode:   735 --max angle: 4.30 --freq:  0.000 --sigma: 258.09 --action:( 999,   1)--time:09-14_08h-54m-30s
+reward:  -9.9e+02 --episode:   736 --max angle: 4.44 --freq:  0.000 --sigma: 258.24 --action:(1000,   0)--time:09-14_08h-55m-59s
+reward:    -1e+03 --episode:   737 --max angle: 3.38 --freq:  0.950 --sigma:  16.89 --action:(1000,   0)--time:09-14_08h-57m-28s
+reward:  -9.9e+02 --episode:   738 --max angle: 4.43 --freq:  0.000 --sigma: 254.75 --action:(1000,   0)--time:09-14_08h-58m-55s
+reward:  -9.9e+02 --episode:   739 --max angle: 4.42 --freq:  0.000 --sigma: 256.72 --action:(1000,   0)--time:09-14_09h-00m-23s
+reward:  -9.9e+02 --episode:   740 --max angle: 4.38 --freq:  0.000 --sigma: 255.21 --action:( 998,   2)--time:09-14_09h-01m-53s
+reward:  -9.9e+02 --episode:   741 --max angle: 4.40 --freq:  0.000 --sigma: 256.07 --action:(1000,   0)--time:09-14_09h-03m-22s
+reward:  -9.9e+02 --episode:   742 --max angle: 4.36 --freq:  0.000 --sigma: 257.66 --action:( 999,   1)--time:09-14_09h-04m-50s
+reward:  -9.9e+02 --episode:   743 --max angle: 4.37 --freq:  0.000 --sigma: 258.18 --action:( 998,   2)--time:09-14_09h-06m-19s
+reward:    -1e+03 --episode:   744 --max angle: 3.38 --freq:  0.950 --sigma:  16.84 --action:( 999,   1)--time:09-14_09h-07m-48s
+reward:  -9.9e+02 --episode:   745 --max angle: 4.31 --freq:  0.000 --sigma: 254.29 --action:(1000,   0)--time:09-14_09h-09m-14s
+reward:  -9.9e+02 --episode:   746 --max angle: 4.25 --freq:  0.000 --sigma: 259.08 --action:( 999,   1)--time:09-14_09h-10m-43s
+reward:  -9.9e+02 --episode:   747 --max angle: 4.21 --freq:  0.000 --sigma: 255.29 --action:( 999,   1)--time:09-14_09h-12m-11s
+reward:    -1e+03 --episode:   748 --max angle: 3.38 --freq:  0.950 --sigma:  16.82 --action:( 996,   4)--time:09-14_09h-13m-40s
+reward:  -9.9e+02 --episode:   749 --max angle: 4.47 --freq:  0.000 --sigma: 256.66 --action:(1000,   0)--time:09-14_09h-15m-06s
+reward:  -9.9e+02 --episode:   750 --max angle: 4.22 --freq:  0.000 --sigma: 250.11 --action:( 995,   5)--time:09-14_09h-16m-36s
+reward:  -9.9e+02 --episode:   751 --max angle: 4.41 --freq:  0.000 --sigma: 252.23 --action:( 998,   2)--time:09-14_09h-18m-05s
+reward:  -9.9e+02 --episode:   752 --max angle: 4.19 --freq:  0.000 --sigma: 255.48 --action:( 999,   1)--time:09-14_09h-19m-34s
+reward:  -9.9e+02 --episode:   753 --max angle: 4.32 --freq:  0.000 --sigma: 255.70 --action:( 999,   1)--time:09-14_09h-21m-03s
+reward:  -9.9e+02 --episode:   754 --max angle: 4.44 --freq:  0.000 --sigma: 252.48 --action:( 996,   4)--time:09-14_09h-22m-32s
+reward:  -9.9e+02 --episode:   755 --max angle: 4.27 --freq:  0.000 --sigma: 250.36 --action:( 997,   3)--time:09-14_09h-24m-01s
+reward:    -1e+03 --episode:   756 --max angle: 3.38 --freq:  0.950 --sigma:  16.51 --action:( 998,   2)--time:09-14_09h-25m-30s
+reward:  -9.9e+02 --episode:   757 --max angle: 4.38 --freq:  0.000 --sigma: 255.78 --action:( 999,   1)--time:09-14_09h-26m-56s
+reward:  -9.9e+02 --episode:   758 --max angle: 4.49 --freq:  0.000 --sigma: 252.16 --action:( 996,   4)--time:09-14_09h-28m-26s
+reward:    -1e+03 --episode:   759 --max angle: 3.38 --freq:  0.950 --sigma:  16.47 --action:( 998,   2)--time:09-14_09h-29m-55s
+reward:  -9.9e+02 --episode:   760 --max angle: 4.27 --freq:  0.000 --sigma: 255.83 --action:( 998,   2)--time:09-14_09h-31m-22s
+reward:  -9.9e+02 --episode:   761 --max angle: 4.32 --freq:  0.000 --sigma: 256.98 --action:( 999,   1)--time:09-14_09h-32m-51s
+reward:    -1e+03 --episode:   762 --max angle: 3.38 --freq:  0.950 --sigma:  17.28 --action:(1000,   0)--time:09-14_09h-34m-19s
+reward:  -9.9e+02 --episode:   763 --max angle: 4.21 --freq:  0.000 --sigma: 252.28 --action:( 998,   2)--time:09-14_09h-35m-46s
+reward:    -1e+03 --episode:   764 --max angle: 3.38 --freq:  0.950 --sigma:  16.95 --action:( 997,   3)--time:09-14_09h-37m-14s
+reward:  -9.9e+02 --episode:   765 --max angle: 4.46 --freq:  0.000 --sigma: 254.84 --action:( 999,   1)--time:09-14_09h-38m-41s
+reward:  -9.9e+02 --episode:   766 --max angle: 4.43 --freq:  0.000 --sigma: 255.17 --action:( 999,   1)--time:09-14_09h-40m-11s
+reward:  -9.9e+02 --episode:   767 --max angle: 4.32 --freq:  0.000 --sigma: 253.90 --action:(1000,   0)--time:09-14_09h-41m-40s
+reward:    -1e+03 --episode:   768 --max angle: 3.38 --freq:  0.950 --sigma:  16.93 --action:( 999,   1)--time:09-14_09h-43m-09s
+reward:  -9.9e+02 --episode:   769 --max angle: 4.31 --freq:  0.000 --sigma: 257.49 --action:( 997,   3)--time:09-14_09h-44m-35s
+reward:    -1e+03 --episode:   770 --max angle: 3.38 --freq:  0.950 --sigma:  17.70 --action:( 997,   3)--time:09-14_09h-46m-04s
+reward:  -9.9e+02 --episode:   771 --max angle: 4.31 --freq:  0.000 --sigma: 253.81 --action:( 998,   2)--time:09-14_09h-47m-30s
+reward:    -1e+03 --episode:   772 --max angle: 3.38 --freq:  0.950 --sigma:  17.56 --action:(1000,   0)--time:09-14_09h-48m-59s
+reward:  -9.9e+02 --episode:   773 --max angle: 4.49 --freq:  0.000 --sigma: 255.36 --action:(1000,   0)--time:09-14_09h-50m-26s
+reward:  -9.9e+02 --episode:   774 --max angle: 4.36 --freq:  0.000 --sigma: 254.52 --action:( 999,   1)--time:09-14_09h-51m-55s
+reward:  -9.9e+02 --episode:   775 --max angle: 4.26 --freq:  0.000 --sigma: 250.99 --action:( 997,   3)--time:09-14_09h-53m-24s
+reward:  -9.9e+02 --episode:   776 --max angle: 4.37 --freq:  0.000 --sigma: 252.41 --action:( 999,   1)--time:09-14_09h-54m-53s
+reward:  -9.9e+02 --episode:   777 --max angle: 4.28 --freq:  0.000 --sigma: 255.71 --action:(1000,   0)--time:09-14_09h-56m-21s
+reward:  -9.9e+02 --episode:   778 --max angle: 4.46 --freq:  0.000 --sigma: 257.68 --action:( 999,   1)--time:09-14_09h-57m-50s
+reward:    -1e+03 --episode:   779 --max angle: 3.38 --freq:  0.950 --sigma:  16.75 --action:( 999,   1)--time:09-14_09h-59m-19s
+reward:  -9.9e+02 --episode:   780 --max angle: 4.38 --freq:  0.000 --sigma: 255.62 --action:(1000,   0)--time:09-14_10h-00m-46s
+reward:  -9.9e+02 --episode:   781 --max angle: 4.43 --freq:  0.000 --sigma: 257.61 --action:( 999,   1)--time:09-14_10h-02m-15s
+reward:  -9.9e+02 --episode:   782 --max angle: 4.28 --freq:  0.000 --sigma: 258.39 --action:( 999,   1)--time:09-14_10h-03m-44s
+reward:  -9.9e+02 --episode:   783 --max angle: 4.36 --freq:  0.000 --sigma: 253.34 --action:( 997,   3)--time:09-14_10h-05m-13s
+reward:    -1e+03 --episode:   784 --max angle: 3.38 --freq:  0.950 --sigma:  16.46 --action:( 996,   4)--time:09-14_10h-06m-41s
+reward:  -9.9e+02 --episode:   785 --max angle: 4.26 --freq:  0.000 --sigma: 256.16 --action:( 999,   1)--time:09-14_10h-08m-08s
+reward:    -1e+03 --episode:   786 --max angle: 3.38 --freq:  0.950 --sigma:  17.29 --action:(1000,   0)--time:09-14_10h-09m-37s
+reward:  -9.9e+02 --episode:   787 --max angle: 4.20 --freq:  0.000 --sigma: 252.78 --action:( 995,   5)--time:09-14_10h-11m-03s
+reward:  -9.9e+02 --episode:   788 --max angle: 4.54 --freq:  0.000 --sigma: 254.56 --action:( 998,   2)--time:09-14_10h-12m-32s
+reward:    -1e+03 --episode:   789 --max angle: 3.38 --freq:  0.950 --sigma:  16.19 --action:( 999,   1)--time:09-14_10h-14m-01s
+reward:  -9.9e+02 --episode:   790 --max angle: 4.26 --freq:  0.000 --sigma: 247.64 --action:( 997,   3)--time:09-14_10h-15m-28s
+reward:  -9.9e+02 --episode:   791 --max angle: 4.32 --freq:  0.000 --sigma: 257.65 --action:(1000,   0)--time:09-14_10h-16m-56s
+reward:  -9.9e+02 --episode:   792 --max angle: 4.35 --freq:  0.000 --sigma: 258.33 --action:( 999,   1)--time:09-14_10h-18m-25s
+reward:  -9.9e+02 --episode:   793 --max angle: 4.21 --freq:  0.000 --sigma: 253.65 --action:( 995,   5)--time:09-14_10h-19m-54s
+reward:    -1e+03 --episode:   794 --max angle: 3.38 --freq:  0.950 --sigma:  16.89 --action:( 998,   2)--time:09-14_10h-21m-22s
+reward:  -9.9e+02 --episode:   795 --max angle: 4.17 --freq:  0.000 --sigma: 255.49 --action:( 998,   2)--time:09-14_10h-22m-49s
+reward:  -9.9e+02 --episode:   796 --max angle: 4.42 --freq:  0.000 --sigma: 254.70 --action:(1000,   0)--time:09-14_10h-24m-17s
+reward:  -9.9e+02 --episode:   797 --max angle: 4.18 --freq:  0.000 --sigma: 256.35 --action:( 998,   2)--time:09-14_10h-25m-47s
+reward:  -9.9e+02 --episode:   798 --max angle: 4.17 --freq:  0.000 --sigma: 257.05 --action:( 999,   1)--time:09-14_10h-27m-16s
+reward:  -9.9e+02 --episode:   799 --max angle: 4.27 --freq:  0.000 --sigma: 253.47 --action:( 997,   3)--time:09-14_10h-28m-44s
+reward:    -1e+03 --episode:   800 --max angle: 3.38 --freq:  0.950 --sigma:  16.44 --action:( 999,   1)--time:09-14_10h-30m-13s
+reward:  -9.9e+02 --episode:   801 --max angle: 4.27 --freq:  0.000 --sigma: 258.31 --action:( 999,   1)--time:09-14_10h-31m-41s
+reward:    -1e+03 --episode:   802 --max angle: 3.38 --freq:  0.950 --sigma:  15.86 --action:( 996,   4)--time:09-14_10h-33m-09s
+reward:  -9.9e+02 --episode:   803 --max angle: 4.27 --freq:  0.000 --sigma: 256.46 --action:( 998,   2)--time:09-14_10h-34m-36s
+reward:    -1e+03 --episode:   804 --max angle: 3.38 --freq:  0.950 --sigma:  16.43 --action:(1000,   0)--time:09-14_10h-36m-05s
+reward:  -9.9e+02 --episode:   805 --max angle: 4.22 --freq:  0.000 --sigma: 249.22 --action:( 996,   4)--time:09-14_10h-37m-31s
+reward:    -1e+03 --episode:   806 --max angle: 3.37 --freq:  0.950 --sigma:  17.14 --action:( 996,   4)--time:09-14_10h-39m-00s
+reward:  -9.9e+02 --episode:   807 --max angle: 4.38 --freq:  0.000 --sigma: 250.16 --action:( 995,   5)--time:09-14_10h-40m-26s
+reward:    -1e+03 --episode:   808 --max angle: 3.38 --freq:  0.950 --sigma:  15.82 --action:( 999,   1)--time:09-14_10h-41m-55s
+reward:  -9.9e+02 --episode:   809 --max angle: 4.42 --freq:  0.000 --sigma: 252.03 --action:( 996,   4)--time:09-14_10h-43m-21s
+reward:  -9.9e+02 --episode:   810 --max angle: 4.26 --freq:  0.000 --sigma: 252.93 --action:( 998,   2)--time:09-14_10h-44m-50s
+reward:    -1e+03 --episode:   811 --max angle: 3.42 --freq:  0.950 --sigma:  15.42 --action:( 995,   5)--time:09-14_10h-46m-19s
+reward:  -9.9e+02 --episode:   812 --max angle: 4.30 --freq:  0.000 --sigma: 251.59 --action:( 996,   4)--time:09-14_10h-47m-45s
+reward:    -1e+03 --episode:   813 --max angle: 3.38 --freq:  0.950 --sigma:  15.24 --action:( 999,   1)--time:09-14_10h-49m-14s
+reward:  -9.9e+02 --episode:   814 --max angle: 4.50 --freq:  0.000 --sigma: 258.86 --action:( 999,   1)--time:09-14_10h-50m-40s
+reward:  -9.9e+02 --episode:   815 --max angle: 4.45 --freq:  0.000 --sigma: 253.17 --action:( 997,   3)--time:09-14_10h-52m-10s
+reward:  -9.9e+02 --episode:   816 --max angle: 4.38 --freq:  0.000 --sigma: 260.60 --action:( 999,   1)--time:09-14_10h-53m-39s
+reward:    -1e+03 --episode:   817 --max angle: 3.38 --freq:  0.950 --sigma:  15.48 --action:( 997,   3)--time:09-14_10h-55m-08s
+reward:  -9.9e+02 --episode:   818 --max angle: 4.39 --freq:  0.000 --sigma: 258.76 --action:( 998,   2)--time:09-14_10h-56m-35s
+reward:    -1e+03 --episode:   819 --max angle: 3.38 --freq:  0.950 --sigma:  14.30 --action:( 999,   1)--time:09-14_10h-58m-03s
+reward:  -9.9e+02 --episode:   820 --max angle: 4.53 --freq:  0.000 --sigma: 259.11 --action:( 999,   1)--time:09-14_10h-59m-30s
+reward:  -9.9e+02 --episode:   821 --max angle: 4.40 --freq:  0.000 --sigma: 256.92 --action:( 999,   1)--time:09-14_11h-00m-59s
+reward:  -9.9e+02 --episode:   822 --max angle: 4.33 --freq:  0.000 --sigma: 258.23 --action:( 998,   2)--time:09-14_11h-02m-29s
+reward:    -1e+03 --episode:   823 --max angle: 3.38 --freq:  0.950 --sigma:  15.44 --action:(1000,   0)--time:09-14_11h-03m-57s
+reward:  -9.9e+02 --episode:   824 --max angle: 4.19 --freq:  0.000 --sigma: 254.80 --action:( 996,   4)--time:09-14_11h-05m-24s
+reward:    -1e+03 --episode:   825 --max angle: 3.38 --freq:  0.950 --sigma:  15.11 --action:( 998,   2)--time:09-14_11h-06m-53s
+reward:  -9.9e+02 --episode:   826 --max angle: 4.20 --freq:  0.000 --sigma: 256.23 --action:( 999,   1)--time:09-14_11h-08m-19s
+reward:  -9.9e+02 --episode:   827 --max angle: 4.42 --freq:  0.000 --sigma: 254.98 --action:( 995,   5)--time:09-14_11h-09m-48s
+reward:  -9.9e+02 --episode:   828 --max angle: 4.14 --freq:  0.000 --sigma: 257.03 --action:( 998,   2)--time:09-14_11h-11m-17s
+reward:    -1e+03 --episode:   829 --max angle: 3.38 --freq:  0.950 --sigma:  15.41 --action:( 999,   1)--time:09-14_11h-12m-46s
+reward:  -9.9e+02 --episode:   830 --max angle: 4.17 --freq:  0.000 --sigma: 247.00 --action:( 995,   5)--time:09-14_11h-14m-13s
+reward:    -1e+03 --episode:   831 --max angle: 3.38 --freq:  0.950 --sigma:  15.36 --action:(1000,   0)--time:09-14_11h-15m-41s
+reward:  -9.9e+02 --episode:   832 --max angle: 4.30 --freq:  0.000 --sigma: 255.73 --action:( 998,   2)--time:09-14_11h-17m-08s
+reward:    -1e+03 --episode:   833 --max angle: 3.37 --freq:  0.950 --sigma:  14.68 --action:( 999,   1)--time:09-14_11h-18m-36s
+reward:  -9.9e+02 --episode:   834 --max angle: 4.40 --freq:  0.000 --sigma: 257.50 --action:( 999,   1)--time:09-14_11h-20m-03s
+reward:    -1e+03 --episode:   835 --max angle: 3.39 --freq:  0.950 --sigma:  15.75 --action:( 996,   4)--time:09-14_11h-21m-31s
+reward:  -9.9e+02 --episode:   836 --max angle: 4.33 --freq:  0.000 --sigma: 257.05 --action:( 998,   2)--time:09-14_11h-22m-58s
+reward:  -9.6e+02 --episode:   837 --max angle:172.72 --freq:  0.000 --sigma: 333.09 --action:( 971,  29)--time:09-14_11h-24m-27s
+reward:  -9.9e+02 --episode:   838 --max angle: 4.25 --freq:  0.000 --sigma: 251.66 --action:( 996,   4)--time:09-14_11h-31m-51s
+reward:  -9.9e+02 --episode:   839 --max angle: 4.22 --freq:  0.000 --sigma: 249.33 --action:( 995,   5)--time:09-14_11h-33m-20s
+reward:  -9.9e+02 --episode:   840 --max angle: 4.38 --freq:  0.000 --sigma: 254.61 --action:( 999,   1)--time:09-14_11h-34m-48s
+reward:  -9.9e+02 --episode:   841 --max angle: 4.55 --freq:  0.000 --sigma: 258.45 --action:( 999,   1)--time:09-14_11h-36m-17s
+reward:  -9.9e+02 --episode:   842 --max angle: 4.21 --freq:  0.000 --sigma: 252.81 --action:( 996,   4)--time:09-14_11h-37m-47s
+reward:    -1e+03 --episode:   843 --max angle: 3.37 --freq:  0.950 --sigma:  15.01 --action:( 999,   1)--time:09-14_11h-39m-15s
+reward:  -9.9e+02 --episode:   844 --max angle: 4.27 --freq:  0.000 --sigma: 255.30 --action:( 999,   1)--time:09-14_11h-40m-42s
+reward:    -1e+03 --episode:   845 --max angle: 3.38 --freq:  0.900 --sigma:  17.08 --action:(1000,   0)--time:09-14_11h-42m-09s
+reward:  -9.9e+02 --episode:   846 --max angle: 4.22 --freq:  0.000 --sigma: 254.38 --action:( 999,   1)--time:09-14_11h-43m-32s

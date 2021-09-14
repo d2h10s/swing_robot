@@ -17,22 +17,22 @@ NAK = b'\x15'
 class a2c_agent():
     def __init__(self, model, lr=1e-3, sampling_time=0.025, version="", suffix=""):
         self.model = model
-        self.EPS = np.finfo(np.float32).eps.item()
-        self.GAMMA = .99
-        self.MAX_STEP = 1000
-        self.ALPHA = 0.01
-        self.LEARNING_RATE = lr
-        self.EPSILON = 1e-3
-        self.MAX_DONE = 20
-        self.NORM = 0.5
-
-        self.num_episode = 1
-        self.episode_reward = 0
-        self.EMA_reward = 0
-        self.SUFFIX = suffix
-        self.sampling_time = sampling_time
 
         if not model.load_dir:
+            self.GAMMA = .99
+            self.MAX_STEP = 1000
+            self.EPS = np.finfo(np.float32).eps.item()
+            self.ALPHA = 0.01
+            self.LEARNING_RATE = lr
+            self.EPSILON = 1e-3
+            self.MAX_DONE = 20
+            self.NORM = 0.5
+
+            self.num_episode = 1
+            self.episode_reward = 0
+            self.EMA_reward = 0
+            self.SUFFIX = suffix
+            self.sampling_time = sampling_time
 
             self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
             self.start_time_str = dt.strftime(self.start_time, '%m%d_%H-%M-%S')
@@ -104,8 +104,8 @@ class a2c_agent():
         plt.legend([f'most freq:{most_freq:2.3f}Hz', f'sigma: {sigma:5.2f}'])
         buf = io.BytesIO()
         plt.savefig(buf, format='png')
-        #if self.num_episode % 100 == 0 or self.num_episode == 1:
-        plt.savefig(os.path.join(self.log_dir, 'fft_img', f'fft{self.num_episode}.png'))
+        if self.num_episode % 100 == 0 or self.num_episode == 1:
+            plt.savefig(os.path.join(self.log_dir, 'fft_img', f'fft{self.num_episode}.png'))
         plt.close()
         buf.seek(0)
         plot_image = tf.image.decode_png(buf.getvalue(), channels=4)

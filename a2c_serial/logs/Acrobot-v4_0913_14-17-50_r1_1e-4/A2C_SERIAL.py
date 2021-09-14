@@ -106,9 +106,8 @@ class a2c_serial:
             if reply.startswith('STX,ACK') and data_type == COMMAND:
                 start_time = time.time()
                 elapsed_time = 0
-                time_threshold = self.wait_time/90*np.abs(np.rad2deg(self.max_angle))+30
+                time_threshold = self.wait_time/90*np.abs(self.max_angle)+30
                 sleep(1)
-                
                 while elapsed_time < time_threshold:
                     elapsed_time = time.time() - start_time
                     print(f'\relapsed {elapsed_time:.2f}s of {time_threshold:.1f}s and completed {np.min([elapsed_time/time_threshold*100,100]):6.2f}%', end='')
@@ -167,9 +166,9 @@ class a2c_serial:
         th2 = mx106_pos
         vel1 = ahrs_vel
         vel2 = mx106_vel
-        self.max_angle = max(self.max_angle,np.abs(th1)) # rad
+        self.max_angle = max(self.max_angle,np.abs(np.rad2deg(th1))) # deg
 
-        observation = np.array([th1+self.EPS, th2+self.EPS, vel1+self.EPS, vel2+self.EPS], dtype=np.float32)
+        observation = np.array([th1, th2, vel1, vel2], dtype=np.float32)
         if DEBUG_ON: print('end obs')
         return observation
         
