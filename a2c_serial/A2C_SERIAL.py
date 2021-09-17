@@ -106,20 +106,24 @@ class a2c_serial:
             if reply.startswith('STX,ACK') and data_type == COMMAND:
                 start_time = time.time()
                 elapsed_time = 0
-                time_threshold = self.wait_time/90*np.abs(self.max_angle)+30
+                episode_delay = 1.26*np.abs(self.max_angle)+81.8+15
                 sleep(1)
-                while elapsed_time < time_threshold:
+                while elapsed_time < episode_delay:
                     elapsed_time = time.time() - start_time
-                    print(f'\relapsed {elapsed_time:.2f}s of {time_threshold:.1f}s and completed {np.min([elapsed_time/time_threshold*100,100]):6.2f}%', end='')
+                    print(f'\relapsed {elapsed_time:.2f}s of {episode_delay:.1f}s and completed {np.min([elapsed_time/episode_delay*100,100]):6.2f}%', end='')
                     sleep(1)
                 if DEBUG_ON: print('end reset')
                 obs = self.get_observation()
-                self.zero_angle = self.roll
-                print(f'\n\nzero angle {np.rad2deg(self.zero_angle):.3f} deg')
                 self.max_angle = 0
                 return obs
             else:
                 print('received unrecognized bytes', reply)
+
+
+    def set_zero_angle(self):
+        self.get_observation()
+        self.zero_angle = self.roll
+        print(f'\n\nzero angle {np.rad2deg(self.zero_angle):.3f} deg')
 
     def step(self, action):
         if DEBUG_ON: print('start step')

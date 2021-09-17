@@ -15,13 +15,13 @@ ACK = b'\x06'
 NAK = b'\x15'
 
 class a2c_agent():
-    def __init__(self, model, lr=1e-3, sampling_time=0.025, version="", suffix=""):
+    def __init__(self, model, lr='1e-3', sampling_time=0.025, version="", suffix=""):
         self.model = model
         self.EPS = np.finfo(np.float32).eps.item()
         self.GAMMA = .99
         self.MAX_STEP = 1000
         self.ALPHA = 0.01
-        self.LEARNING_RATE = lr
+        self.LEARNING_RATE = float(lr)
         self.EPSILON = 1e-3
         self.MAX_DONE = 20
         self.NORM = 0.5
@@ -29,11 +29,10 @@ class a2c_agent():
         self.num_episode = 1
         self.episode_reward = 0
         self.EMA_reward = 0
-        self.SUFFIX = suffix
+        self.SUFFIX = f'{suffix}_{lr}'
         self.sampling_time = sampling_time
 
         if not model.load_dir:
-
             self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
             self.start_time_str = dt.strftime(self.start_time, '%m%d_%H-%M-%S')
             self.log_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logs', f'Acrobot-{version}_{self.start_time_str}_{self.SUFFIX}')
@@ -176,9 +175,9 @@ class a2c_agent():
             state = self.env.step(action)
             th1, th2, vel1, vel2 = state
             #reward = -np.abs(np.cos(th1))
-            #reward = np.abs(np.sin(th1))
+            reward = np.abs(np.sin(th1))
             #reward = 1/np.abs(np.cos(th1)+0.1)-1/(1+0.1)
-            reward = -np.cos(th1*2)
+            #reward = -np.cos(th1*2)
             rewards = rewards.write(step-1, reward)
 
             print(f'\r--step {step:5d}  --reward {reward:8.02} --action {action} --action_probs [{a0:8.02} {a1:8.02}] --value [{v:8.02}]', end='')
@@ -226,6 +225,7 @@ class a2c_agent():
     def train(self, env):
         self.env = env
         done_cnt = 0
+        self.env.set_zero_angle()
         while self.env.ser.isOpen():
             initial_state = self.env.reset()
             self.train_step(initial_state)
