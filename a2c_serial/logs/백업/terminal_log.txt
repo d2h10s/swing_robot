@@ -1,0 +1,11 @@
+
+using acrobot-v2 environment which is d2h10s edition v4.0
+definition of reward : [reward = |sin(theta_1)|]
+termination condition: FFT
+
+
+using acrobot-v2 environment which is d2h10s edition v4.0
+definition of reward : [reward = |sin(theta_1)|]
+termination condition: FFT
+
+
