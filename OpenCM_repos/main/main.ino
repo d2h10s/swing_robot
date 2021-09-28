@@ -1,8 +1,6 @@
 #include <DynamixelWorkbench.h>
-//#include "LiquidCrystal_I2C.h"
 #include "JY901.h"
 DynamixelWorkbench wb;
-//LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 //FOR CONSTANT VARIABLES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #define SAMPLING_TIME     25     // milli second
@@ -60,7 +58,7 @@ bool isOnline                     = false;
 //MAIN PROGRAM>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 void setup() {
   Serial.begin(SERIAL_BAUDRATE);
-  Serial.setTimeout(1000);
+  Serial.setTimeout(SERIAL_TIMEOUT);
   //lcd.begin();
   pinMode(INNER_LED, OUTPUT);
   ahrs_init();
