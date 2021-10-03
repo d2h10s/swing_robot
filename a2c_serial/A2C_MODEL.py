@@ -14,9 +14,9 @@ class a2c_model(tf.keras.Model):
         if not self.load_dir:
             self.input_layer  = layers.Input(shape=self.observation_n, dtype='float32')
             self.fc1_layer    = layers.Dense(self.hidden_n, activation='relu', kernel_initializer=keras.initializers.HeNormal(seed=41), name='Dense1')(self.input_layer)
-            #self.fc2_layer    = layers.Dense(self.hidden_n, activation='relu', kernel_initializer=keras.initializers.HeNormal(seed=None), name='Dense2')(self.fc1_layer)
-            self.actor_layer  = layers.Dense(self.action_n, name='Actor')(self.fc1_layer)
-            self.critic_layer = layers.Dense(1, name='Critic')(self.fc1_layer)
+            self.fc2_layer    = layers.Dense(self.hidden_n, activation='relu', kernel_initializer=keras.initializers.HeNormal(seed=41), name='Dense2')(self.fc1_layer)
+            self.actor_layer  = layers.Dense(self.action_n, name='Actor')(self.fc2_layer)
+            self.critic_layer = layers.Dense(1, name='Critic')(self.fc2_layer)
             self.nn = keras.Model(inputs=self.input_layer, outputs=[self.actor_layer, self.critic_layer])
         else:
             print('Model is loaded from '+load_dir)

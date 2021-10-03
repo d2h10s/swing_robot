@@ -31,6 +31,9 @@ class a2c_agent():
         self.EMA_reward = 0
         self.SUFFIX = f'{suffix}_{lr}'
         self.sampling_time = sampling_time
+        
+        self.m = [-1.1972720082172352, -0.19505799720288627, -5.73218793410446, -19.163715186897736]
+        self.M = [ 1.2165426422741104,   1.7601296440512415, 5.567071950337454,  20.839231268812295]
 
         self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
         self.start_time_str = dt.strftime(self.start_time, '%m%d_%H-%M-%S')
@@ -108,7 +111,7 @@ class a2c_agent():
         plt.title('Action')
         plt.ylabel('action')
         plt.xlabel('step')
-        plt.legend([f'action0:{self.MAX_STEP - sum(self.action_cnt):2.3f}', f'action1: {sum(self.action_cnt)}'])
+        plt.legend([f'action0:{self.MAX_STEP - sum(self.action_cnt)}'])
 
         buf = io.BytesIO()
         plt.savefig(buf, format='png')
@@ -171,6 +174,7 @@ class a2c_agent():
 
         for step in range(1, self.MAX_STEP+1):
             start_time = time.time()
+            state = np.array([(state[i]-self.m[i])/(self.M[i]-self.m[i]) for i in range(4)])
             action_logits_t, value = self.model(state)
             action = tf.random.categorical(action_logits_t, 1)[0, 0]
             action_probs_t = tf.nn.softmax(action_logits_t)
@@ -236,7 +240,7 @@ class a2c_agent():
         done_cnt = 0
         self.env.set_zero_angle()
         while self.env.ser.isOpen():
-            initial_state = self.env.reset()
+            initial_state = self.env.reset(self.num_episode)
             self.train_step(initial_state)
             if self.num_episode == 1:
                 self.EMA_reward = self.episode_reward
@@ -280,7 +284,7 @@ class a2c_agent():
             f.write(log_text+'\n')
 
         with self.summary_writer.as_default():
-            tf.summary.scalar('action1 ratio', self.loss, step=sum(self.action_cnt)/self.MAX_STEP)
+            tf.summary.scalar('action1 ratio', sum(self.action_cnt)/self.MAX_STEP, step=self.num_episode)
             tf.summary.scalar('losses', self.loss, step=self.num_episode)
             tf.summary.scalar('reward of episodes', self.episode_reward, step=self.num_episode)
             tf.summary.scalar('frequency of episodes', self.most_freq, step=self.num_episode)

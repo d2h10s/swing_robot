@@ -97,21 +97,21 @@ class a2c_serial:
             if DEBUG_ON: print('end write')
             return rx_string, data_type
 
-    def reset(self):
+    def reset(self, n_episode):
         if DEBUG_ON: print('start reset')
         ret = self.ser.isOpen()
         self.ser.write(GO_CW)
-        while ret:
+        while self.ser.isOpen():
             reply, data_type = self.write_command(RST)
             if reply.startswith('STX,ACK') and data_type == COMMAND:
                 start_time = time.time()
                 elapsed_time = 0
-                episode_delay = 1.26*np.abs(self.max_angle)+81.8+15
+                episode_delay = 10 if n_episode == 1 else 1.26*np.abs(self.max_angle)+81.8+15
                 sleep(1)
                 while elapsed_time < episode_delay:
                     elapsed_time = time.time() - start_time
                     print(f'\relapsed {elapsed_time:.2f}s of {episode_delay:.1f}s and completed {np.min([elapsed_time/episode_delay*100,100]):6.2f}%', end='')
-                    sleep(1)
+                    sleep(0.99)
                 if DEBUG_ON: print('end reset')
                 obs = self.get_observation()
                 self.max_angle = 0
@@ -156,9 +156,9 @@ class a2c_serial:
                     if any(np.isnan(rx_data)):
                         print('get nan value from opencm', rx_data)
                         continue
-                    roll = np.deg2rad(rx_data[0])  # deg/s -> rad/s
+                    roll = np.deg2rad(rx_data[0])  # deg -> rad
                     ahrs_vel = np.deg2rad(rx_data[1])  # deg/s -> rad/s
-                    mx106_pos = (2100 - rx_data[2]) * 0.088 # rad
+                    mx106_pos = np.deg2rad((2100 - rx_data[2]) * 0.088) # deg -> rad
                     mx106_vel = rx_data[3] * np.pi / 30  # rpm -> rad/s
                     #print('{:6.2f},{:6.2f},{:6.2f},{:6.2f},{:6.2f},{:6.2f}'.format(roll, ahrs_vel, ahrs_temp, mx106_pos, mx106_vel, mx106_temp))
                     ret = False

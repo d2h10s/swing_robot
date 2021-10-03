@@ -71,7 +71,7 @@ class a2c_agent():
             f.write(msg+'\n\n')
 
 
-    def fft(self, deg_list):
+    def fft(self, deg_list, act_list):
         Fs = 1/self.sampling_time
         n = len(deg_list)
         scale = n//2
@@ -85,15 +85,15 @@ class a2c_agent():
         most_freq = freq[np.argmax(fft_mag_data)]
         x = np.arange(n)*self.sampling_time
         sigma = np.max(fft_mag_data)/np.mean(fft_mag_data)
-        plt.figure(figsize=(15,10))
-        plt.subplot(2,1,1)
+        plt.figure(figsize=(15,15))
+        plt.subplot(3,1,1)
         plt.title('FFT')
         plt.plot(x, deg_list)
         plt.xlabel('sec')
         plt.ylabel('deg')
         plt.grid(True)
 
-        plt.subplot(2,1,2)
+        plt.subplot(3,1,2)
         plt.grid(True)
         plt.ylabel('mag')
         plt.xlabel('frequency')
@@ -101,6 +101,15 @@ class a2c_agent():
         plt.vlines(freq, [0], fft_mag_data)
         plt.xlim([0, 4])
         plt.legend([f'most freq:{most_freq:2.3f}Hz', f'sigma: {sigma:5.2f}'])
+
+        plt.subplot(3,1,3)
+        plt.grid(True)
+        plt.plot(range(1,self.MAX_STEP+1), act_list)
+        plt.title('Action')
+        plt.ylabel('action')
+        plt.xlabel('step')
+        plt.legend([f'action0:{self.MAX_STEP - sum(self.action_cnt):2.3f}', f'action1: {sum(self.action_cnt)}'])
+
         buf = io.BytesIO()
         plt.savefig(buf, format='png')
         #if self.num_episode % 100 == 0 or self.num_episode == 1:
@@ -158,7 +167,7 @@ class a2c_agent():
         values = tf.TensorArray(dtype=tf.float32, size=0, dynamic_size=True)
         rewards = tf.TensorArray(dtype=tf.float32, size=0, dynamic_size=True)
         degrees = np.zeros(self.MAX_STEP, dtype=np.float32)
-        self.action_cnt = [0,0]
+        self.action_cnt = np.zeros(self.MAX_STEP, dtype=np.int)
 
         for step in range(1, self.MAX_STEP+1):
             start_time = time.time()
@@ -168,7 +177,7 @@ class a2c_agent():
             a0, a1, v = *action_probs_t.numpy()[0], value.numpy()[0,0]
             if any(tf.math.is_nan([a0, a1, v])):
                 raise Exception(f'Nan value is included in model output, {a0}, {a1}, {v}')
-            self.action_cnt[action] += 1
+            self.action_cnt[step-1] = int(action)
             action_probs = action_probs.write(step-1, action_probs_t[0, action])
             values = values.write(step-1, tf.squeeze(value))
 
@@ -193,7 +202,7 @@ class a2c_agent():
             
 
 
-        self.most_freq, self.sigma, self.plot_img = self.fft(degrees)
+        self.most_freq, self.sigma, self.plot_img = self.fft(degrees, self.action_cnt)
         del degrees
 
         action_probs = action_probs.stack()
@@ -262,13 +271,16 @@ class a2c_agent():
     def write_logs(self):
         now_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
         now_time_str = dt.strftime(now_time, '%m-%d_%Hh-%Mm-%Ss')
-        log_text = f"reward: {self.episode_reward:9.2g} --episode: {self.num_episode:5} --max angle:{self.env.max_angle:5.2f} --freq:{self.most_freq:7.3f} --sigma:{self.sigma:7.2f} --action:({self.action_cnt[0]:4d},{self.action_cnt[1]:4d})--time:{now_time_str}"
+        a1 = sum(self.action_cnt)
+        a0 = self.MAX_STEP - a1
+        log_text = f"reward: {self.episode_reward:9.2g} --episode: {self.num_episode:5} --max angle:{self.env.max_angle:5.2f} --freq:{self.most_freq:7.3f} --sigma:{self.sigma:7.2f} --action:({a0:4d},{a1:4d})--time:{now_time_str}"
         print(log_text)
 
         with open(os.path.join(self.log_dir, 'terminal_log.txt'), 'a') as f:
             f.write(log_text+'\n')
 
         with self.summary_writer.as_default():
+            tf.summary.scalar('action1 ratio', self.loss, step=sum(self.action_cnt)/self.MAX_STEP)
             tf.summary.scalar('losses', self.loss, step=self.num_episode)
             tf.summary.scalar('reward of episodes', self.episode_reward, step=self.num_episode)
             tf.summary.scalar('frequency of episodes', self.most_freq, step=self.num_episode)
