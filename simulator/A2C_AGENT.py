@@ -1,57 +1,74 @@
-import io, os, yaml
+import io, os, yaml, time
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow import keras
+from tensorflow.keras import layers, optimizers
 from pytz import timezone, utc
 from datetime import datetime as dt
-from typing import Tuple, List
-from functools import reduce
 
 STX = b'\x02'
 ETX = b'\x03'
 ACK = b'\x06'
 NAK = b'\x15'
 
-tf.config.set_visible_devices([], 'GPU')
 class a2c_agent():
-    def __init__(self, model, lr=1e-3, sampling_time=0.025, version="", suffix=""):
+    '''
+    @param model environment which is from gym or serial
+    @param lr learning_rate of optimizer
+    @param sampling_time period reading observation data from robot
+    @param version environment version which is made by user
+    @param suffix user's comment
+    @param nstart Whether rename folder name and time variables
+    '''
+    def __init__(self, model, lr='1e-3', sampling_time=0.025, version="", suffix="", nstart=False):
         self.model = model
+        self.EPS = np.finfo(np.float32).eps.item()
+        # GAMMA is discount factor
+        self.GAMMA = .99
+        self.MAX_STEP = 1000
+        self.LEARNING_RATE = float(lr)
+        self.EPSILON = 1e-3
+        # if If successive successes beyond MAX_DONE stop traing because it means training is completed
+        self.MAX_DONE = 20
+        # gradient cut by number of self.NORM
+        self.NORM = 0.5
 
-        if not model.load_dir:
-            self.GAMMA = .99
-            self.MAX_STEP = 1000
-            self.ALPHA = 0.01
-            self.LEARNING_RATE = lr
-            self.EPSILON = 1e-3
-            self.MAX_DONE = 20
-            self.EPS = np.finfo(np.float32).eps.item()
+        self.num_episode = 1
+        self.episode_reward = 0
+        # EMA_reward means exponential moving everage reward
+        self.EMA_reward = 0
+        self.ALPHA = 0.01
+        self.SUFFIX = f'{suffix}_{lr}'
+        self.max_angle = 0
 
-            self.SUFFIX = suffix
-            self.sampling_time = sampling_time
+        # m is minimum of observation parameters, and M means maximum
+        self.M = [ 1.2165426422741104,   1.7601296440512415, 5.567071950337454,  20.839231268812295]
+        self.m = [-1.1972720082172352, -0.19505799720288627, -5.73218793410446, -19.163715186897736]
 
-            self.done_cnt = 0
-            self.num_episode = 1
-            self.episode_reward = 0
-            self.EMA_reward = 0
-            self.loss = 0
-
-            self.most_freq = 0
-            self.sigma = 0
-            self.plot_img = ''
-
+        
+        if not model.load_dir or nstart:
             self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
             self.start_time_str = dt.strftime(self.start_time, '%m%d_%H-%M-%S')
             self.log_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logs', f'Acrobot-{version}_{self.start_time_str}_{self.SUFFIX}')
+
+        if not model.load_dir:
             os.mkdir(self.log_dir)
             os.mkdir(os.path.join(self.log_dir, 'fft_img'))
-
+            os.mkdir(os.path.join(self.log_dir, 'tf_model'))
+        
+        # if start from exist model, load parameters from exist log
         else:
+            if nstart:
+                os.rename(self.model.load_dir, self.log_dir)
+                self.model.load_dir = self.log_dir
+            print('agent parameter loaded from previous model!')
             self.log_dir = model.load_dir
             with open(os.path.join(self.log_dir, 'backup.yaml')) as f:
                 yaml_data = yaml.safe_load(f)
-                self.start_time_str = yaml_data['START_TIME']
-                self.start_time = dt.strptime('2021_'+self.start_time_str, '%Y_%m%d_%H-%M-%S')
+                if not nstart:
+                    self.start_time_str = yaml_data['START_TIME']
+                    self.start_time = dt.strptime('2021_'+self.start_time_str, '%Y_%m%d_%H-%M-%S')
                 self.GAMMA = float(yaml_data['GAMMA'])
                 self.MAX_STEP = int(yaml_data['MAX_STEP'])
                 self.ALPHA = float(yaml_data['ALPHA'])
@@ -60,24 +77,22 @@ class a2c_agent():
                 self.MAX_DONE = float(yaml_data['MAX_DONE'])
 
                 self.num_episode = int(yaml_data['EPISODE'])+1
-                self.episode_reward = float(yaml_data['EPISODE_REWARD'])
                 self.EMA_reward = float(yaml_data['EMA_REWARD'])
                 self.SUFFIX = yaml_data['SUFFIX']
                 self.sampling_time = yaml_data['SAMPLING_TIME']
-
         self.summary_writer = tf.summary.create_file_writer(self.log_dir)
 
 
-        self.optimizer = keras.optimizers.Adam(learning_rate=self.LEARNING_RATE, epsilon=self.EPSILON)
+        self.optimizer = optimizers.Adam(learning_rate=self.LEARNING_RATE, epsilon=self.EPSILON)
         self.huber_loss = keras.losses.Huber(reduction=tf.keras.losses.Reduction.SUM)
-        
+
 
     def init_message(self, msg):
         with open(os.path.join(self.log_dir, 'terminal_log.txt'), 'a') as f:
             f.write(msg+'\n\n')
 
 
-    def fft(self, deg_list: list):
+    def fft(self, deg_list, act_list):
         Fs = 1/self.sampling_time
         n = len(deg_list)
         scale = n//2
@@ -91,15 +106,15 @@ class a2c_agent():
         most_freq = freq[np.argmax(fft_mag_data)]
         x = np.arange(n)*self.sampling_time
         sigma = np.max(fft_mag_data)/np.mean(fft_mag_data)
-        plt.figure(figsize=(15,10))
-        plt.subplot(2,1,1)
+        plt.figure(figsize=(15,15))
+        plt.subplot(3,1,1)
         plt.title('FFT')
         plt.plot(x, deg_list)
         plt.xlabel('sec')
         plt.ylabel('deg')
         plt.grid(True)
 
-        plt.subplot(2,1,2)
+        plt.subplot(3,1,2)
         plt.grid(True)
         plt.ylabel('mag')
         plt.xlabel('frequency')
@@ -107,45 +122,60 @@ class a2c_agent():
         plt.vlines(freq, [0], fft_mag_data)
         plt.xlim([0, 4])
         plt.legend([f'most freq:{most_freq:2.3f}Hz', f'sigma: {sigma:5.2f}'])
+
+        plt.subplot(3,1,3)
+        plt.grid(True)
+        plt.plot(range(1,self.MAX_STEP+1), act_list)
+        plt.title('Action')
+        plt.ylabel('action')
+        plt.xlabel('step')
+        plt.legend([f'action0:{self.MAX_STEP - sum(self.action_cnt)}'])
+
         buf = io.BytesIO()
         plt.savefig(buf, format='png')
-        if self.num_episode % 100 == 0 or self.num_episode == 1:
-            plt.savefig(os.path.join(self.log_dir, 'fft_img', f'fft{self.num_episode}.png'))
+        #if self.num_episode % 100 == 0 or self.num_episode == 1:
+        plt.savefig(os.path.join(self.log_dir, 'fft_img', f'fft{self.num_episode}.png'))
         plt.close()
         buf.seek(0)
         plot_image = tf.image.decode_png(buf.getvalue(), channels=4)
         plot_image = tf.expand_dims(plot_image, 0)
-
         return most_freq, sigma, plot_image
 
-    
-    def get_expected_return(self, rewards: list, standardize: bool = True) -> list:
+
+    def get_expected_return(self, rewards: tf.Tensor, standardize: bool = True) -> tf.Tensor:
         """Compute expected returns per timestep."""
-        returns = []
+        n = tf.shape(rewards)[0]
+        returns = tf.TensorArray(dtype=tf.float32, size=n)
 
         # Start from the end of `rewards` and accumulate reward sums
         # into the `returns` array
-        discounted_sum = .0
-        for reward in reversed(rewards):
+        rewards = tf.cast(rewards[::-1], dtype=tf.float32)
+        discounted_sum = tf.constant(0.0)
+        discounted_sum_shape = discounted_sum.shape
+        for i in tf.range(n):
+            reward = rewards[i]
             discounted_sum = reward + self.GAMMA * discounted_sum
-            returns.append(discounted_sum)
-        returns.reverse()
+            discounted_sum.set_shape(discounted_sum_shape)
+            returns = returns.write(i, discounted_sum)
+        returns = returns.stack()[::-1]
 
         if standardize:
-            returns = ((returns - tf.math.reduce_mean(returns)) / (np.std(returns) + self.EPS))
+            returns = ((returns - tf.math.reduce_mean(returns)) / 
+                    (tf.math.reduce_std(returns) + self.EPS))
 
         return returns
 
-    def compute_loss(self, action_probs: list, values: list, returns: list) -> tf.Tensor:
+
+    def compute_loss(self, action_probs: tf.Tensor, values: tf.Tensor, returns: tf.Tensor) -> tf.Tensor:
         """Computes the combined actor-critic loss."""
 
-        advantage = np.array(returns, dtype=np.float32) - np.array(values, dtype=np.float32)
+        advantage = returns - tf.stop_gradient(values) # 역전파 방지
 
         action_log_probs = tf.math.log(action_probs)
         actor_loss = -tf.math.reduce_sum(action_log_probs * advantage)
-
-        critic_loss = self.huber_loss(values, returns)
-        
+    
+        critic_loss = self.huber_loss(values, returns) # for gradient clipping
+        print('\ncritic loss is', critic_loss.numpy(), 'actor loss is', actor_loss.numpy(),end=' ')
         del advantage, action_log_probs
 
         return actor_loss + critic_loss
@@ -154,39 +184,47 @@ class a2c_agent():
     def run_episode(self, initial_state: np.array):
         state = initial_state
 
-        action_probs = [0]*self.MAX_STEP
-        values = [0]*self.MAX_STEP
-        rewards = [0]*self.MAX_STEP
-        degrees = [0]*self.MAX_STEP
-        self.action_cnt = [0,0]
+        action_probs = tf.TensorArray(dtype=tf.float32, size=0, dynamic_size=True)
+        values = tf.TensorArray(dtype=tf.float32, size=0, dynamic_size=True)
+        rewards = tf.TensorArray(dtype=tf.float32, size=0, dynamic_size=True)
+        degrees = np.zeros(self.MAX_STEP, dtype=np.float32)
+        self.action_cnt = np.zeros(self.MAX_STEP, dtype=np.int)
+        self.max_angle = 0
 
-        for step in range(self.MAX_STEP):
-            action_probs_t, value = self.model(state)
-            if not step:
-                print(f'start with action_probs = {action_probs_t.numpy()[0]}, value = {value.numpy()[0]}')
-            if any(tf.math.is_nan([*action_probs_t[0], *value[0]])):
-                raise Exception('Nan value is included in model output')
-            action = tf.random.categorical(action_probs_t, 1)[0, 0]
-            action_probs[step] = action_probs_t[0, action]
-            values[step] = value[0,0]
+        for step in range(1, self.MAX_STEP+1):
+            start_time = time.time()
+            state = np.array([(state[i]-self.m[i])/(self.M[i]-self.m[i]) for i in range(4)])
+            action_logits_t, value = self.model(state)
+            action = tf.random.categorical(action_logits_t, 1)[0, 0]
+            action_probs_t = tf.nn.softmax(action_logits_t)
+            a0, a1, v = *action_probs_t.numpy()[0], value.numpy()[0,0]
+            if any(tf.math.is_nan([a0, a1, v])):
+                raise Exception(f'Nan value is included in model output, {a0}, {a1}, {v}')
+            self.action_cnt[step-1] = int(action)
+            action_probs = action_probs.write(step-1, action_probs_t[0, action])
+            values = values.write(step-1, tf.squeeze(value))
 
-            state, _, _, _ = self.env.step(action)
-            c1, s1, c2, s2, w1, w2 = state
-            #reward = 1/np.abs(state[0]+0.1)-1/(1+0.1)
-            reward = np.abs(s1) # sin(theta1)
-            rewards[step] = reward
+            state, *_ = self.env.step(action)
+            th1, th2, vel1, vel2 = state
+            self.max_angle = max(self.max_angle, np.rad2deg(th1))
 
-            deg = np.rad2deg(np.arctan2(s1, c1))
-            degrees[step] = deg
+            #reward = -np.abs(np.cos(th1))
+            reward = np.abs(np.sin(th1))
+            #reward = 1/np.abs(np.cos(th1)+0.1)-1/(1+0.1)
+            #reward = -np.cos(th1*2)
+            rewards = rewards.write(step-1, reward)
+            deg = np.rad2deg(th1)
+            degrees[step-1] = deg
 
-            self.action_cnt[action] += 1
-
-        self.most_freq, self.sigma, self.plot_img = self.fft(degrees)
-
+        self.most_freq, self.sigma, self.plot_img = self.fft(degrees, self.action_cnt)
         del degrees
 
-        return action_probs, values, rewards
+        action_probs = action_probs.stack()
+        values = values.stack()
+        rewards = rewards.stack()
 
+        return action_probs, values, rewards
+    
 
     def train_step(self, initial_state: np.array):
         """Runs a model training step."""
@@ -195,8 +233,11 @@ class a2c_agent():
             action_probs, values, rewards = self.run_episode(initial_state)
 
             returns = self.get_expected_return(rewards, standardize=True)
+            
             self.loss = self.compute_loss(action_probs, values, returns)
+            print('loss is', self.loss.numpy())
         grads = tape.gradient(self.loss, self.model.trainable_variables)
+        grads = [tf.clip_by_norm(g, self.NORM) for g in grads]
         self.optimizer.apply_gradients(zip(grads, self.model.trainable_variables))
         
         self.episode_reward = np.sum(rewards)
@@ -204,14 +245,17 @@ class a2c_agent():
         del action_probs, values, rewards, returns, grads
 
 
-
     def train(self, env):
         self.env = env
-        #while env.ser.isOpen():
+        self.sampling_time = self.env.dt
+        done_cnt = 0
         while True:
-            initial_state = env.reset()
+            initial_state = self.env.reset()
             self.train_step(initial_state)
-            self.EMA_reward = self.episode_reward*self.ALPHA + self.EMA_reward * (1-self.ALPHA)
+            if self.num_episode == 1:
+                self.EMA_reward = self.episode_reward
+            else:
+                self.EMA_reward = self.episode_reward*self.ALPHA + self.EMA_reward * (1-self.ALPHA)
             
             self.write_logs()
 
@@ -232,26 +276,30 @@ class a2c_agent():
             action_probs, _ = self.model(state)
 
             action = np.argmax(action_probs)
-            state, *_ = env.step(action)
-
+            state = env.step(action)
+            th1 = np.rad2deg(state[0]) # deg
             with self.summary_writer.as_default():
-                tf.summary.scalar('test angle of link1', env.th1, step=step)
-    
-    
+                tf.summary.scalar('test angle of link1', th1, step=step)
+
+
     def write_logs(self):
         now_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
         now_time_str = dt.strftime(now_time, '%m-%d_%Hh-%Mm-%Ss')
-        log_text = f"EMA reward: {self.EMA_reward:9.2f} at episode {self.num_episode:5} --freq:{self.most_freq:7.3f} --sigma:{self.sigma:7.2f} --action:({self.action_cnt[0]:4d},{self.action_cnt[1]:4d})--time:{now_time_str}"
+        a1 = sum(self.action_cnt)
+        a0 = self.MAX_STEP - a1
+        log_text = f"reward: {self.episode_reward:9.2g} --episode: {self.num_episode:5} --max angle:{self.max_angle:5.2f} --freq:{self.most_freq:7.3f} --sigma:{self.sigma:7.2f} --action:({a0:4d},{a1:4d})--time:{now_time_str}"
         print(log_text)
 
         with open(os.path.join(self.log_dir, 'terminal_log.txt'), 'a') as f:
             f.write(log_text+'\n')
 
         with self.summary_writer.as_default():
+            tf.summary.scalar('action1 ratio', sum(self.action_cnt)/self.MAX_STEP, step=self.num_episode)
             tf.summary.scalar('losses', self.loss, step=self.num_episode)
             tf.summary.scalar('reward of episodes', self.episode_reward, step=self.num_episode)
             tf.summary.scalar('frequency of episodes', self.most_freq, step=self.num_episode)
             tf.summary.scalar('sigma of episodes', self.sigma, step=self.num_episode)
+            tf.summary.scalar('max angle of episodes', self.max_angle, step=self.num_episode)
 
         with open(os.path.join(self.log_dir, 'episode-reward-loss-freq-sigma.txt'), 'a') as f:
             f.write(f'{self.num_episode} {self.episode_reward} {self.loss} {self.most_freq} {self.sigma}\n')
@@ -277,7 +325,6 @@ class a2c_agent():
                         'EPSILON':          self.EPSILON,\
                         'EPISODE':          self.num_episode,\
                         'EMA_REWARD':       float(self.EMA_reward),\
-                        'EPISODE_REWARD':   float(self.episode_reward),\
                         'SAMPLING_TIME':    self.sampling_time,\
                         'MAX_DONE':         self.MAX_DONE,\
                         'SUFFIX':           self.SUFFIX}

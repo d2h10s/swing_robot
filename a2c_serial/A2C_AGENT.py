@@ -4,10 +4,8 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers, optimizers
-from PIL import Image
 from pytz import timezone, utc
 from datetime import datetime as dt
-
 
 STX = b'\x02'
 ETX = b'\x03'
@@ -15,41 +13,62 @@ ACK = b'\x06'
 NAK = b'\x15'
 
 class a2c_agent():
-    def __init__(self, model, lr='1e-3', sampling_time=0.025, version="", suffix=""):
+    '''
+    @param model environment which is from gym or serial
+    @param lr learning_rate of optimizer
+    @param sampling_time period reading observation data from robot
+    @param version environment version which is made by user
+    @param suffix user's comment
+    @param nstart Whether rename folder name and time variables
+    '''
+    def __init__(self, model, lr='1e-3', sampling_time=0.025, version="", suffix="", nstart=False):
         self.model = model
         self.EPS = np.finfo(np.float32).eps.item()
+        # GAMMA is discount factor
         self.GAMMA = .99
         self.MAX_STEP = 1000
-        self.ALPHA = 0.01
         self.LEARNING_RATE = float(lr)
         self.EPSILON = 1e-3
+        # if If successive successes beyond MAX_DONE stop traing because it means training is completed
         self.MAX_DONE = 20
+        # gradient cut by number of self.NORM
         self.NORM = 0.5
 
         self.num_episode = 1
         self.episode_reward = 0
+        # EMA_reward means exponential moving everage reward
         self.EMA_reward = 0
+        self.ALPHA = 0.01
         self.SUFFIX = f'{suffix}_{lr}'
         self.sampling_time = sampling_time
-        
+
+        # m is minimum of observation parameters, and M means maximum
         self.m = [-1.1972720082172352, -0.19505799720288627, -5.73218793410446, -19.163715186897736]
         self.M = [ 1.2165426422741104,   1.7601296440512415, 5.567071950337454,  20.839231268812295]
 
-        self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
-        self.start_time_str = dt.strftime(self.start_time, '%m%d_%H-%M-%S')
-        self.log_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logs', f'Acrobot-{version}_{self.start_time_str}_{self.SUFFIX}')
+        
+        if not model.load_dir or nstart:
+            self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
+            self.start_time_str = dt.strftime(self.start_time, '%m%d_%H-%M-%S')
+            self.log_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logs', f'Acrobot-{version}_{self.start_time_str}_{self.SUFFIX}')
+
         if not model.load_dir:
             os.mkdir(self.log_dir)
             os.mkdir(os.path.join(self.log_dir, 'fft_img'))
             os.mkdir(os.path.join(self.log_dir, 'tf_model'))
-
+        
+        # if start from exist model, load parameters from exist log
         else:
+            if nstart:
+                os.rename(self.model.load_dir, self.log_dir)
+                self.model.load_dir = self.log_dir
             print('agent parameter loaded from previous model!')
             self.log_dir = model.load_dir
             with open(os.path.join(self.log_dir, 'backup.yaml')) as f:
                 yaml_data = yaml.safe_load(f)
-                #self.start_time_str = yaml_data['START_TIME']
-                #self.start_time = dt.strptime('2021_'+self.start_time_str, '%Y_%m%d_%H-%M-%S')
+                if not nstart:
+                    self.start_time_str = yaml_data['START_TIME']
+                    self.start_time = dt.strptime('2021_'+self.start_time_str, '%Y_%m%d_%H-%M-%S')
                 self.GAMMA = float(yaml_data['GAMMA'])
                 self.MAX_STEP = int(yaml_data['MAX_STEP'])
                 self.ALPHA = float(yaml_data['ALPHA'])
@@ -61,7 +80,6 @@ class a2c_agent():
                 self.EMA_reward = float(yaml_data['EMA_REWARD'])
                 self.SUFFIX = yaml_data['SUFFIX']
                 self.sampling_time = yaml_data['SAMPLING_TIME']
-
         self.summary_writer = tf.summary.create_file_writer(self.log_dir)
 
 
@@ -289,7 +307,7 @@ class a2c_agent():
             tf.summary.scalar('reward of episodes', self.episode_reward, step=self.num_episode)
             tf.summary.scalar('frequency of episodes', self.most_freq, step=self.num_episode)
             tf.summary.scalar('sigma of episodes', self.sigma, step=self.num_episode)
-            tf.summary.scalar('max angle o episodes', self.env.max_angle, step=self.num_episode)
+            tf.summary.scalar('max angle of episodes', self.env.max_angle, step=self.num_episode)
 
         with open(os.path.join(self.log_dir, 'episode-reward-loss-freq-sigma.txt'), 'a') as f:
             f.write(f'{self.num_episode} {self.episode_reward} {self.loss} {self.most_freq} {self.sigma}\n')
