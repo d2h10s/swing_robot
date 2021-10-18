@@ -205,10 +205,11 @@ class a2c_agent():
 
             state = self.env.step(action)
             th1, th2, vel1, vel2 = state
-            #reward = -np.abs(np.cos(th1))
-            reward = np.abs(np.sin(th1))
-            #reward = 1/np.abs(np.cos(th1)+0.1)-1/(1+0.1)
-            #reward = -np.cos(th1*2)
+            #reward = -np.abs(np.cos(th1)) # R0
+            #reward = np.abs(np.sin(th1)) # R1
+            #reward = 1/np.abs(np.cos(th1)+0.1)-1/(1+0.1) # R2
+            #reward = -np.cos(th1*2) # R3
+
             rewards = rewards.write(step-1, reward)
 
             print(f'\r--step {step:5d}  --reward {reward:8.02} --action {action} --action_probs [{a0:8.02} {a1:8.02}] --value [{v:8.02}]', end='')

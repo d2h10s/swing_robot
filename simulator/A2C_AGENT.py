@@ -69,6 +69,7 @@ class a2c_agent():
                 if not nstart:
                     self.start_time_str = yaml_data['START_TIME']
                     self.start_time = dt.strptime('2021_'+self.start_time_str, '%Y_%m%d_%H-%M-%S')
+                    self.start_time.replace(tzinfo=timezone('Asia/Seoul'))
                 self.GAMMA = float(yaml_data['GAMMA'])
                 self.MAX_STEP = int(yaml_data['MAX_STEP'])
                 self.ALPHA = float(yaml_data['ALPHA'])
