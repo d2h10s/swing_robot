@@ -73,8 +73,8 @@ class AcrobotEnv_d2(core.Env):
 
     MAX_VEL_1 = 5.567071950337454 #: [rad/s]
     MAX_VEL_2 = 20.839231268812295 # [rad/s]
-    MAX_TORQUE = 0.09355
-    AVAIL_DIRECTION = [-100, +10]
+    MAX_TORQUE = 0.32 * 9.81 * 0.0732  * 0.7 # LINK_MASS_2 * GRAVITY_CONSTANT * LINK_COM_POS_2
+    AVAIL_DIRECTION = [-np.deg2rad(100), +np.deg2rad(10)]
     dir_noise_max = 0.
 
     #: use dynamics equations from the nips paper or the book
@@ -86,7 +86,7 @@ class AcrobotEnv_d2(core.Env):
     def __init__(self):
         self.viewer = None
         self.high = np.array([ 1.2165426422741104,   1.7601296440512415, 5.567071950337454,  20.839231268812295], dtype=np.float32)
-        self.low  = -np.array([-1.1972720082172352, -0.19505799720288627, -5.73218793410446, -19.163715186897736], dtype=np.float32)
+        self.low  = np.array([-1.1972720082172352, -0.19505799720288627, -5.73218793410446, -19.163715186897736], dtype=np.float32)
         self.observation_space = spaces.Box(low=self.low, high=self.high, dtype=np.float32)
         self.action_space = spaces.Discrete(self.actions_num)
         self.state = None
@@ -100,23 +100,21 @@ class AcrobotEnv_d2(core.Env):
         self.state = np.array([0, 0, 0, 0]) # self.np_random.uniform(low=-0.1, high=0.1, size=(4,))
         return self._get_ob()
 
-    def _motor_profile(self, deg):
+    def _motor_profile(self, angle):
         t, a, b = self.MAX_TORQUE, self.AVAIL_DIRECTION[0], self.AVAIL_DIRECTION[1]
         trisection = (b-a)/3
         slope = t/trisection
 
-        if deg < a+trisection:
-            torque = slope*(deg-a)
-        elif deg < b-(b-a)/3:
+        if angle < a+trisection:
+            torque = slope*(angle-a)
+        elif angle < b-(b-a)/3:
             torque = t
         else:
-            torque = -slope*(deg-b)
-
+            torque = -slope*(angle-b)
         return torque
 
     def step(self, dir):
         s = self.state
-        direction = self.AVAIL_DIRECTION[dir]
         # Add noise to the force action
         if self.dir_noise_max > 0:
             dir += self.np_random.uniform(-self.dir_noise_max, self.dir_noise_max)
@@ -126,6 +124,7 @@ class AcrobotEnv_d2(core.Env):
         torque = self._motor_profile(self.state[0])
         if dir == 0:
             torque *= -1
+            
         s_augmented = np.append(s, torque)
 
         ns = rk4(self._dsdt, s_augmented, [0, self.dt])

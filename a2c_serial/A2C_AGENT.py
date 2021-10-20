@@ -206,7 +206,7 @@ class a2c_agent():
             state = self.env.step(action)
             th1, th2, vel1, vel2 = state
             #reward = -np.abs(np.cos(th1)) # R0
-            #reward = np.abs(np.sin(th1)) # R1
+            reward = np.abs(np.sin(th1)) # R1
             #reward = 1/np.abs(np.cos(th1)+0.1)-1/(1+0.1) # R2
             #reward = -np.cos(th1*2) # R3
 

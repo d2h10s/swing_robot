@@ -1,6 +1,7 @@
-import io, os, yaml, time
+import io, os, yaml, time, cv2, gc, psutil
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers, optimizers
@@ -46,6 +47,7 @@ class a2c_agent():
         self.M = [ 1.2165426422741104,   1.7601296440512415, 5.567071950337454,  20.839231268812295]
         self.m = [-1.1972720082172352, -0.19505799720288627, -5.73218793410446, -19.163715186897736]
 
+        matplotlib.use('Agg')
         
         if not model.load_dir or nstart:
             self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
@@ -56,6 +58,9 @@ class a2c_agent():
             os.mkdir(self.log_dir)
             os.mkdir(os.path.join(self.log_dir, 'fft_img'))
             os.mkdir(os.path.join(self.log_dir, 'tf_model'))
+            os.mkdir(os.path.join(self.log_dir, 'video'))
+            with open(os.path.join(self.log_dir, 'learning_data.txt'), 'a') as f:
+                f.write('episode,reward,loss,frequency,sigma\r\n')
         
         # if start from exist model, load parameters from exist log
         else:
@@ -92,7 +97,6 @@ class a2c_agent():
         with open(os.path.join(self.log_dir, 'terminal_log.txt'), 'a') as f:
             f.write(msg+'\n\n')
 
-
     def fft(self, deg_list, act_list):
         Fs = 1/self.sampling_time
         n = len(deg_list)
@@ -104,43 +108,45 @@ class a2c_agent():
         fft_data = np.fft.fft(deg_list)/n
         fft_data = fft_data[range(scale)]
         fft_mag_data = np.abs(fft_data)
-        most_freq = freq[np.argmax(fft_mag_data)]
+        self.most_freq = freq[np.argmax(fft_mag_data)]
+        self.sigma = np.max(fft_mag_data)/np.mean(fft_mag_data)
+
         x = np.arange(n)*self.sampling_time
-        sigma = np.max(fft_mag_data)/np.mean(fft_mag_data)
-        plt.figure(figsize=(15,15))
-        plt.subplot(3,1,1)
-        plt.title('FFT')
-        plt.plot(x, deg_list)
-        plt.xlabel('sec')
-        plt.ylabel('deg')
-        plt.grid(True)
+        fig = plt.figure(figsize=(15,15))
+        ax1 = plt.subplot(3,1,1)
+        ax1.plot(x, deg_list)
+        ax1.set_title(f'FFT{self.num_episode}')
+        ax1.set_xlabel('sec')
+        ax1.set_ylabel('deg')
+        ax1.grid(True)
 
-        plt.subplot(3,1,2)
-        plt.grid(True)
-        plt.ylabel('mag')
-        plt.xlabel('frequency')
-        plt.plot(freq, fft_mag_data, linestyle=' ', marker='^', linewidth=1)
-        plt.vlines(freq, [0], fft_mag_data)
-        plt.xlim([0, 4])
-        plt.legend([f'most freq:{most_freq:2.3f}Hz', f'sigma: {sigma:5.2f}'])
+        ax2 = fig.add_subplot(3,1,2)
+        ax2.grid(True)
+        ax2.plot(freq, fft_mag_data, linestyle=' ', marker='^', linewidth=1)
+        ax2.vlines(freq, [0], fft_mag_data)
+        ax2.set_xlim([0, 4])
+        ax2.set_title('Magnitude')
+        ax2.set_xlabel('frequency')
+        ax2.set_ylabel('mag')
+        ax2.legend([f'most freq:{self.most_freq:2.3f}Hz', f'sigma: {self.sigma:5.2f}'])
 
-        plt.subplot(3,1,3)
-        plt.grid(True)
-        plt.plot(range(1,self.MAX_STEP+1), act_list)
-        plt.title('Action')
-        plt.ylabel('action')
-        plt.xlabel('step')
-        plt.legend([f'action0:{self.MAX_STEP - sum(self.action_cnt)}'])
+        ax3 = fig.add_subplot(3,1,3)
+        ax3.grid(True)
+        ax3.plot(range(1,self.MAX_STEP+1), act_list)
+        ax3.set_title('Action')
+        ax3.set_xlabel('step')
+        ax3.set_ylabel('action')
+        ax3.legend([f'action0:{self.MAX_STEP - sum(self.action_cnt)}'])
 
-        buf = io.BytesIO()
-        plt.savefig(buf, format='png')
-        #if self.num_episode % 100 == 0 or self.num_episode == 1:
-        plt.savefig(os.path.join(self.log_dir, 'fft_img', f'fft{self.num_episode}.png'))
-        plt.close()
-        buf.seek(0)
-        plot_image = tf.image.decode_png(buf.getvalue(), channels=4)
-        plot_image = tf.expand_dims(plot_image, 0)
-        return most_freq, sigma, plot_image
+        #buf = io.BytesIO()
+        #fig.savefig(buf, format='png')
+        fig.savefig(os.path.join(self.log_dir, 'fft_img', f'fft{self.num_episode}.png'))
+        #buf.seek(0)
+        plt.clf(); plt.close('all')
+        del fig, ax1, ax2, ax3
+        gc.collect()
+        #plot_image = tf.image.decode_png(buf.getvalue(), channels=4)
+        #plot_image = tf.expand_dims(plot_image, 0)
 
 
     def get_expected_return(self, rewards: tf.Tensor, standardize: bool = True) -> tf.Tensor:
@@ -163,7 +169,6 @@ class a2c_agent():
         if standardize:
             returns = ((returns - tf.math.reduce_mean(returns)) / 
                     (tf.math.reduce_std(returns) + self.EPS))
-
         return returns
 
 
@@ -181,7 +186,6 @@ class a2c_agent():
 
         return actor_loss + critic_loss
 
-
     def run_episode(self, initial_state: np.array):
         state = initial_state
 
@@ -192,8 +196,15 @@ class a2c_agent():
         self.action_cnt = np.zeros(self.MAX_STEP, dtype=np.int)
         self.max_angle = 0
 
+        if self.num_episode % 100 == 0:
+            blue_color = (255, 0, 0) # BGR
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            video_dir = os.path.join(self.log_dir, 'video', f'{self.num_episode}.avi')
+            fourcc = cv2.VideoWriter_fourcc(*'DIVX')
+            img_shape = self.env.render('rgb_array').shape[:2]
+            videoWriter = cv2.VideoWriter(video_dir, fourcc, 15, img_shape)
+
         for step in range(1, self.MAX_STEP+1):
-            start_time = time.time()
             state = np.array([(state[i]-self.m[i])/(self.M[i]-self.m[i]) for i in range(4)])
             action_logits_t, value = self.model(state)
             action = tf.random.categorical(action_logits_t, 1)[0, 0]
@@ -217,8 +228,15 @@ class a2c_agent():
             deg = np.rad2deg(th1)
             degrees[step-1] = deg
 
-        self.most_freq, self.sigma, self.plot_img = self.fft(degrees, self.action_cnt)
-        del degrees
+            if self.num_episode % 100 == 0:
+                img = self.env.render(mode='rgb_array').astype(np.float32)
+                cv2.putText(img=img,text=f'TEST: Step({step:04})', org=(50,50), fontFace=font, fontScale=1,color=blue_color, thickness=1, lineType=0)
+                cv2.imshow('Actor-Critic', img)
+                videoWriter.write(img.astype(np.ubyte))
+        if self.num_episode % 100 == 0:
+            videoWriter.release()
+
+        self.fft(degrees, self.action_cnt)
 
         action_probs = action_probs.stack()
         values = values.stack()
@@ -226,7 +244,6 @@ class a2c_agent():
 
         return action_probs, values, rewards
     
-
     def train_step(self, initial_state: np.array):
         """Runs a model training step."""
 
@@ -243,13 +260,13 @@ class a2c_agent():
         
         self.episode_reward = np.sum(rewards)
 
-        del action_probs, values, rewards, returns, grads
-
+        del grads, action_probs, values, rewards
 
     def train(self, env):
         self.env = env
         self.sampling_time = self.env.dt
-        done_cnt = 0
+        self.done_cnt = 0
+
         while True:
             initial_state = self.env.reset()
             self.train_step(initial_state)
@@ -259,15 +276,15 @@ class a2c_agent():
                 self.EMA_reward = self.episode_reward*self.ALPHA + self.EMA_reward * (1-self.ALPHA)
             
             self.write_logs()
-
+            
             self.done_cnt = self.done_cnt + 1 if 100 < self.sigma < 200 and 0.3 < self.most_freq < 0.55 else 0
 
             if self.done_cnt > self.MAX_DONE:
                 print(f"Solved at episode {self.num_episode} with EMA reward {self.EMA_reward}")
-                with self.summary_writer.as_default():
-                    tf.summary.image(f'fft of final episode{self.num_episode:05}', self.plot_img, step=0)
                 break
+            
             self.num_episode += 1
+        cv2.destroyAllWindows()
 
 
     def run_test(self, env):
@@ -281,8 +298,7 @@ class a2c_agent():
             th1 = np.rad2deg(state[0]) # deg
             with self.summary_writer.as_default():
                 tf.summary.scalar('test angle of link1', th1, step=step)
-
-
+ 
     def write_logs(self):
         now_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
         now_time_str = dt.strftime(now_time, '%m-%d_%Hh-%Mm-%Ss')
@@ -293,6 +309,8 @@ class a2c_agent():
 
         with open(os.path.join(self.log_dir, 'terminal_log.txt'), 'a') as f:
             f.write(log_text+'\n')
+        
+        cpu, mem = self._check_usage_of_cpu_and_memory()
 
         with self.summary_writer.as_default():
             tf.summary.scalar('action1 ratio', sum(self.action_cnt)/self.MAX_STEP, step=self.num_episode)
@@ -301,15 +319,15 @@ class a2c_agent():
             tf.summary.scalar('frequency of episodes', self.most_freq, step=self.num_episode)
             tf.summary.scalar('sigma of episodes', self.sigma, step=self.num_episode)
             tf.summary.scalar('max angle of episodes', self.max_angle, step=self.num_episode)
+            tf.summary.scalar('memory usage of episodes', mem, step=self.num_episode)
 
-        with open(os.path.join(self.log_dir, 'episode-reward-loss-freq-sigma.txt'), 'a') as f:
-            f.write(f'{self.num_episode} {self.episode_reward} {self.loss} {self.most_freq} {self.sigma}\n')
+        with open(os.path.join(self.log_dir, 'learning_data.txt'), 'a') as f:
+            f.write(f'{self.num_episode},{self.episode_reward},{self.loss},{self.most_freq},{self.sigma}\r\n')
 
         if self.num_episode % 100 == 0 or self.num_episode == 1:
             self.yaml_backup()
             self.model.save(os.path.join(self.log_dir, 'tf_model', f'learning_model{self.num_episode}'))
-            with self.summary_writer.as_default():
-                tf.summary.image(f'fft of episode{self.num_episode:05}', self.plot_img, step=0)
+        gc.collect()
 
 
     def yaml_backup(self):
@@ -330,3 +348,14 @@ class a2c_agent():
                         'MAX_DONE':         self.MAX_DONE,\
                         'SUFFIX':           self.SUFFIX}
             yaml.dump(yaml_data, f)
+
+    def _check_usage_of_cpu_and_memory(self):
+        pid = os.getpid()
+        py  = psutil.Process(pid)
+        
+        cpu_usage   = os.popen("ps aux | grep " + str(pid) + " | grep -v grep | awk '{print $3}'").read()
+        cpu_usage   = cpu_usage.replace("\n","")
+        
+        memory_usage  = round(py.memory_info()[0] /2.**30, 2)
+
+        return cpu_usage, memory_usage
