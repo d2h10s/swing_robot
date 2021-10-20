@@ -13,6 +13,13 @@ ETX = b'\x03'
 ACK = b'\x06'
 NAK = b'\x15'
 
+'''
+action   0 CW
+action   1 CCW
+
+velocity + CW
+velocity - CCW
+'''
 class a2c_agent():
     '''
     @param model environment which is from gym or serial
@@ -22,7 +29,7 @@ class a2c_agent():
     @param suffix user's comment
     @param nstart Whether rename folder name and time variables
     '''
-    def __init__(self, model, lr='1e-3', sampling_time=0.025, version="", suffix="", nstart=False):
+    def __init__(self, model, lr='1e-3', sampling_time=0.025, version="", suffix="", nstart=False, test=False):
         self.model = model
         self.EPS = np.finfo(np.float32).eps.item()
         # GAMMA is discount factor
@@ -49,6 +56,8 @@ class a2c_agent():
         self.m = [-1.1972720082172352, -0.19505799720288627, -5.73218793410446, -19.163715186897736]
 
         matplotlib.use('Agg')
+        if test:
+            return
         
         if not model.load_dir or nstart:
             self.start_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
@@ -225,9 +234,12 @@ class a2c_agent():
             self.max_angle = max(self.max_angle, np.rad2deg(th1))
             
             #reward = -np.abs(np.cos(th1)) # R0
-            reward = np.abs(np.sin(th1)) # R1
+            # reward = np.abs(np.sin(th1)) # R1
             #reward = 1/np.abs(np.cos(th1)+0.1)-1/(1+0.1) # R2
             #reward = -np.cos(th1*2) # R3
+
+            reward = np.abs(np.sin(th1)) if -np.sign(vel1)==(int(action)*2-1) else -np.abs(np.sin(th1)) # R4
+
             rewards = rewards.write(step-1, reward)
             deg = np.rad2deg(th1)
             degrees[step-1] = deg
@@ -293,17 +305,18 @@ class a2c_agent():
 
 
     def run_test(self, env):
+        step = 0
         state = env.reset()
-        for step in range(1, self.MAX_STEP):
+        while True:
 
-            action_probs, _ = self.model(state)
+            action_logits_t, value = self.model(state)
 
-            action = np.argmax(action_probs)
+            state = np.array([(state[i]-self.m[i])/(self.M[i]-self.m[i]) for i in range(4)])
+            action = tf.random.categorical(action_logits_t, 1)[0, 0]
             state = env.step(action)
-            th1 = np.rad2deg(state[0]) # deg
-            with self.summary_writer.as_default():
-                tf.summary.scalar('test angle of link1', th1, step=step)
- 
+            self.env.render()
+            step += 1
+
 
     def write_logs(self):
         now_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))

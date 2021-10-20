@@ -283,7 +283,7 @@ class a2c_agent():
 
     def train(self, env):
         self.env = env
-        done_cnt = 0
+        self.done_cnt = 0
         self.env.set_zero_angle()
         while self.env.ser.isOpen():
             initial_state = self.env.reset(self.num_episode)
