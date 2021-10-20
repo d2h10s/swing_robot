@@ -42,6 +42,7 @@ class a2c_agent():
         self.ALPHA = 0.01
         self.SUFFIX = f'{suffix}_{lr}'
         self.max_angle = 0
+        self.sampling_time = sampling_time
 
         # m is minimum of observation parameters, and M means maximum
         self.M = [ 1.2165426422741104,   1.7601296440512415, 5.567071950337454,  20.839231268812295]
@@ -96,6 +97,7 @@ class a2c_agent():
     def init_message(self, msg):
         with open(os.path.join(self.log_dir, 'terminal_log.txt'), 'a') as f:
             f.write(msg+'\n\n')
+
 
     def fft(self, deg_list, act_list):
         Fs = 1/self.sampling_time
@@ -169,6 +171,7 @@ class a2c_agent():
         if standardize:
             returns = ((returns - tf.math.reduce_mean(returns)) / 
                     (tf.math.reduce_std(returns) + self.EPS))
+
         return returns
 
 
@@ -185,6 +188,7 @@ class a2c_agent():
         del advantage, action_log_probs
 
         return actor_loss + critic_loss
+
 
     def run_episode(self, initial_state: np.array):
         state = initial_state
@@ -219,11 +223,11 @@ class a2c_agent():
             state, *_ = self.env.step(action)
             th1, th2, vel1, vel2 = state
             self.max_angle = max(self.max_angle, np.rad2deg(th1))
-
-            #reward = -np.abs(np.cos(th1))
-            reward = np.abs(np.sin(th1))
-            #reward = 1/np.abs(np.cos(th1)+0.1)-1/(1+0.1)
-            #reward = -np.cos(th1*2)
+            
+            #reward = -np.abs(np.cos(th1)) # R0
+            reward = np.abs(np.sin(th1)) # R1
+            #reward = 1/np.abs(np.cos(th1)+0.1)-1/(1+0.1) # R2
+            #reward = -np.cos(th1*2) # R3
             rewards = rewards.write(step-1, reward)
             deg = np.rad2deg(th1)
             degrees[step-1] = deg
@@ -244,6 +248,7 @@ class a2c_agent():
 
         return action_probs, values, rewards
     
+
     def train_step(self, initial_state: np.array):
         """Runs a model training step."""
 
@@ -299,6 +304,7 @@ class a2c_agent():
             with self.summary_writer.as_default():
                 tf.summary.scalar('test angle of link1', th1, step=step)
  
+
     def write_logs(self):
         now_time = utc.localize(dt.utcnow()).astimezone(timezone('Asia/Seoul'))
         now_time_str = dt.strftime(now_time, '%m-%d_%Hh-%Mm-%Ss')

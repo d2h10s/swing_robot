@@ -32,7 +32,7 @@ so if you want to use gym environment you should operate codes from simulator di
 env = a2c_serial()
 
 # if you don't put parameter, a2c_serial class find serail port by auto
-while not env.serial_open(target_port='COM8'):
+while not env.serial_open():
     sleep(0.5)
 
 # when serial is not opened, error message will be printed
@@ -42,8 +42,7 @@ if __name__ == '__main__' and env.ser.isOpen():
     action_n = env.action_space_n
 
     model = a2c_model(observation_n, hidden_n, action_n, load_dir=_load_dir)
-
-    agent = a2c_agent(model, lr="12e-5", sampling_time=0.04, version='v4', suffix="r1", nstart=new_start)
+    agent = a2c_agent(model, lr="12e-5", sampling_time=0.04, version='v5', suffix="r1", nstart=new_start)
     agent.init_message(INIT_MESSAGE)
     file_backup(agent.log_dir)
 
