@@ -61,7 +61,6 @@ class a2c_agent():
             os.mkdir(self.log_dir)
             os.mkdir(os.path.join(self.log_dir, 'fft_img'))
             os.mkdir(os.path.join(self.log_dir, 'tf_model'))
-            os.mkdir(os.path.join(self.log_dir, 'video'))
             with open(os.path.join(self.log_dir, 'learning_data.txt'), 'a') as f:
                 f.write('episode,reward,loss,frequency,sigma\r\n')
         
@@ -202,13 +201,6 @@ class a2c_agent():
         self.action_cnt = np.zeros(self.MAX_STEP, dtype=np.int)
         self.max_angle = 0
 
-        if self.num_episode % 100 == 0:
-            blue_color = (255, 0, 0) # BGR
-            font = cv2.FONT_HERSHEY_SIMPLEX
-            video_dir = os.path.join(self.log_dir, 'video', f'{self.num_episode}.avi')
-            fourcc = cv2.VideoWriter_fourcc(*'DIVX')
-            img_shape = self.env.render('rgb_array').shape[:2]
-            videoWriter = cv2.VideoWriter(video_dir, fourcc, 15, img_shape)
 
         for step in range(1, self.MAX_STEP+1):
             start_time = time.time()
@@ -225,16 +217,17 @@ class a2c_agent():
 
             state = self.env.step(action)
             th1, th2, vel1, vel2 = state
-            self.max_angle = max(self.max_angle, np.rad2deg(th1))
+            self.max_angle = max(self.max_angle, np.abs(np.rad2deg(th1)))
             
             #reward = -np.abs(np.cos(th1)) # R0
-            reward = np.abs(np.sin(th1)) # R1
+            #reward = np.abs(np.sin(th1)) # R1
             #reward = 1/np.abs(np.cos(th1)+0.1)-1/(1+0.1) # R2
             #reward = -np.cos(th1*2) # R3
+            reward = np.abs(np.sin(th1)) if np.sign(vel1)==(int(action)*2-1) else -np.abs(np.sin(th1)) # R4
 
             rewards = rewards.write(step-1, reward)
 
-            print(f'\r--step {step:5d}  --reward {reward:8.02} --action {action} --action_probs [{a0:8.02} {a1:8.02}] --value [{v:8.02}]', end='')
+            print(f'\r--step {step:5d}  --angle {np.rad2deg(th1):8.02} --action {action} --action_probs [{a0:8.02} {a1:8.02}] --value [{v:8.02}]', end='')
 
             deg = np.rad2deg(th1)
             degrees[step-1] = deg
@@ -245,13 +238,6 @@ class a2c_agent():
             if not didWait:
                 print(f"\rwait time over {int((time.time()-start_time)*1000)}ms at step {step:<70}")
             
-            if self.num_episode % 100 == 0:
-                img = self.env.render(mode='rgb_array').astype(np.float32)
-                cv2.putText(img=img,text=f'TEST: Step({step:04})', org=(50,50), fontFace=font, fontScale=1,color=blue_color, thickness=1, lineType=0)
-                cv2.imshow('Actor-Critic', img)
-                videoWriter.write(img.astype(np.ubyte))
-        if self.num_episode % 100 == 0:
-            videoWriter.release()
 
         self.fft(degrees, self.action_cnt)
 

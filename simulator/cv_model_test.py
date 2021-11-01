@@ -5,7 +5,7 @@ import tensorflow as tf
 import cv2
 
 # >>>>>>>>>>>>>>>>
-original_path = os.path.join(os.curdir, 'logs', 'Acrobot-v4_0907_18-56-04_r1')
+original_path = os.path.join(os.curdir, 'logs', 'Acrobot-v5_1019_17-02-27_r1_12e-5')
 li = os.listdir(os.path.join(original_path, 'tf_model'))
 latest_dir_name=li[np.argmax([int(x.split('model')[-1]) for x in li])]
 original_model_path = os.path.join(original_path, 'tf_model', latest_dir_name)
@@ -38,26 +38,29 @@ hidden_n = 128
 img_shape = env.render('rgb_array').shape[:2]
 # Settings for Summary Writer of Tensorboard
 # ex) Acrobot-v1_'05-14_11:04:29
-summary_writer = tf.summary.create_file_writer(original_path)
+#summary_writer = tf.summary.create_file_writer(original_path)
 
 model = tf.keras.models.load_model(os.path.join(original_model_path))
 
 
 state = env.reset()
+print(state)
 video_dir = os.path.join(original_path, 'test.avi')
 videoWriter = cv2.VideoWriter(video_dir,fourcc, 15, img_shape)
 for step in range(1, MAX_STEP+1):
     state = tf.convert_to_tensor(state)
+    state = tf.expand_dims(state, axis=0)
+
 
     action_probs, critic_value = model(state)
     print(action_probs, critic_value)
     action = np.argmax(action_probs)
-    state, _, done, _ = env.step(action)
+    state = env.step(action)
     radian = np.arctan2(state[1], state[0]) # angle of link1
     img = env.render(mode="rgb_array")
     
-    with summary_writer.as_default():
-        tf.summary.scalar('test angle of link1', np.rad2deg(radian), step=step)
+    #with summary_writer.as_default():
+    #    tf.summary.scalar('test angle of link1', np.rad2deg(radian), step=step)
         
     img = env.render(mode='rgb_array').astype(np.float32)
     cv2.putText(img=img,text=f'TEST: Step({step:04})', org=(50,50), fontFace=font, fontScale=1,color=blue_color, thickness=1, lineType=0)

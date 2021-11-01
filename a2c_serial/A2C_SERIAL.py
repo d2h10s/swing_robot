@@ -131,9 +131,9 @@ class a2c_serial:
         ret = self.ser.isOpen()
         while ret:
             try:
-                if action == 1:  # action 1 is go up (clock wise)
+                if action == 0:  # action 0 is go up (clock wise)
                     self.ser.write(GO_CW)
-                elif action == 0:       # action 0 is go down (counter clock wise)
+                elif action == 1:       # action 1 is go down (counter clock wise)
                     self.ser.write(GO_CCW)
                 else:
                     print('action is out of range', action)

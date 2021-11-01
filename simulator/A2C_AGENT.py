@@ -231,7 +231,7 @@ class a2c_agent():
 
             state, *_ = self.env.step(action)
             th1, th2, vel1, vel2 = state
-            self.max_angle = max(self.max_angle, np.rad2deg(th1))
+            self.max_angle = max(self.max_angle, np.abs(np.rad2deg(th1)))
             
             #reward = -np.abs(np.cos(th1)) # R0
             # reward = np.abs(np.sin(th1)) # R1
